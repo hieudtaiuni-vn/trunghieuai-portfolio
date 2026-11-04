@@ -365,10 +365,13 @@
               <div class="contact-card-icon">💬</div>
               <h4>Kết nối Zalo</h4>
               <p>Quét mã QR dưới đây để trao đổi trực tiếp và nhanh chóng qua Zalo:</p>
-              <div class="zalo-qr-box">
-                <img src="public/images/zalohieu.jpg" alt="Mã QR Zalo Dương Trung Hiếu" class="zalo-qr-img" loading="lazy">
+              <div class="zalo-qr-wrapper">
+                <div class="zalo-qr-box" id="zalo-qr-box" title="Di chuột hoặc bấm để phóng to mã QR" tabindex="0" role="button" aria-label="Phóng to mã QR Zalo">
+                  <img src="public/images/zalohieu.jpg" alt="Mã QR Zalo Dương Trung Hiếu" class="zalo-qr-img" loading="lazy">
+                </div>
               </div>
-              <div>
+              <span class="qr-zoom-hint">🔍 Di chuột hoặc chạm để phóng to mã</span>
+              <div style="margin-top: 4px;">
                 <span class="contact-status-tag confirmed">✓ Mã QR chính thức</span>
               </div>
             </div>

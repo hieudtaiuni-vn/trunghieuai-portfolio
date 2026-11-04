@@ -920,13 +920,23 @@ section {
   color: #93c5fd;
 }
 
-.zalo-qr-box {
+.zalo-qr-wrapper {
   margin-top: 10px;
   display: inline-block;
+  position: relative;
+}
+
+.zalo-qr-box {
+  display: inline-block;
   background: #ffffff;
-  padding: 6px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 8px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+  position: relative;
+  cursor: zoom-in;
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.32s ease, border-color 0.32s ease;
+  transform-origin: center center;
+  border: 2px solid rgba(255, 255, 255, 0.85);
 }
 
 .zalo-qr-img {
@@ -935,6 +945,23 @@ section {
   object-fit: contain;
   display: block;
   border-radius: 6px;
+}
+
+/* Phóng to khi di chuột vào hoặc chạm */
+.zalo-qr-box:hover,
+.zalo-qr-box.zoomed {
+  transform: scale(2.4);
+  z-index: 100;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 0 0 0 3px #2d70b6;
+  border-color: #ffffff;
+}
+
+.qr-zoom-hint {
+  display: block;
+  font-size: 11px;
+  color: #9cb5ce;
+  margin-top: 6px;
+  font-style: italic;
 }
 
 /* Footer */

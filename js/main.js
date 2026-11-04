@@ -113,4 +113,26 @@ document.addEventListener('DOMContentLoaded', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
+
+  // 5. Zalo QR Code interactive zoom on click / touch
+  const zaloQrBox = document.getElementById('zalo-qr-box');
+  if (zaloQrBox) {
+    zaloQrBox.addEventListener('click', (e) => {
+      e.stopPropagation();
+      zaloQrBox.classList.toggle('zoomed');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!zaloQrBox.contains(e.target)) {
+        zaloQrBox.classList.remove('zoomed');
+      }
+    });
+
+    zaloQrBox.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        zaloQrBox.classList.toggle('zoomed');
+      }
+    });
+  }
 });
