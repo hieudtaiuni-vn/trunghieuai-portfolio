@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="favGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#142b49" />
+      <stop offset="100%" stop-color="#2a5a8c" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3978b8" />
+      <stop offset="100%" stop-color="#60a5fa" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#favGrad)"/>
+  <circle cx="48" cy="16" r="4" fill="url(#accentGrad)"/>
+  <path d="M48 20v6M44 16h-6" stroke="#60a5fa" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+  <!-- DTH Stylized Monogram -->
+  <text x="32" y="42" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="24" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="-1">DTH</text>
+  <rect x="18" y="48" width="28" height="2.5" rx="1.25" fill="url(#accentGrad)"/>
+</svg>

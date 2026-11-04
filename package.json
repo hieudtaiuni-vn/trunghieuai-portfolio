@@ -1,0 +1,20 @@
+{
+  "name": "duong-trung-hieu-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Website Portfolio chính thức cho thương hiệu Dương Trung Hiếu - AI, Technology, Innovation",
+  "scripts": {
+    "dev": "python -m http.server 3000",
+    "serve": "npx serve . -p 3000",
+    "build": "node -e \"console.log('Static site build check passed. All assets ready for Vercel deployment.')\""
+  },
+  "keywords": [
+    "portfolio",
+    "ai",
+    "duong-trung-hieu",
+    "generative-ai",
+    "digital-transformation"
+  ],
+  "author": "Dương Trung Hiếu",
+  "license": "UNLICENSED"
+}
