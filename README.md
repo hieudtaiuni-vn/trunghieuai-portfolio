@@ -111,22 +111,24 @@ Dự án được tối ưu tĩnh (Static Site), tương thích 100% với Verce
 3. Nhập `trunghieuai.io.vn` vào ô và nhấn **Add**.
 4. Vercel sẽ gợi ý thêm cả bản ghi cho `www.trunghieuai.io.vn` (bạn nên chọn phương án redirect `www` về domain gốc hoặc ngược lại theo đề xuất của Vercel).
 
-### Bước 2: Xem các bản ghi DNS mà Vercel yêu cầu
-Vercel sẽ hiển thị bảng trạng thái và cung cấp chính xác các bản ghi DNS cần cấu hình, thông thường gồm:
-- Bản ghi cho Apex Domain (`@` hoặc `trunghieuai.io.vn`):
-  - **Type:** `A`
-  - **Name / Host:** `@`
-  - **Value / Points to:** `76.76.21.21` (hoặc giá trị Vercel ghi trên màn hình của bạn)
-- Bản ghi cho Subdomain `www`:
-  - **Type:** `CNAME`
-  - **Name / Host:** `www`
-  - **Value / Points to:** `cname.vercel-dns.com.` (hoặc theo chỉ định của Vercel)
+### Bước 2: Bảng đối chiếu bản ghi DNS chính thức từ Vercel
 
-### Bước 3: Cấu hình DNS tại Mắt Bão
-1. Đăng nhập trang quản lý dịch vụ tại **id.matbao.net**.
-2. Chọn mục **Quản lý tên miền** → Chọn tên miền `trunghieuai.io.vn` → **Quản lý DNS**.
-3. Nhập chính xác các giá trị `Type`, `Host` và `Giá trị IP/CNAME` mà Vercel đã hiển thị ở Bước 2.
+Vercel đã khởi tạo cấu hình cho dự án của bạn và yêu cầu nhập chính xác các bản ghi sau:
+
+| STT | Loại bản ghi (Type) | Tên máy chủ (Host / Name) | Giá trị đích (Points to / Value) | Ghi chú |
+|:---:|:---:|:---:|:---:|---|
+| 1 | **A** | `@` | `216.198.79.1` | Cho tên miền gốc `trunghieuai.io.vn` |
+| 2 | **A** | `@` | `64.29.17.1` | Bản ghi IP phụ trợ tốc độ cao |
+| 3 | **CNAME** | `www` | `cdec33da5770f97f.vercel-dns-017.com.` | Cho tiền tố `www.trunghieuai.io.vn` |
+
+*(Lưu ý: Nếu bảng DNS Mắt Bão chỉ cho nhập 1 IP bản ghi A, bạn có thể nhập `76.76.21.21` hoặc `216.198.79.1`)*
+
+### Bước 3: Thao tác cấu hình tại Mắt Bão (id.matbao.net)
+1. Đăng nhập trang quản trị: **[id.matbao.net](https://id.matbao.net)**
+2. Vào **Quản lý tên miền** → Chọn `trunghieuai.io.vn` → **Quản lý DNS** (hoặc Cấu hình DNS).
+3. Thêm/cập nhật 3 bản ghi theo đúng bảng trên.
 4. Bấm **Lưu cấu hình**.
+5. Chờ DNS phân giải (khoảng 15 phút đến 24 giờ). Vercel sẽ tự động cấp phát chứng chỉ bảo mật HTTPS (SSL) miễn phí.
 
 ### Bước 4: Kiểm tra và Kích hoạt SSL
 - Thời gian cập nhật DNS thường mất từ 5 phút đến 24 giờ.
