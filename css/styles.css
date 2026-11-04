@@ -921,7 +921,7 @@ section {
 }
 
 .zalo-qr-wrapper {
-  margin-top: 10px;
+  margin-top: 14px;
   display: inline-block;
   position: relative;
 }
@@ -929,39 +929,127 @@ section {
 .zalo-qr-box {
   display: inline-block;
   background: #ffffff;
-  padding: 8px;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+  padding: 10px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
   position: relative;
-  cursor: zoom-in;
-  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.32s ease, border-color 0.32s ease;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
   transform-origin: center center;
-  border: 2px solid rgba(255, 255, 255, 0.85);
+  border: 2px solid rgba(255, 255, 255, 0.9);
 }
 
 .zalo-qr-img {
-  width: 96px;
-  height: 96px;
+  width: 130px;
+  height: 130px;
   object-fit: contain;
   display: block;
-  border-radius: 6px;
+  border-radius: 8px;
 }
 
-/* Phóng to khi di chuột vào hoặc chạm */
+.zalo-qr-overlay-hint {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(14, 30, 51, 0.85);
+  backdrop-filter: blur(6px);
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 999px;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+/* Phóng to mượt mà khi rê chuột */
 .zalo-qr-box:hover,
 .zalo-qr-box.zoomed {
-  transform: scale(2.4);
-  z-index: 100;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 0 0 0 3px #2d70b6;
+  transform: scale(1.75);
+  z-index: 200;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65), 0 0 0 3px #38bdf8;
   border-color: #ffffff;
 }
 
-.qr-zoom-hint {
+/* Modal Lightbox Toàn Màn Hình */
+.zalo-modal-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 22, 38, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeInModal 0.2s ease;
+}
+
+.zalo-modal-backdrop.open {
+  display: flex;
+}
+
+@keyframes fadeInModal {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.zalo-modal-card {
+  background: #ffffff;
+  border-radius: 26px;
+  padding: 32px 28px 24px;
+  max-width: 380px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+  animation: zoomInModal 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes zoomInModal {
+  from { transform: scale(0.88); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.zalo-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  color: #0f172a;
+  font-size: 16px;
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.zalo-modal-close:hover {
+  background: #e2e8f0;
+}
+
+.zalo-modal-img-frame {
+  background: #ffffff;
+  padding: 12px;
+  border-radius: 20px;
+  display: inline-block;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  margin: 18px 0;
+  border: 1px solid #e2e8f0;
+}
+
+.zalo-modal-img {
+  width: 260px;
+  height: 260px;
+  object-fit: contain;
   display: block;
-  font-size: 11px;
-  color: #9cb5ce;
-  margin-top: 6px;
-  font-style: italic;
+  border-radius: 12px;
 }
 
 /* ==========================================================================

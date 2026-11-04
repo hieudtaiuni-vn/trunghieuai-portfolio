@@ -114,27 +114,57 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 5. Zalo QR Code interactive zoom on click / touch
+  // 5. Zalo QR Code interactive zoom & Fullscreen Modal
   const zaloQrBox = document.getElementById('zalo-qr-box');
+  const zaloModal = document.getElementById('zalo-modal');
+  const zaloModalClose = document.getElementById('zalo-modal-close');
+  const btnOpenZaloModal = document.getElementById('btn-open-zalo-modal');
+
+  function openZaloModal() {
+    if (zaloModal) {
+      zaloModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeZaloModal() {
+    if (zaloModal) {
+      zaloModal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  }
+
   if (zaloQrBox) {
-    zaloQrBox.addEventListener('click', (e) => {
-      e.stopPropagation();
-      zaloQrBox.classList.toggle('zoomed');
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!zaloQrBox.contains(e.target)) {
-        zaloQrBox.classList.remove('zoomed');
-      }
-    });
-
+    zaloQrBox.addEventListener('click', openZaloModal);
     zaloQrBox.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        zaloQrBox.classList.toggle('zoomed');
+        openZaloModal();
       }
     });
   }
+
+  if (btnOpenZaloModal) {
+    btnOpenZaloModal.addEventListener('click', openZaloModal);
+  }
+
+  if (zaloModalClose) {
+    zaloModalClose.addEventListener('click', closeZaloModal);
+  }
+
+  if (zaloModal) {
+    zaloModal.addEventListener('click', (e) => {
+      if (e.target === zaloModal) {
+        closeZaloModal();
+      }
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && zaloModal && zaloModal.classList.contains('open')) {
+      closeZaloModal();
+    }
+  });
 
   // 6. Interactive 3D Flip Photo Album
   const albumData = [
