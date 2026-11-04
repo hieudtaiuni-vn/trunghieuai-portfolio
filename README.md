@@ -69,20 +69,21 @@ Truy cập trình duyệt: `http://localhost:3000`
 
 Dự án được tối ưu tĩnh (Static Site), tương thích 100% với Vercel mà không cần cấu hình build phức tạp.
 
-### Phương án A: Triển khai qua GitHub (Khuyến nghị để cập nhật tự động)
-1. Khởi tạo Git và đẩy mã nguồn lên GitHub của bạn:
-   ```bash
-   git init
-   git add .
-   git commit -m "feat: initial commit for Duong Trung Hieu portfolio MVP"
-   git branch -M main
-   # Đổi link dưới thành repo GitHub của bạn:
-   git remote add origin https://github.com/<tai-khoan-cua-ban>/trunghieuai-portfolio.git
-   git push -u origin main
-   ```
-2. Đăng nhập [vercel.com](https://vercel.com).
-3. Bấm **Add New...** → **Project** → Chọn kho lưu trữ `trunghieuai-portfolio`.
-4. Tại mục **Framework Preset**, chọn **Other** (mặc định cho static site).
+### Kho lưu trữ GitHub chính thức
+- **Repository URL:** [https://github.com/hieudtaiuni-vn/trunghieuai-portfolio](https://github.com/hieudtaiuni-vn/trunghieuai-portfolio)
+- **Nhánh chính:** `main` (đã đồng bộ toàn bộ 19 file mã nguồn và tài nguyên)
+
+---
+
+## 4. Hướng dẫn Triển khai lên Vercel (Deployment)
+
+Dự án được tối ưu tĩnh (Static Site), tương thích 100% với Vercel mà không cần cấu hình build phức tạp.
+
+### Phương án A: Triển khai qua GitHub (Khuyên dùng — Đã kết nối sẵn)
+1. Đăng nhập [vercel.com](https://vercel.com) (bằng tài khoản GitHub `hieudtaiuni-vn`).
+2. Bấm **Add New...** → **Project** → Tìm và chọn kho lưu trữ **`trunghieuai-portfolio`**.
+3. Tại mục **Framework Preset**, chọn **Other** (mặc định tĩnh, giữ nguyên cấu hình).
+4. Bấm **Deploy**. Sau khoảng 15-20 giây, website sẽ được phát hành trên mạng toàn cầu với URL Vercel preview.
 5. Bấm **Deploy**. Sau 15-30 giây, Vercel sẽ cung cấp một đường dẫn xem trước (ví dụ: `https://trunghieuai-portfolio.vercel.app`).
 
 ### Phương án B: Triển khai trực tiếp bằng Vercel CLI
