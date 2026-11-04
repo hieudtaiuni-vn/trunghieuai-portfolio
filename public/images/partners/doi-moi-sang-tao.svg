@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 90" width="280" height="90">
+  <rect width="280" height="90" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+  <rect x="20" y="20" width="50" height="50" rx="12" fill="#c2410c"/>
+  <text x="45" y="52" font-family="Inter, system-ui, sans-serif" font-size="19" font-weight="900" fill="#ffedd5" text-anchor="middle">INN</text>
+  <text x="85" y="44" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="850" fill="#c2410c">ĐỔI MỚI SÁNG TẠO</text>
+  <text x="85" y="62" font-family="Inter, system-ui, sans-serif" font-size="10.5" font-weight="600" fill="#64748b" letter-spacing="0.5">INNOVATION HUB</text>
+</svg>

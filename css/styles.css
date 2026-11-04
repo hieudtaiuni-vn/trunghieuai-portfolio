@@ -964,6 +964,484 @@ section {
   font-style: italic;
 }
 
+/* ==========================================================================
+   VIDEO EVENT & PLAYLIST SHOWCASE
+   ========================================================================== */
+.media-section {
+  background: #ffffff;
+  border-top: 1px solid var(--line);
+  padding: 80px 0;
+}
+
+.video-container-card {
+  background: var(--navy-deep);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.video-responsive-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000000;
+}
+
+.video-responsive-frame iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.playlist-meta-bar {
+  padding: 28px 32px;
+  background: linear-gradient(180deg, #112338 0%, #0c1827 100%);
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.playlist-meta-info {
+  max-width: 600px;
+}
+
+.playlist-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+  border: 1px solid rgba(56, 189, 248, 0.25);
+}
+
+.playlist-badge::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ef4444;
+  animation: pulse 1.8s infinite;
+}
+
+.playlist-meta-info h3 {
+  font-size: 19px;
+  color: #ffffff;
+  margin-bottom: 6px;
+  font-weight: 800;
+}
+
+.playlist-meta-info p {
+  font-size: 13px;
+  color: #94a3b8;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.playlist-input-box {
+  display: flex;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 8px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  min-width: 380px;
+}
+
+.playlist-input-box input {
+  flex-grow: 1;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 12.5px;
+  font-family: inherit;
+  padding: 8px 12px;
+  outline: none;
+}
+
+.playlist-input-box input::placeholder {
+  color: #64748b;
+}
+
+.playlist-input-box .btn {
+  white-space: nowrap;
+  padding: 8px 16px;
+  font-size: 12px;
+}
+
+/* ==========================================================================
+   ALBUM ẢNH SLIDESHOW DẠNG ẢNH LẬT 3D (3D FLIPPING ALBUM)
+   ========================================================================== */
+.album-section {
+  background: var(--soft-bg);
+  border-top: 1px solid var(--line);
+  padding: 80px 0;
+}
+
+.flip-album-wrapper {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.flip-card-viewport {
+  perspective: 1400px;
+  width: 100%;
+  min-height: 480px;
+}
+
+.flip-card {
+  width: 100%;
+  min-height: 480px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.75s cubic-bezier(0.2, 0.85, 0.4, 1.15);
+  cursor: pointer;
+}
+
+.flip-card.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.flip-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--line);
+}
+
+/* Mặt trước (Ảnh sự kiện) */
+.flip-face-front {
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+.flip-photo-box {
+  width: 100%;
+  height: 340px;
+  position: relative;
+  overflow: hidden;
+  background: #0f172a;
+}
+
+.flip-photo-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.flip-card:hover .flip-photo-box img {
+  transform: scale(1.03);
+}
+
+.flip-badge-top {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  background: rgba(14, 30, 51, 0.85);
+  backdrop-filter: blur(10px);
+  color: #38bdf8;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.flip-hint-badge {
+  position: absolute;
+  bottom: 18px;
+  right: 18px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  color: var(--navy);
+  font-size: 11px;
+  font-weight: 750;
+  padding: 8px 14px;
+  border-radius: 999px;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.flip-front-caption {
+  padding: 22px 28px;
+  background: #ffffff;
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.flip-front-caption h3 {
+  font-size: 18px;
+  color: var(--navy);
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.flip-front-caption p {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* Mặt sau (Thông tin chi tiết) */
+.flip-face-back {
+  background: linear-gradient(150deg, #0d1e33 0%, #153154 50%, #1a4270 100%);
+  color: #ffffff;
+  transform: rotateY(180deg);
+  padding: 42px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.flip-back-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  padding-bottom: 18px;
+}
+
+.flip-back-header small {
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  color: #38bdf8;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.flip-back-header h3 {
+  font-size: 24px;
+  color: #ffffff;
+  font-weight: 850;
+  margin-top: 6px;
+}
+
+.flip-back-body {
+  margin: 20px 0;
+}
+
+.flip-back-body p {
+  font-size: 14px;
+  color: #cbd5e1;
+  line-height: 1.65;
+  margin-bottom: 18px;
+}
+
+.flip-bullets {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.flip-bullets li {
+  font-size: 12.5px;
+  color: #e2e8f0;
+  background: rgba(255, 255, 255, 0.07);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.flip-back-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.flip-back-footer span {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+/* Album Controls */
+.album-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+  padding: 0 6px;
+}
+
+.album-btn-group {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.album-nav-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  color: var(--navy);
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+  font-weight: 700;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.album-nav-btn:hover {
+  background: var(--blue-light);
+  border-color: var(--blue);
+  color: var(--blue);
+  transform: translateY(-2px);
+}
+
+.album-autoplay-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--navy);
+  box-shadow: var(--shadow-sm);
+}
+
+.album-autoplay-btn:hover {
+  background: var(--blue-soft);
+  color: var(--blue);
+}
+
+.album-indicator {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--navy);
+  letter-spacing: 0.05em;
+}
+
+/* ==========================================================================
+   KHU VỰC LOGO ĐỐI TÁC (PARTNERS LOGOS)
+   ========================================================================== */
+.partners-section {
+  padding: 70px 0;
+  background: #ffffff;
+  border-top: 1px solid var(--line);
+}
+
+.partners-marquee-container {
+  overflow: hidden;
+  position: relative;
+  margin-top: 36px;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.partners-track {
+  display: flex;
+  gap: 22px;
+  width: max-content;
+  animation: partnersMarquee 30s linear infinite;
+}
+
+.partners-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes partnersMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.partner-logo-item {
+  width: 260px;
+  height: 90px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.partner-logo-item img {
+  max-width: 100%;
+  max-height: 58px;
+  object-fit: contain;
+  filter: grayscale(10%);
+  transition: var(--transition);
+}
+
+.partner-logo-item:hover {
+  transform: translateY(-4px);
+  border-color: var(--blue);
+  box-shadow: var(--shadow-md);
+}
+
+.partner-logo-item:hover img {
+  filter: grayscale(0%);
+}
+
+@media (max-width: 900px) {
+  .playlist-meta-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .playlist-input-box {
+    width: 100%;
+    min-width: auto;
+  }
+  .flip-card, .flip-card-viewport {
+    min-height: 520px;
+  }
+  .flip-bullets {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .flip-card, .flip-card-viewport {
+    min-height: 540px;
+  }
+  .flip-photo-box {
+    height: 260px;
+  }
+  .flip-face-back {
+    padding: 26px 22px;
+  }
+  .flip-front-caption {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
 /* Footer */
 footer {
   padding: 38px 0;

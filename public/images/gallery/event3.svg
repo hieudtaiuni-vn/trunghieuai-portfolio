@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a192f"/>
+      <stop offset="50%" stop-color="#1e3a5f"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" rx="16" fill="url(#g3)"/>
+  <rect x="50" y="50" width="160" height="32" rx="16" fill="rgba(255,255,255,0.15)"/>
+  <text x="130" y="71" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">DOANH NGHIỆP & AI</text>
+  <text x="50" y="160" font-family="Inter, system-ui, sans-serif" font-size="34" font-weight="850" fill="#ffffff">Chiến lược AI cho Nhà Lãnh đạo</text>
+  <text x="50" y="200" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="700" fill="#7dd3fc">Tái định nghĩa mô hình kinh doanh với GenAI</text>
+  <text x="50" y="250" font-family="Inter, system-ui, sans-serif" font-size="16" fill="#cbd5e1">Xây dựng lộ trình ứng dụng trí tuệ nhân tạo, tối ưu chi phí và tăng tốc hiệu suất</text>
+  <g transform="translate(50, 360)">
+    <rect width="200" height="60" rx="12" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)"/>
+    <text x="20" y="28" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#94a3b8">CHỦ TRÌ</text>
+    <text x="20" y="48" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="700" fill="#ffffff">Dương Trung Hiếu</text>
+  </g>
+  <g transform="translate(270, 360)">
+    <rect width="240" height="60" rx="12" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)"/>
+    <text x="20" y="28" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#94a3b8">CHUYÊN ĐỀ</text>
+    <text x="20" y="48" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="700" fill="#ffffff">Quản trị & Đổi mới sáng tạo</text>
+  </g>
+</svg>

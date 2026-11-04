@@ -98,6 +98,9 @@
         <a href="#expertise">Năng lực</a>
         <a href="#projects">Dự án</a>
         <a href="#training">Đào tạo</a>
+        <a href="#album">Album ảnh</a>
+        <a href="#media">Video</a>
+        <a href="#partners">Đối tác</a>
         <a href="#contact">Kết nối</a>
       </nav>
 
@@ -331,6 +334,175 @@
               <span class="badge-verify">⚠️ Cần xác nhận vai trò và tư liệu trước khi xuất bản</span>
             </div>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Album Ảnh Slideshow Dạng Lật 3D -->
+    <section id="album" class="album-section">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="kicker">PHOTO GALLERY & HIGHLIGHTS</span>
+            <h2>Album ảnh hoạt động chuyên môn</h2>
+          </div>
+          <p>Khám phá các khoảnh khắc thực tế tại các chương trình đào tạo, hội thảo và chuyển giao công nghệ qua album ảnh hiệu ứng lật 3D.</p>
+        </div>
+
+        <div class="flip-album-wrapper">
+          <div class="flip-card-viewport">
+            <div class="flip-card" id="flip-card" title="Bấm vào thẻ hoặc nút để lật ảnh">
+              
+              <!-- Mặt trước (Ảnh hiển thị) -->
+              <div class="flip-face flip-face-front">
+                <div class="flip-photo-box">
+                  <img id="flip-img" src="public/images/gallery/event1.svg" alt="Tập huấn Ứng dụng AI - Xã Trực Ninh" loading="lazy">
+                  <span id="flip-badge" class="flip-badge-top">SỰ KIỆN 01 / 04</span>
+                  <div class="flip-hint-badge">
+                    <span>🔄 Chạm / Bấm để lật xem chi tiết</span>
+                  </div>
+                </div>
+                <div class="flip-front-caption">
+                  <div>
+                    <h3 id="flip-title">Tập huấn Ứng dụng AI – Xã Trực Ninh</h3>
+                    <p id="flip-subtitle">Tổ Công nghệ số Cộng đồng · Hướng dẫn ứng dụng AI cho cán bộ và nhân dân cơ sở</p>
+                  </div>
+                  <button class="btn sm ghost" id="flip-btn-action" aria-label="Lật thẻ xem chi tiết">Lật mặt sau ↻</button>
+                </div>
+              </div>
+
+              <!-- Mặt sau (Nội dung chi tiết & Đúc kết) -->
+              <div class="flip-face flip-face-back">
+                <div class="flip-back-header">
+                  <small id="flip-back-kicker">CHI TIẾT CHUYÊN ĐỀ</small>
+                  <h3 id="flip-back-title">Tập huấn Ứng dụng AI Cơ sở</h3>
+                </div>
+                <div class="flip-back-body">
+                  <p id="flip-back-desc">
+                    Chương trình trang bị kỹ năng khai thác các công cụ trí tuệ nhân tạo tạo sinh (Generative AI) vào thực tế giải quyết công việc hành chính công, phổ cập kỹ năng số và hỗ trợ đời sống cộng đồng.
+                  </p>
+                  <ul class="flip-bullets" id="flip-back-bullets">
+                    <li>✓ Phổ biến kỹ năng Prompting cơ bản</li>
+                    <li>✓ Thực hành tạo nội dung tuyên truyền</li>
+                    <li>✓ Hướng dẫn tra cứu văn bản quy phạm</li>
+                    <li>✓ Ứng dụng AI xử lý văn bản hành chính</li>
+                  </ul>
+                </div>
+                <div class="flip-back-footer">
+                  <span id="flip-back-time">Thời gian: 31/10/2026 · Địa điểm: Xã Trực Ninh</span>
+                  <button class="btn sm" style="background:#ffffff; color:var(--navy); border-color:#ffffff;" id="flip-btn-back" aria-label="Lật lại ảnh mặt trước">↺ Lật lại ảnh</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Album Điều Khiển -->
+          <div class="album-controls">
+            <div class="album-btn-group">
+              <button class="album-nav-btn" id="album-prev" aria-label="Ảnh trước">❮</button>
+              <button class="album-nav-btn" id="album-next" aria-label="Ảnh tiếp theo">❯</button>
+              <button class="album-autoplay-btn" id="album-autoplay" aria-label="Bật tắt tự động lật">
+                <span id="autoplay-icon">▶</span>
+                <span id="autoplay-text">Tự động lật</span>
+              </button>
+            </div>
+            <div class="album-indicator">
+              <span id="album-counter">1 / 4</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Video Sự Kiện & Danh Sách Phát Chạy Liên Tục -->
+    <section id="media" class="media-section">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="kicker">EVENT MEDIA & VIDEO</span>
+            <h2>Video sự kiện & Bài giảng thực tế</h2>
+          </div>
+          <p>Xem lại các video bài giảng, sự kiện tập huấn và hoạt động chia sẻ ứng dụng AI thực tế qua danh sách phát video chạy liên tục.</p>
+        </div>
+
+        <div class="video-container-card">
+          <!-- 16:9 Video Responsive Player -->
+          <div class="video-responsive-frame">
+            <iframe id="event-playlist-iframe"
+              src="https://www.youtube.com/embed/videoseries?list=PLr6-GrHGF5mNH00jAfi4o4R0a_8_YqX9J&autoplay=0&rel=0&loop=1"
+              title="Danh sách phát Video Sự kiện Dương Trung Hiếu"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+
+          <!-- Playlist Meta Bar & Dynamic Link Input -->
+          <div class="playlist-meta-bar">
+            <div class="playlist-meta-info">
+              <span class="playlist-badge">DANH SÁCH PHÁT CHẠY LIÊN TỤC (PLAYLIST)</span>
+              <h3>Kho Video Đào tạo, Hội thảo & Ứng dụng AI</h3>
+              <p>Khung phát video hỗ trợ phát tuần tự các clip trong danh sách. Bạn có thể dán link Playlist YouTube của riêng mình vào ô bên dưới để cập nhật phát ngay lập tức.</p>
+            </div>
+
+            <div class="playlist-input-box">
+              <input type="text" id="playlist-url-input" placeholder="Dán link playlist YouTube vào đây..." aria-label="Đường dẫn danh sách phát YouTube">
+              <button id="playlist-update-btn" class="btn sm">Phát Playlist ↗</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Khu Vực Logo Đối Tác & Hệ Sinh Thái Đồng Hành -->
+    <section id="partners" class="partners-section">
+      <div class="wrap">
+        <div class="section-head" style="margin-bottom: 20px;">
+          <div>
+            <span class="kicker">PARTNERS & COLLABORATION</span>
+            <h2>Đối tác & Hệ sinh thái đồng hành</h2>
+          </div>
+          <p>Kết nối và đồng hành cùng các tổ chức giáo dục, cơ quan ban ngành và doanh nghiệp trong các chương trình đào tạo và tư vấn giải pháp AI.</p>
+        </div>
+
+        <!-- Marquee Infinite Track (Nhân đôi danh sách để chạy trượt liên tục vô tận) -->
+        <div class="partners-marquee-container">
+          <div class="partners-track">
+            
+            <!-- Danh sách 5 đối tác gốc -->
+            <div class="partner-logo-item" title="Học viện Công nghệ AIUNI">
+              <img src="public/images/partners/aiuni.svg" alt="Học viện Công nghệ AIUNI" loading="lazy">
+            </div>
+            <div class="partner-logo-item" title="Tổ Công nghệ số Cộng đồng">
+              <img src="public/images/partners/cns-cong-dong.svg" alt="Tổ Công nghệ số Cộng đồng" loading="lazy">
+            </div>
+            <div class="partner-logo-item" title="Khối Các Cơ sở Giáo dục & Đào tạo">
+              <img src="public/images/partners/giao-duc.svg" alt="Khối Giáo dục & Đào tạo" loading="lazy">
+            </div>
+            <div class="partner-logo-item" title="Hiệp hội Doanh nghiệp & SME">
+              <img src="public/images/partners/sme-doanh-nghiep.svg" alt="Cộng đồng Doanh nghiệp SME" loading="lazy">
+            </div>
+            <div class="partner-logo-item" title="Hệ sinh thái Đổi mới Sáng tạo">
+              <img src="public/images/partners/doi-moi-sang-tao.svg" alt="Innovation Hub" loading="lazy">
+            </div>
+
+            <!-- Nhân đôi để chạy loop mượt mà -->
+            <div class="partner-logo-item" title="Học viện Công nghệ AIUNI">
+              <img src="public/images/partners/aiuni.svg" alt="Học viện Công nghệ AIUNI" loading="lazy">
+            </div>
+            <div class="partner-logo-item" title="Tổ Công nghệ số Cộng đồng">
+              <img src="public/images/partners/cns-cong-dong.svg" alt="Tổ Công nghệ số Cộng đồng" loading="lazy">
+            </div>
+            <div class="partner-logo-item" title="Khối Các Cơ sở Giáo dục & Đào tạo">
+              <img src="public/images/partners/giao-duc.svg" alt="Khối Giáo dục & Đào tạo" loading="lazy">
+            </div>
+            <div class="partner-logo-item" title="Hiệp hội Doanh nghiệp & SME">
+              <img src="public/images/partners/sme-doanh-nghiep.svg" alt="Cộng đồng Doanh nghiệp SME" loading="lazy">
+            </div>
+            <div class="partner-logo-item" title="Hệ sinh thái Đổi mới Sáng tạo">
+              <img src="public/images/partners/doi-moi-sang-tao.svg" alt="Innovation Hub" loading="lazy">
+            </div>
+
+          </div>
         </div>
       </div>
     </section>

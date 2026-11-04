@@ -135,4 +135,216 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // 6. Interactive 3D Flip Photo Album
+  const albumData = [
+    {
+      img: 'public/images/gallery/event1.svg',
+      badge: 'SỰ KIỆN 01 / 04',
+      title: 'Tập huấn Ứng dụng AI – Xã Trực Ninh',
+      subtitle: 'Tổ Công nghệ số Cộng đồng · Hướng dẫn ứng dụng AI cho cán bộ và nhân dân cơ sở',
+      backKicker: 'CHI TIẾT CHUYÊN ĐỀ',
+      backTitle: 'Tập huấn Ứng dụng AI Cơ sở',
+      backDesc: 'Chương trình trang bị kỹ năng khai thác các công cụ trí tuệ nhân tạo tạo sinh (Generative AI) vào thực tế giải quyết công việc hành chính công, phổ cập kỹ năng số và hỗ trợ đời sống cộng đồng.',
+      bullets: [
+        '✓ Phổ biến kỹ năng Prompting cơ bản',
+        '✓ Thực hành tạo nội dung tuyên truyền',
+        '✓ Hướng dẫn tra cứu văn bản quy phạm',
+        '✓ Ứng dụng AI xử lý văn bản hành chính'
+      ],
+      time: 'Thời gian: 31/10/2026 · Địa điểm: Xã Trực Ninh'
+    },
+    {
+      img: 'public/images/gallery/event2.svg',
+      badge: 'SỰ KIỆN 02 / 04',
+      title: 'AI trong Giáo dục & Đào tạo',
+      subtitle: 'Tập huấn Cán bộ Quản lý & Giáo viên · Đổi mới phương pháp dạy học',
+      backKicker: 'ỨNG DỤNG GIÁO DỤC',
+      backTitle: 'Chuyển Đổi Số Giáo Dục Bằng AI',
+      backDesc: 'Hướng dẫn giáo viên và cán bộ quản lý khai thác AI để tối ưu hóa thời gian soạn bài giảng, xây dựng ma trận đề kiểm tra và thiết kế học liệu số đa phương tiện sinh động.',
+      bullets: [
+        '✓ Thiết kế kế hoạch bài dạy chuẩn 5512',
+        '✓ Tạo câu hỏi trắc nghiệm & rubrics chấm điểm',
+        '✓ Tự động hóa slide bài giảng tương tác',
+        '✓ Đổi mới phương pháp đánh giá học sinh'
+      ],
+      time: 'Thời gian: 01/11/2026 · Địa điểm: Xã Trực Ninh'
+    },
+    {
+      img: 'public/images/gallery/event3.svg',
+      badge: 'SỰ KIỆN 03 / 04',
+      title: 'Chiến lược AI cho Nhà Lãnh đạo',
+      subtitle: 'Tái định nghĩa mô hình kinh doanh với GenAI & Tự động hóa quản trị',
+      backKicker: 'QUẢN TRỊ & DOANH NGHIỆP',
+      backTitle: 'Tối Ưu Hóa Chi Phí & Tăng Tốc Hiệu Suất',
+      backDesc: 'Chia sẻ góc nhìn chiến lược dành cho chủ doanh nghiệp SME và cấp quản lý về cách thức tích hợp AI vào quy trình vận hành, nâng cao năng suất nhân sự và giảm thiểu rủi ro.',
+      bullets: [
+        '✓ Phân tích ROI & chi phí ứng dụng AI',
+        '✓ Tái cấu trúc quy trình công việc với AI',
+        '✓ Quản trị dữ liệu & bảo mật thông tin nội bộ',
+        '✓ Thiết kế trợ lý số chuyên trách từng phòng ban'
+      ],
+      time: 'Chuyên đề đào tạo doanh nghiệp & SME'
+    },
+    {
+      img: 'public/images/gallery/event4.svg',
+      badge: 'SỰ KIỆN 04 / 04',
+      title: 'Xây dựng Trợ lý AI & Chatbot Thực chiến',
+      subtitle: 'Hands-on Workshop · Thiết kế và vận hành AI Agent doanh nghiệp',
+      backKicker: 'THỰC HÀNH CÔNG NGHỆ',
+      backTitle: 'Làm Chủ Trợ Lý AI Trong 1 Ngày',
+      backDesc: 'Khóa thực hành chuyên sâu kết nối tri thức doanh nghiệp vào các nền tảng AI Agent, tạo lập chatbot chăm sóc khách hàng và hệ thống thư ký số tự động.',
+      bullets: [
+        '✓ Cấu hình System Prompt chuẩn hóa',
+        '✓ Tích hợp kho tài liệu và tri thức nội bộ',
+        '✓ Kết nối kênh giao tiếp Telegram & Zalo',
+        '✓ Thực hành kiểm thử và tối ưu câu trả lời'
+      ],
+      time: 'Workshop thực hành & chuyển giao giải pháp'
+    }
+  ];
+
+  let currentSlide = 0;
+  let autoplayTimer = null;
+
+  const flipCard = document.getElementById('flip-card');
+  const flipImg = document.getElementById('flip-img');
+  const flipBadge = document.getElementById('flip-badge');
+  const flipTitle = document.getElementById('flip-title');
+  const flipSubtitle = document.getElementById('flip-subtitle');
+  const flipBackKicker = document.getElementById('flip-back-kicker');
+  const flipBackTitle = document.getElementById('flip-back-title');
+  const flipBackDesc = document.getElementById('flip-back-desc');
+  const flipBackBullets = document.getElementById('flip-back-bullets');
+  const flipBackTime = document.getElementById('flip-back-time');
+  const albumCounter = document.getElementById('album-counter');
+  const btnPrev = document.getElementById('album-prev');
+  const btnNext = document.getElementById('album-next');
+  const btnAutoplay = document.getElementById('album-autoplay');
+  const autoplayIcon = document.getElementById('autoplay-icon');
+  const autoplayText = document.getElementById('autoplay-text');
+
+  function renderSlide(index) {
+    const data = albumData[index];
+    if (!data) return;
+
+    if (flipCard) flipCard.classList.remove('is-flipped');
+
+    setTimeout(() => {
+      if (flipImg) {
+        flipImg.src = data.img;
+        flipImg.alt = data.title;
+      }
+      if (flipBadge) flipBadge.textContent = data.badge;
+      if (flipTitle) flipTitle.textContent = data.title;
+      if (flipSubtitle) flipSubtitle.textContent = data.subtitle;
+      if (flipBackKicker) flipBackKicker.textContent = data.backKicker;
+      if (flipBackTitle) flipBackTitle.textContent = data.backTitle;
+      if (flipBackDesc) flipBackDesc.textContent = data.backDesc;
+      if (flipBackTime) flipBackTime.textContent = data.time;
+      if (albumCounter) albumCounter.textContent = `${index + 1} / ${albumData.length}`;
+
+      if (flipBackBullets) {
+        flipBackBullets.innerHTML = data.bullets.map(b => `<li>${b}</li>`).join('');
+      }
+    }, 250);
+  }
+
+  if (flipCard) {
+    flipCard.addEventListener('click', (e) => {
+      if (e.target.closest('button') || e.target.closest('input')) return;
+      flipCard.classList.toggle('is-flipped');
+    });
+
+    const flipBtnAction = document.getElementById('flip-btn-action');
+    if (flipBtnAction) {
+      flipBtnAction.addEventListener('click', (e) => {
+        e.stopPropagation();
+        flipCard.classList.add('is-flipped');
+      });
+    }
+
+    const flipBtnBack = document.getElementById('flip-btn-back');
+    if (flipBtnBack) {
+      flipBtnBack.addEventListener('click', (e) => {
+        e.stopPropagation();
+        flipCard.classList.remove('is-flipped');
+      });
+    }
+  }
+
+  if (btnPrev && btnNext) {
+    btnPrev.addEventListener('click', () => {
+      currentSlide = (currentSlide - 1 + albumData.length) % albumData.length;
+      renderSlide(currentSlide);
+    });
+
+    btnNext.addEventListener('click', () => {
+      currentSlide = (currentSlide + 1) % albumData.length;
+      renderSlide(currentSlide);
+    });
+  }
+
+  if (btnAutoplay) {
+    btnAutoplay.addEventListener('click', () => {
+      if (autoplayTimer) {
+        clearInterval(autoplayTimer);
+        autoplayTimer = null;
+        if (autoplayIcon) autoplayIcon.textContent = '▶';
+        if (autoplayText) autoplayText.textContent = 'Tự động lật';
+        btnAutoplay.style.background = '#ffffff';
+      } else {
+        if (autoplayIcon) autoplayIcon.textContent = '⏸';
+        if (autoplayText) autoplayText.textContent = 'Đang tự động';
+        btnAutoplay.style.background = '#eaf2fa';
+        
+        autoplayTimer = setInterval(() => {
+          if (flipCard && !flipCard.classList.contains('is-flipped')) {
+            flipCard.classList.add('is-flipped');
+          } else {
+            currentSlide = (currentSlide + 1) % albumData.length;
+            renderSlide(currentSlide);
+          }
+        }, 3600);
+      }
+    });
+  }
+
+  // 7. Video Playlist URL Dynamic Updater
+  const playlistInput = document.getElementById('playlist-url-input');
+  const playlistBtn = document.getElementById('playlist-update-btn');
+  const playlistIframe = document.getElementById('event-playlist-iframe');
+
+  if (playlistBtn && playlistInput && playlistIframe) {
+    playlistBtn.addEventListener('click', () => {
+      const url = playlistInput.value.trim();
+      if (!url) {
+        alert('Vui lòng dán đường dẫn danh sách phát (Playlist URL) từ YouTube.');
+        return;
+      }
+
+      let listId = null;
+      try {
+        const parsed = new URL(url);
+        listId = parsed.searchParams.get('list');
+      } catch (err) {
+        const match = url.match(/[?&]list=([a-zA-Z0-9_-]+)/);
+        if (match) listId = match[1];
+      }
+
+      if (listId) {
+        playlistIframe.src = `https://www.youtube.com/embed/videoseries?list=${listId}&autoplay=1&loop=1&rel=0`;
+        playlistBtn.textContent = '✓ Đã cập nhật!';
+        playlistBtn.style.background = '#10b981';
+        playlistBtn.style.borderColor = '#10b981';
+        setTimeout(() => {
+          playlistBtn.textContent = 'Phát Playlist ↗';
+          playlistBtn.style.background = '';
+          playlistBtn.style.borderColor = '';
+        }, 3000);
+      } else {
+        alert('Không tìm thấy mã danh sách phát (list ID) trong đường dẫn. Định dạng chuẩn: https://www.youtube.com/playlist?list=ID_DANH_SACH');
+      }
+    });
+  }
 });
