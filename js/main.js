@@ -829,6 +829,55 @@ Nắm vững toàn bộ hồ sơ của Thầy Hiếu:
   // 7. Video Playlist URL Dynamic Updater
   
   // Switch between Intro Video and Continuous Training Playlist
+  
+  // ==========================================================================
+  // YOUTUBE IFRAME API: ÉP CHẤT LƯỢNG PHÁT LUÔN ĐẠT 1080p FULL HD (hd1080)
+  // ==========================================================================
+  let ytPlayerInstance = null;
+
+  function loadYouTubeIframeApi() {
+    if (window.YT && window.YT.Player) {
+      initYTPlayer();
+      return;
+    }
+    const tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    const firstScript = document.getElementsByTagName('script')[0];
+    if (firstScript && firstScript.parentNode) {
+      firstScript.parentNode.insertBefore(tag, firstScript);
+    } else {
+      document.head.appendChild(tag);
+    }
+  }
+
+  function initYTPlayer() {
+    const iframe = document.getElementById('event-playlist-iframe');
+    if (!iframe) return;
+
+    try {
+      ytPlayerInstance = new YT.Player('event-playlist-iframe', {
+        events: {
+          'onReady': function(event) {
+            event.target.setPlaybackQuality('hd1080');
+          },
+          'onStateChange': function(event) {
+            if (event.data === YT.PlayerState.PLAYING || event.data === YT.PlayerState.BUFFERING) {
+              event.target.setPlaybackQuality('hd1080');
+            }
+          }
+        }
+      });
+    } catch (e) {
+      console.log('[YouTube Player API] Note:', e.message);
+    }
+  }
+
+  window.onYouTubeIframeAPIReady = function() {
+    initYTPlayer();
+  };
+
+  loadYouTubeIframeApi();
+
   window.switchVideoChannel = function(type) {
     const iframe = document.getElementById('event-playlist-iframe');
     const btnIntro = document.getElementById('tab-video-intro');
@@ -839,14 +888,14 @@ Nắm vững toàn bộ hồ sơ của Thầy Hiếu:
     if (!iframe) return;
 
     if (type === 'intro') {
-      iframe.src = 'https://www.youtube.com/embed/W2YSUnCU5yE?si=jzDo9hyCT0G9aMIK&autoplay=1';
+      iframe.src = 'https://www.youtube.com/embed/W2YSUnCU5yE?si=jzDo9hyCT0G9aMIK&autoplay=1&vq=hd1080&rel=0&enablejsapi=1';
       if (btnIntro) { btnIntro.classList.add('active'); btnIntro.classList.remove('ghost'); }
       if (btnPlaylist) { btnPlaylist.classList.remove('active'); btnPlaylist.classList.add('ghost'); }
       if (badge) badge.textContent = 'VIDEO TIÊU ĐIỂM · CHÍNH THỨC';
       if (title) title.textContent = 'GIỚI THIỆU HỌC VIỆN CÔNG NGHỆ AIUNI';
       if (desc) desc.textContent = 'Khám phá tầm nhìn, sứ mệnh phổ cập AI toàn dân, phong trào Bình dân học vụ số, đào tạo 1.000 Giảng viên GenAI và hệ sinh thái giải pháp AI ứng dụng thực chiến của Học viện Công nghệ AIUNI cùng Thầy Dương Trung Hiếu.';
     } else {
-      iframe.src = 'https://www.youtube.com/embed/videoseries?list=PLr6-GrHGF5mNH00jAfi4o4R0a_8_YqX9J&autoplay=1&loop=1&rel=0';
+      iframe.src = 'https://www.youtube.com/embed/videoseries?list=PLr6-GrHGF5mNH00jAfi4o4R0a_8_YqX9J&autoplay=1&loop=1&rel=0&vq=hd1080&enablejsapi=1';
       if (btnPlaylist) { btnPlaylist.classList.add('active'); btnPlaylist.classList.remove('ghost'); }
       if (btnIntro) { btnIntro.classList.remove('active'); btnIntro.classList.add('ghost'); }
       if (badge) badge.textContent = 'DANH SÁCH PHÁT CHẠY LIÊN TỤC (PLAYLIST)';
