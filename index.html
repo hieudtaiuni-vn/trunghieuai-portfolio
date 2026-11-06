@@ -40,7 +40,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;850;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=3.1">
+  <link rel="stylesheet" href="css/styles.css?v=3.2">
 
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
@@ -98,6 +98,7 @@
         <a href="#expertise">Năng lực</a>
         <a href="#projects">Dự án</a>
         <a href="#training">Đào tạo</a>
+        <a href="#articles">Bài viết</a>
         <a href="#album">Album ảnh</a>
         <a href="#media">Video</a>
         <a href="#partners">Đối tác</a>
@@ -334,6 +335,33 @@
               <span class="badge-verify">⚠️ Cần xác nhận vai trò và tư liệu trước khi xuất bản</span>
             </div>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bài Viết & Hoạt Động Đào Tạo -->
+    <section id="articles" class="articles-section">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="kicker">ARTICLES & TRAINING INSIGHTS</span>
+            <h2>Bài viết & Hoạt động đào tạo thực tế</h2>
+          </div>
+          <p>Các bài viết tổng kết sự kiện tập huấn, phân tích chuyên môn và chia sẻ kinh nghiệm ứng dụng AI thực tiễn từ Thầy Dương Trung Hiếu.</p>
+        </div>
+
+        <!-- Bộ lọc danh mục bài viết -->
+        <div class="articles-filters">
+          <button class="art-filter-btn active" data-filter="all">Tất cả bài viết</button>
+          <button class="art-filter-btn" data-filter="cong-dong">Đào tạo cộng đồng</button>
+          <button class="art-filter-btn" data-filter="giao-duc">Giáo dục 4.0</button>
+          <button class="art-filter-btn" data-filter="quan-tri">Quản trị & Doanh nghiệp</button>
+          <button class="art-filter-btn" data-filter="ung-dung">Ứng dụng AI</button>
+        </div>
+
+        <!-- Lưới bài viết (Render tự động từ articles.js) -->
+        <div class="articles-grid" id="articles-grid">
+          <!-- Các thẻ bài viết sẽ được chèn tự động ở đây -->
         </div>
       </div>
     </section>
@@ -627,8 +655,21 @@
     </div>
   </aside>
 
+  <!-- Articles & Training Module -->
+  <script src="js/articles.js?v=3.2"></script>
+
   <!-- Main JavaScript File -->
-  <script src="js/main.js?v=3.1"></script>
+  <script src="js/main.js?v=3.2"></script>
+
+  <!-- Article Reader Fullscreen Modal -->
+  <div id="article-modal" class="article-modal-backdrop" role="dialog" aria-modal="true" aria-label="Đọc bài viết chi tiết">
+    <div class="article-modal-window">
+      <button class="article-modal-close" id="article-modal-close" aria-label="Đóng bài viết">✕</button>
+      <div class="article-modal-content" id="article-modal-content">
+        <!-- Nội dung bài viết chi tiết được nạp động tại đây -->
+      </div>
+    </div>
+  </div>
 
   <!-- Zalo QR Code Fullscreen Modal Lightbox -->
   <div id="zalo-modal" class="zalo-modal-backdrop" role="dialog" aria-modal="true" aria-label="Mã QR Zalo phóng to">
