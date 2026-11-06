@@ -1,6 +1,6 @@
 /**
  * TỰ ĐỘNG SINH BỞI scripts/build-articles.js
- * Thời gian: 2026-11-06T16:39:34.147Z
+ * Thời gian: 2026-11-06T16:53:29.248Z
  * Nguồn: Các file Markdown trong thư mục posts/
  */
 window.BUILTIN_ARTICLES = [
@@ -22,25 +22,6 @@ window.BUILTIN_ARTICLES = [
     ],
     "source": "local-git",
     "content": "<p><h3>1. Tháo gỡ áp lực hồ sơ</h3><p>Ứng dụng AI giúp giáo viên tiết kiệm 60% thời gian hành chính để tập trung truyền cảm hứng cho học sinh.</p></p>"
-  },
-  {
-    "id": "bai-viet-moi-4",
-    "title": "Tiêu đề bài viết mới số 3",
-    "category": "Ứng dụng AI",
-    "categorySlug": "cong-nghe",
-    "date": "06/11/2026",
-    "author": "Dương Trung Hiếu",
-    "authorRole": "Giám đốc Đào tạo Học viện Công nghệ AIUNI",
-    "readTime": "4 phút đọc",
-    "thumbnail": "public/images/gallery/event1.svg",
-    "excerpt": "Tóm tắt nội dung bài viết mới...",
-    "tags": [
-      "AI",
-      "Đào tạo",
-      "Công nghệ"
-    ],
-    "source": "local-git",
-    "content": "<p><h3>1. Giới thiệu</h3><p>Nội dung chi tiết bài viết...</p></p>"
   },
   {
     "id": "tap-huan-ai-truc-ninh-cns",

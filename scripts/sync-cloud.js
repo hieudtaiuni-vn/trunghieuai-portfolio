@@ -1,3 +1,18 @@
+/**
+ * Cloud Sync Script - Phương án 3 (Notion / Google Docs / Google Sheets CMS)
+ * Kéo dữ liệu bài viết từ Cloud về tạo thành các file Markdown trong posts/
+ * Hỗ trợ đồng bộ thêm / sửa / XÓA bài viết theo trạng thái thực tế của Google Sheets
+ * Chạy: node scripts/sync-cloud.js
+ */
+
+const fs = require('fs');
+const path = require('path');
+const https = require('https');
+const http = require('http');
+
+const CONFIG_PATH = path.join(__dirname, '..', 'cloud-config.json');
+const POSTS_DIR = path.join(__dirname, '..', 'posts');
+
 function formatCellVal(cell) {
   if (!cell) return '';
   if (cell.f) return cell.f;
@@ -12,20 +27,6 @@ function formatCellVal(cell) {
   }
   return cell.v !== undefined ? cell.v : '';
 }
-
-/**
- * Cloud Sync Script - Phương án 3 (Notion / Google Docs / Google Sheets CMS)
- * Kéo dữ liệu bài viết từ Cloud về tạo thành các file Markdown trong posts/
- * Chạy: node scripts/sync-cloud.js
- */
-
-const fs = require('fs');
-const path = require('path');
-const https = require('https');
-const http = require('http');
-
-const CONFIG_PATH = path.join(__dirname, '..', 'cloud-config.json');
-const POSTS_DIR = path.join(__dirname, '..', 'posts');
 
 function fetchUrl(url) {
   return new Promise((resolve, reject) => {
@@ -45,12 +46,11 @@ function fetchUrl(url) {
 }
 
 async function syncGoogleSheets(sheetId, sheetName) {
-  const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json${sheetName ? '&sheet=' + encodeURIComponent(sheetName) : ''}`;
+  const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json${sheetName ? '&sheet=' + encodeURIComponent(sheetName) : ''}&_t=${Date.now()}`;
   console.log(`🌐 Đang kết nối Google Sheets: ${sheetId}...`);
 
   const responseText = await fetchUrl(url);
 
-  // Google gviz response format is: /*O_o*/ google.visualization.Query.setResponse({...});
   const jsonStart = responseText.indexOf('{');
   const jsonEnd = responseText.lastIndexOf('}');
   if (jsonStart === -1 || jsonEnd === -1) {
@@ -65,6 +65,7 @@ async function syncGoogleSheets(sheetId, sheetName) {
 
   console.log(`📊 Tìm thấy ${rows.length} dòng dữ liệu trên Google Sheets`);
   let count = 0;
+  const currentSyncedIds = new Set();
 
   for (const row of rows) {
     const rowData = {};
@@ -80,6 +81,8 @@ async function syncGoogleSheets(sheetId, sheetName) {
       .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
       .replace(/[^a-z0-9]+/g, '-')
       .replace(/^-+|-+$/g, '')).trim();
+
+    currentSyncedIds.add(id);
 
     const category = rowData.category || rowData['chuyên mục'] || 'Đào tạo';
     const categorySlug = rowData.categoryslug || 'dao-tao';
@@ -116,6 +119,25 @@ ${content}
     count++;
   }
 
+  // Dọn dẹp: Nếu bài viết từng kéo từ Google Sheet nhưng đã bị xóa khỏi Google Sheet, tự động xóa file .md tương ứng
+  if (fs.existsSync(POSTS_DIR)) {
+    const existingFiles = fs.readdirSync(POSTS_DIR).filter(f => f.endsWith('.md') && !f.startsWith('_'));
+    existingFiles.forEach(file => {
+      const fPath = path.join(POSTS_DIR, file);
+      const fileContent = fs.readFileSync(fPath, 'utf-8');
+      if (fileContent.includes('source: "google-sheets"')) {
+        const match = fileContent.match(/id:\s*([^\r\n]+)/);
+        if (match) {
+          const fileId = match[1].trim().replace(/^['"]|['"]$/g, '');
+          if (!currentSyncedIds.has(fileId)) {
+            fs.unlinkSync(fPath);
+            console.log(`  🗑️ Đã xóa bài viết đã hủy từ Google Sheet: [${fileId}] ${file}`);
+          }
+        }
+      }
+    });
+  }
+
   return count;
 }
 
@@ -139,7 +161,6 @@ async function run() {
       synced = await syncGoogleSheets(config.googleSheets.sheetId, config.googleSheets.sheetName);
     } else if (config.provider === 'notion' && config.notion?.apiUrl) {
       console.log(`🌐 Đang kết nối Notion API...`);
-      // Notion sync implementation
     }
 
     console.log(`\n🎉 Đã đồng bộ thành công ${synced} bài viết từ Cloud về thư mục posts/!`);

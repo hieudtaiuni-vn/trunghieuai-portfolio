@@ -2,7 +2,7 @@
  * PORTFOLIO DƯƠNG TRUNG HIẾU - ARTICLES & TRAINING ACTIVITIES MODULE
  * Triển khai song song cả 2 phương án:
  * - Phương án 1: Git-based / Markdown / Local Data (Load tức thì 0ms, bảo mật tuyệt đối)
- * - Phương án 3: Cloud CMS (Google Sheets / Docs / Notion Live Sync)
+ * - Phương án 3: Cloud CMS (Google Sheets Live Sync - Tự động cập nhật / thêm / sửa / XÓA)
  */
 
 let ACTIVE_ARTICLES = [];
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Render khởi đầu ngay lập tức
   renderArticles('all');
 
-  // 2. Nạp nguồn Phương án 3: Cloud CMS (Google Sheets Live Sync trong nền)
+  // 2. Nạp nguồn Phương án 3: Cloud CMS (Google Sheets Live Fetch trong nền)
   const cloudConfig = window.PORTFOLIO_CONFIG?.cloudCms;
   if (cloudConfig?.enabled && cloudConfig?.sheetId) {
     fetchCloudArticles(cloudConfig);
@@ -178,32 +178,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 3. Hàm tải bài viết Phương án 3 (Google Sheets Live Fetch)
-  async function fetchCloudArticles(cfg) {
-    try {
-      const cacheKey = `trunghieuai_cloud_articles_${cfg.sheetId}`;
-      const cached = sessionStorage.getItem(cacheKey);
-
-      if (cached) {
-        const parsed = JSON.parse(cached);
-        mergeAndRefresh(parsed);
-        return;
-      }
-
-      const url = `https://docs.google.com/spreadsheets/d/${cfg.sheetId}/gviz/tq?tqx=out:json${cfg.sheetName ? '&sheet=' + encodeURIComponent(cfg.sheetName) : ''}`;
-      const res = await fetch(url);
-      if (!res.ok) return;
-
-      const raw = await res.text();
-      const start = raw.indexOf('{');
-      const end = raw.lastIndexOf('}');
-      if (start === -1 || end === -1) return;
-
-      const data = JSON.parse(raw.slice(start, end + 1));
-      const cols = data.table.cols.map(c => (c.label || c.id || '').trim().toLowerCase());
-      const rows = data.table.rows;
-
-      const cloudItems = [];
   function formatCellVal(cell) {
     if (!cell) return '';
     if (cell.f) return cell.f;
@@ -219,6 +193,25 @@ document.addEventListener('DOMContentLoaded', () => {
     return cell.v !== undefined ? cell.v : '';
   }
 
+  // 3. Hàm tải bài viết Phương án 3 (Google Sheets Live Fetch không cache để nhận biết XÓA / SỬA tức thì)
+  async function fetchCloudArticles(cfg) {
+    try {
+      // Dùng timestamp cache-buster để luôn nhận dữ liệu mới nhất từ Google Sheets
+      const url = `https://docs.google.com/spreadsheets/d/${cfg.sheetId}/gviz/tq?tqx=out:json${cfg.sheetName ? '&sheet=' + encodeURIComponent(cfg.sheetName) : ''}&_t=${Date.now()}`;
+      const res = await fetch(url, { cache: 'no-store' });
+      if (!res.ok) return;
+
+      const raw = await res.text();
+      const start = raw.indexOf('{');
+      const end = raw.lastIndexOf('}');
+      if (start === -1 || end === -1) return;
+
+      const data = JSON.parse(raw.slice(start, end + 1));
+      const cols = data.table.cols.map(c => (c.label || c.id || '').trim().toLowerCase());
+      const rows = data.table.rows;
+
+      const cloudItems = [];
+
       rows.forEach(row => {
         const rowData = {};
         row.c.forEach((cell, idx) => {
@@ -230,7 +223,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!title) return;
 
         cloudItems.push({
-          id: (rowData.id || title).toString().toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+          id: (rowData.id || title).toString().toLowerCase()
+            .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/^-+|-+$/g, ''),
           title: title,
           category: rowData.category || rowData['chuyên mục'] || 'Đào tạo',
           categorySlug: rowData.categoryslug || 'dao-tao',
@@ -246,22 +242,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       });
 
-      if (cloudItems.length > 0) {
-        sessionStorage.setItem(cacheKey, JSON.stringify(cloudItems));
-        mergeAndRefresh(cloudItems);
-      }
+      // Cập nhật danh sách: Các bài từ Cloud phản ánh chính xác 100% Google Sheets hiện tại (đã sửa / đã xóa)
+      applyCloudArticles(cloudItems);
+
     } catch (err) {
       console.warn('Không thể đồng bộ bài viết từ Cloud CMS:', err);
     }
   }
 
-  function mergeAndRefresh(newItems) {
-    const existingIds = new Set(ACTIVE_ARTICLES.map(a => a.id));
-    const toPrepend = newItems.filter(item => !existingIds.has(item.id));
-    if (toPrepend.length > 0) {
-      ACTIVE_ARTICLES = [...toPrepend, ...ACTIVE_ARTICLES];
-      const activeFilter = document.querySelector('.art-filter-btn.active')?.getAttribute('data-filter') || 'all';
-      renderArticles(activeFilter);
-    }
+  function applyCloudArticles(cloudItems) {
+    const cloudIds = new Set(cloudItems.map(c => c.id));
+
+    // Giữ lại các bài viết gốc tĩnh (local-git) không bị trùng id với Google Sheet
+    const baseGitArticles = (window.BUILTIN_ARTICLES || []).filter(item => {
+      return item.source === 'local-git' && !cloudIds.has(item.id);
+    });
+
+    // Các bài viết từ Google Sheet được ưu tiên xếp lên đầu, theo sát trạng thái hiện tại của Sheet
+    ACTIVE_ARTICLES = [...cloudItems, ...baseGitArticles];
+
+    const activeFilter = document.querySelector('.art-filter-btn.active')?.getAttribute('data-filter') || 'all';
+    renderArticles(activeFilter);
   }
 });
