@@ -3285,3 +3285,285 @@ footer {
     align-items: stretch;
   }
 }
+
+
+/* ==========================================================================
+   UI/UX PROPOSAL ENHANCEMENTS (TỐI ƯU GIAO DIỆN THEO BÁO CÁO ĐỀ XUẤT)
+   ========================================================================== */
+
+/* 1. Hero Audience Portals (3 Lối vào nhanh theo đối tượng) */
+.hero-portals {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.hero-portal-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 14px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.hero-portal-card:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: #38bdf8;
+  transform: translateY(-2px);
+}
+
+.hero-portal-card .portal-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.hero-portal-card .portal-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hero-portal-card .portal-info strong {
+  color: #ffffff;
+  font-size: 13.5px;
+  font-weight: 750;
+  line-height: 1.2;
+}
+
+.hero-portal-card .portal-info small {
+  color: #94a3b8;
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+/* 2. Enhanced Case Study Projects */
+.project-case-stats {
+  display: flex;
+  gap: 14px;
+  margin: 12px 0 16px;
+  padding: 10px 14px;
+  background: #f8fafc;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+}
+
+.case-stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.case-stat-num {
+  font-size: 15px;
+  font-weight: 850;
+  color: #2563eb;
+  line-height: 1.1;
+}
+
+.case-stat-lbl {
+  font-size: 11px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.project-case-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #2563eb;
+  font-size: 12.5px;
+  font-weight: 750;
+  text-decoration: none;
+  transition: gap 0.2s ease;
+}
+
+.project-case-link:hover {
+  color: #1d4ed8;
+  gap: 9px;
+}
+
+/* 3. Training Section CTA */
+.training-cta-box {
+  margin-top: 32px;
+  text-align: center;
+  padding: 24px;
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  border-radius: 18px;
+  border: 1px solid #bfdbfe;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.training-cta-text {
+  text-align: left;
+}
+
+.training-cta-text h4 {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+
+.training-cta-text p {
+  font-size: 13px;
+  color: #334155;
+  margin: 0;
+}
+
+/* 4. Professional 5-Field Contact Form */
+.contact-form-card {
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  padding: 32px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+  margin-top: 36px;
+}
+
+.contact-form-card .form-head {
+  margin-bottom: 24px;
+  border-bottom: 1.5px solid #f1f5f9;
+  padding-bottom: 16px;
+}
+
+.contact-form-card .form-head h3 {
+  font-size: 20px;
+  font-weight: 850;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+
+.contact-form-card .form-head p {
+  font-size: 13.5px;
+  color: var(--muted);
+  margin: 0;
+}
+
+.form-grid-2col {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.form-group-full {
+  margin-bottom: 18px;
+}
+
+.form-label {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 750;
+  color: #1e293b;
+  margin-bottom: 6px;
+}
+
+.form-label span.req {
+  color: #ef4444;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 11px 16px;
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 13.5px;
+  color: var(--navy);
+  outline: none;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  background: #ffffff;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.form-textarea {
+  min-height: 95px;
+  resize: vertical;
+}
+
+.form-footer-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.form-commitment {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #16a34a;
+  font-weight: 650;
+}
+
+.form-submit-button {
+  padding: 12px 28px;
+  background: var(--navy);
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 750;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.form-submit-button:hover {
+  background: #1e5b99;
+  box-shadow: 0 6px 18px rgba(30, 91, 153, 0.25);
+  transform: translateY(-1px);
+}
+
+/* Toast alert for form success */
+.form-toast {
+  display: none;
+  padding: 16px;
+  background: #f0fdf4;
+  border: 1.5px solid #86efac;
+  border-radius: 12px;
+  color: #166534;
+  font-size: 13.5px;
+  font-weight: 600;
+  margin-top: 16px;
+}
+
+@media (max-width: 768px) {
+  .hero-portals {
+    grid-template-columns: 1fr;
+  }
+  .form-grid-2col {
+    grid-template-columns: 1fr;
+  }
+  .training-cta-box {
+    flex-direction: column;
+    text-align: center;
+  }
+  .training-cta-text {
+    text-align: center;
+  }
+}

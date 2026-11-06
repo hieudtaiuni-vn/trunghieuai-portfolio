@@ -1117,11 +1117,65 @@ Nắm vững toàn bộ hồ sơ của Thầy Hiếu:
         card.style.transform = `perspective(800px) rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) scale3d(1.02, 1.02, 1.02)`;
       });
 
-      card.addEventListener('mouseleave', () => {
+            card.addEventListener('mouseleave', () => {
         card.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease';
         card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
         b = null;
       });
+    });
+  }
+
+  // 12. Xử lý Form gửi yêu cầu đào tạo & hợp tác (Theo Đề xuất UI/UX)
+  const collabForm = document.getElementById('collaboration-form');
+  const formToast = document.getElementById('form-success-toast');
+
+  if (collabForm) {
+    collabForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fullName = document.getElementById('form-fullname')?.value.trim();
+      const org = document.getElementById('form-organization')?.value.trim();
+      const phone = document.getElementById('form-phone')?.value.trim();
+      const topic = document.getElementById('form-topic')?.value;
+      const message = document.getElementById('form-message')?.value.trim();
+
+      if (!fullName || !org || !phone || !topic) {
+        alert('Vui lòng điền đầy đủ các thông tin có dấu sao (*).');
+        return;
+      }
+
+      // Lưu trữ cục bộ
+      const requests = JSON.parse(localStorage.getItem('trunghieuai_leads') || '[]');
+      requests.push({
+        fullName, org, phone, topic, message,
+        createdAt: new Date().toISOString()
+      });
+      localStorage.setItem('trunghieuai_leads', JSON.stringify(requests));
+
+      // Hiển thị thông báo thành công
+      if (formToast) {
+        formToast.style.display = 'block';
+        formToast.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+
+      // Chuẩn bị link mailto hỗ trợ gửi email ngay
+      const subject = encodeURIComponent(`[Đăng ký Hợp tác / Mời giảng] từ ${fullName} - ${org}`);
+      const body = encodeURIComponent(
+        `Kính gửi Thầy Dương Trung Hiếu và Học viện Công nghệ AIUNI,\n\n` +
+        `Tôi tên là: ${fullName}\n` +
+        `Đơn vị công tác: ${org}\n` +
+        `Số điện thoại / Zalo: ${phone}\n` +
+        `Chương trình quan tâm: ${topic}\n` +
+        `Nội dung chi tiết / Yêu cầu dự kiến:\n${message || '(Chưa điền)'}\n\n` +
+        `Rất mong sớm nhận được phản hồi từ Thầy và Học viện.\nTrân trọng!`
+      );
+      
+      const mailtoLink = `mailto:hieudt.aiuni@gmail.com?subject=${subject}&body=${body}`;
+
+      setTimeout(() => {
+        window.location.href = mailtoLink;
+      }, 1200);
+
+      collabForm.reset();
     });
   }
 
