@@ -319,9 +319,9 @@ h1 {
   color: var(--blue);
 }
 
-/* Portrait Visual Container */
+/* Portrait Visual Container - Phương án 2: Interactive 3D Tilt & Holographic Sweep */
 .portrait-card {
-  min-height: 440px;
+  min-height: 450px;
   border-radius: var(--radius-xl);
   background: linear-gradient(145deg, #dbe8f5, #f5f8fb 60%, #d3e3f2);
   position: relative;
@@ -329,34 +329,56 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: var(--shadow-lg);
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 20px 48px rgba(20, 43, 73, 0.16), 0 0 0 1px rgba(255, 255, 255, 0.9);
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s ease;
+  cursor: pointer;
+  will-change: transform;
+}
+
+.portrait-card:hover {
+  box-shadow: 0 28px 65px rgba(20, 43, 73, 0.24), 0 0 35px rgba(56, 189, 248, 0.3);
 }
 
 .portrait-card::before {
   content: "";
   position: absolute;
-  width: 320px;
-  height: 320px;
-  border: 1px dashed rgba(45, 112, 182, 0.25);
-  border-radius: 50%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  inset: 0;
+  border-radius: var(--radius-xl);
+  padding: 2px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(56, 189, 248, 0.45), rgba(45, 112, 182, 0.2));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
   pointer-events: none;
+  z-index: 5;
+  transition: opacity 0.4s ease;
+  opacity: 0.65;
+}
+
+.portrait-card:hover::before {
+  opacity: 1;
 }
 
 .portrait-card::after {
   content: "";
   position: absolute;
-  width: 240px;
-  height: 240px;
-  border: 1px solid rgba(45, 112, 182, 0.2);
+  width: 280px;
+  height: 280px;
+  border: 1px dashed rgba(56, 189, 248, 0.35);
   border-radius: 50%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   pointer-events: none;
+  animation: techOrbitSpin 28s linear infinite;
+  z-index: 2;
+}
+
+@keyframes techOrbitSpin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 .portrait-img {
@@ -366,6 +388,69 @@ h1 {
   position: absolute;
   inset: 0;
   z-index: 1;
+  transition: transform 0.5s ease;
+}
+
+.portrait-card:hover .portrait-img {
+  transform: scale(1.025);
+}
+
+/* Holographic Shimmer Sweep */
+.portrait-shimmer {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    transparent 35%,
+    rgba(255, 255, 255, 0.35) 45%,
+    rgba(56, 189, 248, 0.4) 50%,
+    rgba(255, 255, 255, 0.45) 55%,
+    transparent 65%,
+    transparent 100%
+  );
+  background-size: 250% 250%;
+  background-position: 200% 0;
+  animation: holoSweepAuto 7s infinite ease-in-out;
+  mix-blend-mode: overlay;
+}
+
+.portrait-card:hover .portrait-shimmer {
+  animation: holoSweepFast 1.3s ease-out;
+}
+
+@keyframes holoSweepAuto {
+  0%, 65% {
+    background-position: 200% 0;
+    opacity: 0;
+  }
+  70% {
+    opacity: 0.8;
+  }
+  90% {
+    background-position: -50% 0;
+    opacity: 0.85;
+  }
+  100% {
+    background-position: -50% 0;
+    opacity: 0;
+  }
+}
+
+@keyframes holoSweepFast {
+  0% {
+    background-position: 200% 0;
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    background-position: -50% 0;
+    opacity: 0;
+  }
 }
 
 .portrait-inner {

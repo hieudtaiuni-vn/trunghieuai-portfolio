@@ -304,6 +304,45 @@ Nắm vững toàn bộ hồ sơ của Thầy Hiếu:
     };
   }
 
+  // 3b. Interactive 3D Tilt & Parallax for Hero Portrait Card (Phương án 2)
+  const portraitCard = document.getElementById('portrait-card');
+  if (portraitCard && window.matchMedia('(hover: hover)').matches) {
+    let bounds = null;
+
+    function updateBounds() {
+      bounds = portraitCard.getBoundingClientRect();
+    }
+
+    portraitCard.addEventListener('mouseenter', () => {
+      updateBounds();
+      portraitCard.style.transition = 'transform 0.12s ease-out, box-shadow 0.3s ease';
+    });
+
+    portraitCard.addEventListener('mousemove', (e) => {
+      if (!bounds) updateBounds();
+      const mouseX = e.clientX - bounds.left;
+      const mouseY = e.clientY - bounds.top;
+      const xPct = (mouseX / bounds.width) - 0.5;
+      const yPct = (mouseY / bounds.height) - 0.5;
+
+      const maxRotate = 7; // độ nghiêng 3D tối đa
+      const rotX = -yPct * maxRotate;
+      const rotY = xPct * maxRotate;
+
+      portraitCard.style.transform = `perspective(1000px) rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) scale3d(1.02, 1.02, 1.02)`;
+    });
+
+    portraitCard.addEventListener('mouseleave', () => {
+      portraitCard.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease';
+      portraitCard.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+      bounds = null;
+    });
+
+    window.addEventListener('resize', () => {
+      bounds = null;
+    });
+  }
+
   // 4. Back to top smooth scroll
   const backToTopBtn = document.getElementById('backtotop');
   if (backToTopBtn) {

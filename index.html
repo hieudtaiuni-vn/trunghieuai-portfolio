@@ -40,7 +40,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;850;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=3.5">
+  <link rel="stylesheet" href="css/styles.css?v=3.6">
 
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
@@ -134,8 +134,8 @@
           </div>
         </div>
 
-        <!-- Portrait Box -->
-        <div class="portrait-card">
+        <!-- Portrait Box - Phương án 2: Interactive 3D Tilt & Holographic Sweep -->
+        <div class="portrait-card" id="portrait-card" aria-label="Chân dung Dương Trung Hiếu">
           <!-- Fallback dynamic check: If portrait.jpeg exists it displays, else vector placeholder -->
           <img id="portrait-real-img" class="portrait-img" src="public/images/portrait.jpeg" alt="Chân dung Dương Trung Hiếu - Giám đốc Đào tạo Học viện Công nghệ AIUNI" style="display:none;" loading="eager">
           
@@ -144,6 +144,9 @@
             <strong>DƯƠNG TRUNG HIẾU</strong>
             <span>Giám đốc Đào tạo · Học viện Công nghệ AIUNI</span>
           </div>
+
+          <!-- Holographic Light Shimmer Layer -->
+          <div class="portrait-shimmer" aria-hidden="true"></div>
         </div>
       </div>
     </section>
@@ -663,16 +666,16 @@
   </aside>
 
   <!-- Portfolio Config & Cloud CMS Settings (Phương án 3) -->
-  <script src="js/config.js?v=3.5"></script>
+  <script src="js/config.js?v=3.6"></script>
 
   <!-- Pre-compiled Articles Data (Phương án 1) -->
-  <script src="js/articles-data.js?v=3.5"></script>
+  <script src="js/articles-data.js?v=3.6"></script>
 
   <!-- Articles & Training Activities Module (Phương án 1 + 3) -->
-  <script src="js/articles.js?v=3.5"></script>
+  <script src="js/articles.js?v=3.6"></script>
 
   <!-- Main JavaScript File (ELON MUSK AI Assistant) -->
-  <script src="js/main.js?v=3.5"></script>
+  <script src="js/main.js?v=3.6"></script>
 
   <!-- Article Reader Fullscreen Modal -->
   <div id="article-modal" class="article-modal-backdrop" role="dialog" aria-modal="true" aria-label="Đọc bài viết chi tiết">
