@@ -1,3 +1,11 @@
+// Helper: Tự động chọn chủ đề trong form liên hệ
+window.selectTrainingTopic = function(topicName) {
+  const select = document.getElementById('form-topic');
+  if (select && topicName) {
+    select.value = topicName;
+  }
+};
+
 /**
  * PORTFOLIO DƯƠNG TRUNG HIẾU - MAIN JAVASCRIPT
  * Brand: DƯƠNG TRUNG HIẾU | trunghieuai.io.vn
