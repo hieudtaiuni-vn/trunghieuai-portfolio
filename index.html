@@ -104,6 +104,7 @@
         <a href="#projects">Dự án</a>
         <a href="#training">Đào tạo</a>
         <a href="#articles">Tin tức</a>
+        <a href="#press">Báo chí</a>
         <a href="#album">Album ảnh</a>
         <a href="#media">Video</a>
         <a href="#partners">Đối tác</a>
@@ -384,6 +385,86 @@
         <div class="articles-grid" id="articles-grid">
           <!-- Các thẻ bài viết sẽ được chèn tự động ở đây -->
         </div>
+
+        <div class="articles-load-more-wrap" style="text-align: center; margin-top: 36px;">
+          <button class="btn sm" id="articles-load-more" style="display: none; background: #ffffff; color: var(--navy); border: 1.5px solid var(--navy); border-radius: 999px; cursor: pointer; padding: 10px 24px;">Xem thêm bài viết khác ↓</button>
+        </div>
+      </div>
+    </section>
+
+    
+    <!-- Báo Chí & Đối Tác Nói Về AIUNI (Press & Media Highlights) -->
+    <section id="press" class="press-section">
+      <div class="wrap">
+        <div class="section-head reveal-on-scroll">
+          <div>
+            <span class="kicker">PRESS & MEDIA HIGHLIGHTS</span>
+            <h2>Báo chí nói về Học viện Công nghệ AIUNI</h2>
+          </div>
+          <p>Hơn 35+ bài viết chuyên sâu, phóng sự và ghi nhận chính thức từ các cơ quan thông tấn báo chí Trung ương, Cổng thông tin điện tử Đảng bộ và chính quyền các địa phương.</p>
+        </div>
+
+        <!-- Thống kê nhanh chỉ số truyền thông (Press KPI Bar) -->
+        <div class="press-kpi-bar">
+          <div class="press-kpi-card">
+            <div class="press-kpi-icon">📰</div>
+            <div>
+              <div class="press-kpi-number">37+</div>
+              <div class="press-kpi-label">Bài viết & Phóng sự</div>
+            </div>
+          </div>
+          <div class="press-kpi-card">
+            <div class="press-kpi-icon">🏛️</div>
+            <div>
+              <div class="press-kpi-number">15+</div>
+              <div class="press-kpi-label">Cổng TTĐT Chính quyền</div>
+            </div>
+          </div>
+          <div class="press-kpi-card">
+            <div class="press-kpi-icon">🚀</div>
+            <div>
+              <div class="press-kpi-number">1.000</div>
+              <div class="press-kpi-label">Giảng viên GenAI</div>
+            </div>
+          </div>
+          <div class="press-kpi-card">
+            <div class="press-kpi-icon">⭐</div>
+            <div>
+              <div class="press-kpi-number">100%</div>
+              <div class="press-kpi-label">Nguồn tin chính thống</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Thanh tìm kiếm & Bộ lọc tương tác -->
+        <div class="press-controls">
+          <div class="press-search-wrapper">
+            <div class="press-search-box">
+              <span class="press-search-icon">🔍</span>
+              <input type="text" id="press-search-input" placeholder="Tìm kiếm bài viết, tên báo, địa phương (ví dụ: Nhân Dân, VietNamNet, Cát Hải, Kiến An, Lào Cai, Techfest...)" aria-label="Tìm kiếm bài báo">
+            </div>
+            <span class="press-count-pill" id="press-count-badge">37 bài viết</span>
+          </div>
+
+          <div class="press-filters">
+            <button class="press-filter-btn active" data-filter="all">Tất cả bài viết (37)</button>
+            <button class="press-filter-btn" data-filter="gov">🏛️ Cổng TTĐT Chính quyền & Đối tác</button>
+            <button class="press-filter-btn" data-filter="press">📰 Báo chí Trung ương & Chuyên ngành</button>
+            <button class="press-filter-btn" data-filter="binh-dan-hoc-vu">🚀 Bình dân học vụ số & 1.000 GV</button>
+            <button class="press-filter-btn" data-filter="ai-first">🌐 Chiến lược AI-First & Phổ cập toàn dân</button>
+            <button class="press-filter-btn" data-filter="nen-tang">💡 Nền tảng AI học tập & Sách thực hành</button>
+          </div>
+        </div>
+
+        <!-- Lưới thẻ bài viết báo chí (Render tự động từ js/press.js) -->
+        <div class="press-grid" id="press-grid">
+          <!-- Render tự động -->
+        </div>
+
+        <!-- Nút tải thêm -->
+        <div class="press-load-more-wrap">
+          <button class="press-load-more-btn" id="press-load-more">Xem thêm bài viết khác ↓</button>
+        </div>
       </div>
     </section>
 
@@ -513,22 +594,44 @@
       </div>
     </section>
 
-    <!-- Khu Vực Logo Đối Tác & Hệ Sinh Thái Đồng Hành -->
+        <!-- Khu Vực Logo Đối Tác & Hệ Sinh Thái Đồng Hành -->
     <section id="partners" class="partners-section">
       <div class="wrap">
-        <div class="section-head" style="margin-bottom: 20px;">
+        <div class="section-head reveal-on-scroll" style="margin-bottom: 24px;">
           <div>
-            <span class="kicker">PARTNERS & COLLABORATION</span>
+            <span class="kicker">STRATEGIC PARTNERS & COLLABORATION</span>
             <h2>Đối tác & Hệ sinh thái đồng hành</h2>
           </div>
-          <p>Kết nối và đồng hành cùng các tổ chức giáo dục, cơ quan ban ngành và doanh nghiệp trong các chương trình đào tạo và tư vấn giải pháp AI.</p>
+          <p>Khẳng định uy tín và năng lực đào tạo thực chiến qua mạng lưới liên kết chiến lược cùng các cơ quan Đảng, Chính quyền các cấp, Bộ ban ngành, Cơ quan Thông tấn Báo chí và Hiệp hội Doanh nghiệp.</p>
         </div>
 
-        <!-- Marquee Infinite Track (Nhân đôi danh sách để chạy trượt liên tục vô tận) -->
+        <!-- Trust Scorecard Banner (Thước đo tín nhiệm thể chế) -->
+        <div class="partners-trust-banner">
+          <div class="partners-trust-card">
+            <div class="partners-trust-val">15+</div>
+            <div class="partners-trust-tit">Cơ quan Đảng & Chính quyền</div>
+            <div class="partners-trust-sub">Đảng ủy, UBND các quận/huyện/xã/phường và Sở ngành địa phương</div>
+          </div>
+          <div class="partners-trust-card">
+            <div class="partners-trust-val">20+</div>
+            <div class="partners-trust-tit">Báo chí & Đài Truyền hình</div>
+            <div class="partners-trust-sub">Báo Nhân Dân, VietNamNet, VOV World, Giáo dục & Thời đại, VTV...</div>
+          </div>
+          <div class="partners-trust-card">
+            <div class="partners-trust-val">1.000+</div>
+            <div class="partners-trust-tit">Giảng viên GenAI Hạt nhân</div>
+            <div class="partners-trust-sub">Mạng lưới đào tạo lan tỏa phong trào Bình dân học vụ số toàn quốc</div>
+          </div>
+          <div class="partners-trust-card">
+            <div class="partners-trust-val">100%</div>
+            <div class="partners-trust-tit">Đào tạo Gắn Liền Thực chiến</div>
+            <div class="partners-trust-sub">Học viên trực tiếp tạo ra sản phẩm và trợ lý AI ngay tại buổi học</div>
+          </div>
+        </div>
+
+        <!-- Marquee Infinite Track -->
         <div class="partners-marquee-container">
           <div class="partners-track">
-            
-            <!-- Danh sách 5 đối tác gốc -->
             <div class="partner-logo-item" title="Học viện Công nghệ AIUNI">
               <img src="public/images/partners/aiuni.svg" alt="Học viện Công nghệ AIUNI" loading="lazy">
             </div>
@@ -544,7 +647,6 @@
             <div class="partner-logo-item" title="Hệ sinh thái Đổi mới Sáng tạo">
               <img src="public/images/partners/doi-moi-sang-tao.svg" alt="Innovation Hub" loading="lazy">
             </div>
-
             <!-- Nhân đôi để chạy loop mượt mà -->
             <div class="partner-logo-item" title="Học viện Công nghệ AIUNI">
               <img src="public/images/partners/aiuni.svg" alt="Học viện Công nghệ AIUNI" loading="lazy">
@@ -561,9 +663,72 @@
             <div class="partner-logo-item" title="Hệ sinh thái Đổi mới Sáng tạo">
               <img src="public/images/partners/doi-moi-sang-tao.svg" alt="Innovation Hub" loading="lazy">
             </div>
-
           </div>
         </div>
+
+        <!-- 4 Trụ Cột Danh Mục Đối Tác Chiến Lược Nâng Tầm Uy Tín -->
+        <div class="partners-categories-grid">
+          <div class="partners-cat-card">
+            <div class="partners-cat-head">
+              <div class="partners-cat-icon">🏛️</div>
+              <h4>Đảng bộ & Chính quyền Địa phương</h4>
+            </div>
+            <ul class="partners-cat-list">
+              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>Đảng ủy Đặc khu Cát Hải</strong> (Hải Phòng)</div></li>
+              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>Đảng ủy phường Kiến An</strong> (Hải Phòng - App Gần dân sát dân)</div></li>
+              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>UBND phường Phú Lương</strong> (Hà Đông, Hà Nội)</div></li>
+              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>UBND xã Tam Đa</strong> (Bắc Ninh)</div></li>
+              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>UBND xã Ô Diên & Cổng CCHC Hà Nội</strong></div></li>
+              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>Sở Tài nguyên & Môi trường Hà Tĩnh</strong></div></li>
+            </ul>
+          </div>
+
+          <div class="partners-cat-card">
+            <div class="partners-cat-head">
+              <div class="partners-cat-icon">🏢</div>
+              <h4>Bộ Ngành & Đổi mới Sáng tạo</h4>
+            </div>
+            <ul class="partners-cat-list">
+              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>Cục Khởi nghiệp NATEC</strong> (Bộ KH&CN)</div></li>
+              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>Techfest Vietnam 2025</strong> (Ngày hội KN ĐMST Quốc gia)</div></li>
+              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>Trung tâm KHCN & ĐMST Lào Cai</strong> (Sở KH&CN)</div></li>
+              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>Trung tâm Nông nghiệp CNC Ninh Bình</strong></div></li>
+              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>Liên đoàn Thương mại & CN Việt Nam (VCCI)</strong></div></li>
+              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>Ban Chỉ đạo CCHC UBND TP Hà Nội</strong></div></li>
+            </ul>
+          </div>
+
+          <div class="partners-cat-card">
+            <div class="partners-cat-head">
+              <div class="partners-cat-icon">📰</div>
+              <h4>Cơ quan Báo chí Trung ương</h4>
+            </div>
+            <ul class="partners-cat-list">
+              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>Báo Nhân Dân</strong> (Cơ quan Trung ương Đảng)</div></li>
+              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>Báo VietNamNet</strong> (Bộ Thông tin & Truyền thông)</div></li>
+              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>Đài Tiếng nói Việt Nam</strong> (VOV World)</div></li>
+              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>Báo Giáo dục & Thời đại</strong> (Bộ GD&ĐT)</div></li>
+              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>Báo Công Thương</strong> (Bộ Công Thương)</div></li>
+              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>Truyền hình Nhân đạo VTV</strong> & Báo Tuổi trẻ Xã hội</div></li>
+            </ul>
+          </div>
+
+          <div class="partners-cat-card">
+            <div class="partners-cat-head">
+              <div class="partners-cat-icon">💼</div>
+              <h4>Doanh nghiệp & Hiệp hội Đối tác</h4>
+            </div>
+            <ul class="partners-cat-list">
+              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>Học viện Công nghệ AIUNI</strong> (Đơn vị chủ quản)</div></li>
+              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>Công ty CP Công nghệ ADT</strong> (Đối tác phát triển App & AI)</div></li>
+              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>Hội Doanh nhân trẻ & Nữ Doanh nhân Lào Cai</strong></div></li>
+              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>Mạng lưới 1.000 Giảng viên GenAI Quốc gia</strong></div></li>
+              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>Hệ thống Tổ Công nghệ số Cộng đồng</strong></div></li>
+              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>Khối Các Trường ĐH, CĐ & Cơ sở Giáo dục</strong></div></li>
+            </ul>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -739,5 +904,9 @@
     </div>
   </div>
 
+
+  <!-- Press & Media Coverage Data & Controller -->
+  <script src="js/press-data.js?v=5.4"></script>
+  <script src="js/press.js?v=5.4"></script>
 </body>
 </html>

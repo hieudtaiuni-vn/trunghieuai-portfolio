@@ -6,10 +6,14 @@
  */
 
 let ACTIVE_ARTICLES = [];
+let currentCategory = 'all';
+let articlesVisibleCount = 6;
+const ARTICLES_PAGE_SIZE = 6;
 
 document.addEventListener('DOMContentLoaded', () => {
   const container = document.getElementById('articles-grid');
   const filterWrap = document.querySelector('.articles-filters');
+  const loadMoreBtn = document.getElementById('articles-load-more');
   const modal = document.getElementById('article-modal');
   const modalClose = document.getElementById('article-modal-close');
   const modalBody = document.getElementById('article-modal-content');
@@ -34,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Hàm Render danh sách thẻ bài viết
   function renderArticles(categorySlug) {
+    currentCategory = categorySlug;
     let filtered = ACTIVE_ARTICLES;
     if (categorySlug !== 'all') {
       filtered = ACTIVE_ARTICLES.filter(item => item.categorySlug === categorySlug);
@@ -47,10 +52,13 @@ document.addEventListener('DOMContentLoaded', () => {
           <p style="color: var(--muted); font-size: 13.5px; max-width: 460px; margin: 0 auto;">Các bài viết và tài liệu đào tạo mới đang được cập nhật. Vui lòng chọn chuyên mục khác để theo dõi.</p>
         </div>
       `;
+      if (loadMoreBtn) loadMoreBtn.style.display = 'none';
       return;
     }
 
-    container.innerHTML = filtered.map(item => `
+    const toShow = filtered.slice(0, articlesVisibleCount);
+
+    container.innerHTML = toShow.map(item => `
       <article class="article-card" data-category="${item.categorySlug}">
         <div class="article-card-thumb">
           <img src="${item.thumbnail}" alt="${item.title}" loading="lazy" onerror="this.src='public/images/gallery/event1.svg'">
@@ -74,12 +82,30 @@ document.addEventListener('DOMContentLoaded', () => {
       </article>
     `).join('');
 
+    // Update Load More Button
+    if (loadMoreBtn) {
+      if (articlesVisibleCount < filtered.length) {
+        loadMoreBtn.style.display = 'inline-flex';
+        loadMoreBtn.innerHTML = `Xem thêm bài viết (${filtered.length - articlesVisibleCount} bài còn lại) <span style="margin-left:6px;">↓</span>`;
+      } else {
+        loadMoreBtn.style.display = 'none';
+      }
+    }
+
     // Gắn sự kiện click mở modal cho các nút đọc tiếp
     container.querySelectorAll('.article-read-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const id = btn.getAttribute('data-id');
         openArticleModal(id);
       });
+    });
+  }
+
+  // Lắng nghe sự kiện click trên nút Tải thêm bài viết
+  if (loadMoreBtn) {
+    loadMoreBtn.addEventListener('click', () => {
+      articlesVisibleCount += ARTICLES_PAGE_SIZE;
+      renderArticles(currentCategory);
     });
   }
 
@@ -98,6 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.setAttribute('aria-pressed', 'true');
 
       const filter = btn.getAttribute('data-filter');
+      articlesVisibleCount = ARTICLES_PAGE_SIZE;
       renderArticles(filter);
     });
   }
@@ -149,15 +176,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     modal.classList.add('open');
     document.body.style.overflow = 'hidden';
-    modal.scrollTop = 0;
   }
 
   // Đóng modal
   function closeArticleModal() {
-    if (modal) {
-      modal.classList.remove('open');
-      document.body.style.overflow = '';
-    }
+    if (!modal) return;
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
   }
 
   if (modalClose) {
@@ -166,102 +191,113 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (modal) {
     modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        closeArticleModal();
-      }
+      if (e.target === modal) closeArticleModal();
     });
   }
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal && modal.classList.contains('open')) {
+    if (e.key === 'Escape' && modal?.classList.contains('open')) {
       closeArticleModal();
     }
   });
 
-  function formatCellVal(cell) {
-    if (!cell) return '';
-    if (cell.f) return cell.f;
-    if (typeof cell.v === 'string' && cell.v.startsWith('Date(')) {
-      const m = cell.v.match(/Date\((\d+),\s*(\d+),\s*(\d+)/);
-      if (m) {
-        const y = m[1];
-        const month = String(parseInt(m[2], 10) + 1).padStart(2, '0');
-        const d = String(m[3]).padStart(2, '0');
-        return `${d}/${month}/${y}`;
-      }
-    }
-    return cell.v !== undefined ? cell.v : '';
-  }
-
-  // 3. Hàm tải bài viết Phương án 3 (Google Sheets Live Fetch không cache để nhận biết XÓA / SỬA tức thì)
+  // PHƯƠNG ÁN 3: Nạp dữ liệu tự động từ Cloud CMS (Google Sheets)
   async function fetchCloudArticles(cfg) {
     try {
-      // Dùng timestamp cache-buster để luôn nhận dữ liệu mới nhất từ Google Sheets
-      const url = `https://docs.google.com/spreadsheets/d/${cfg.sheetId}/gviz/tq?tqx=out:json${cfg.sheetName ? '&sheet=' + encodeURIComponent(cfg.sheetName) : ''}&_t=${Date.now()}`;
-      const res = await fetch(url, { cache: 'no-store' });
-      if (!res.ok) return;
+      const sheetName = encodeURIComponent(cfg.sheetName || 'Articles');
+      const url = `https://docs.google.com/spreadsheets/d/${cfg.sheetId}/gviz/tq?tqx=out:csv&sheet=${sheetName}`;
+      
+      const response = await fetch(url);
+      if (!response.ok) return;
 
-      const raw = await res.text();
-      const start = raw.indexOf('{');
-      const end = raw.lastIndexOf('}');
-      if (start === -1 || end === -1) return;
+      const csvText = await response.text();
+      const rows = parseCSV(csvText);
 
-      const data = JSON.parse(raw.slice(start, end + 1));
-      const cols = data.table.cols.map(c => (c.label || c.id || '').trim().toLowerCase());
-      const rows = data.table.rows;
+      if (rows.length < 2) return;
 
-      const cloudItems = [];
+      const headers = rows[0].map(h => h.trim().toLowerCase());
+      const cloudArticles = [];
 
-      rows.forEach(row => {
-        const rowData = {};
-        row.c.forEach((cell, idx) => {
-          const colName = cols[idx] || `col_${idx}`;
-          rowData[colName] = formatCellVal(cell);
+      for (let i = 1; i < rows.length; i++) {
+        const row = rows[i];
+        if (!row || row.length === 0 || !row[0]) continue;
+
+        const entry = {};
+        headers.forEach((h, idx) => {
+          entry[h] = row[idx] ? row[idx].trim() : '';
         });
 
-        const title = rowData.title || rowData['tiêu đề'] || rowData['tieu de'];
-        if (!title) return;
+        // Bỏ qua nếu status không phải published hoặc active
+        if (entry.status && entry.status.toLowerCase() !== 'published' && entry.status.toLowerCase() !== 'active') {
+          continue;
+        }
 
-        cloudItems.push({
-          id: (rowData.id || title).toString().toLowerCase()
-            .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-            .replace(/[^a-z0-9]+/g, '-')
-            .replace(/^-+|-+$/g, ''),
-          title: title,
-          category: rowData.category || rowData['chuyên mục'] || 'Đào tạo',
-          categorySlug: rowData.categoryslug || 'dao-tao',
-          date: rowData.date || rowData['ngày'] || new Date().toLocaleDateString('vi-VN'),
-          author: rowData.author || rowData['tác giả'] || 'Dương Trung Hiếu',
-          authorRole: rowData.authorrole || 'Giám đốc Đào tạo Học viện Công nghệ AIUNI',
-          readTime: rowData.readtime || '4 phút đọc',
-          thumbnail: rowData.thumbnail || rowData['ảnh'] || 'public/images/gallery/event1.svg',
-          excerpt: rowData.excerpt || rowData['tóm tắt'] || '',
-          tags: (rowData.tags || rowData['thẻ'] || '').toString().split(/[,;]/).map(t => t.trim()).filter(Boolean),
-          source: 'cloud',
-          content: rowData.content || rowData['nội dung'] || `<p>${rowData.excerpt || ''}</p>`
-        });
-      });
+        if (entry.title) {
+          cloudArticles.push({
+            id: entry.id || `cloud-${i}`,
+            title: entry.title,
+            category: entry.category || 'Đào tạo',
+            categorySlug: entry.categoryslug || 'dao-tao',
+            date: entry.date || new Date().toLocaleDateString('vi-VN'),
+            author: entry.author || 'Dương Trung Hiếu',
+            authorRole: entry.authorrole || 'Giám đốc Đào tạo Học viện Công nghệ AIUNI',
+            readTime: entry.readtime || '4 phút đọc',
+            thumbnail: entry.thumbnail || 'public/images/gallery/event1.svg',
+            excerpt: entry.excerpt || '',
+            tags: entry.tags ? entry.tags.split(',').map(t => t.trim()) : [],
+            source: 'google-sheets',
+            content: entry.content || `<p>${entry.excerpt || ''}</p>`
+          });
+        }
+      }
 
-      // Cập nhật danh sách: Các bài từ Cloud phản ánh chính xác 100% Google Sheets hiện tại (đã sửa / đã xóa)
-      applyCloudArticles(cloudItems);
-
+      if (cloudArticles.length > 0) {
+        ACTIVE_ARTICLES = [...cloudArticles];
+        renderArticles(currentCategory);
+        console.log(`[Cloud CMS] Đã đồng bộ thành công ${cloudArticles.length} bài viết.`);
+      }
     } catch (err) {
-      console.warn('Không thể đồng bộ bài viết từ Cloud CMS:', err);
+      console.warn('[Cloud CMS] Giữ dữ liệu tĩnh dự phòng:', err);
     }
   }
 
-  function applyCloudArticles(cloudItems) {
-    const cloudIds = new Set(cloudItems.map(c => c.id));
+  // Helper hàm tách dòng CSV chuẩn
+  function parseCSV(text) {
+    const lines = [];
+    let row = [];
+    let inQuotes = false;
+    let current = '';
 
-    // Giữ lại các bài viết gốc tĩnh (local-git) không bị trùng id với Google Sheet
-    const baseGitArticles = (window.BUILTIN_ARTICLES || []).filter(item => {
-      return item.source === 'local-git' && !cloudIds.has(item.id);
-    });
+    for (let i = 0; i < text.length; i++) {
+      const char = text[i];
+      const next = text[i + 1];
 
-    // Các bài viết từ Google Sheet được ưu tiên xếp lên đầu, theo sát trạng thái hiện tại của Sheet
-    ACTIVE_ARTICLES = [...cloudItems, ...baseGitArticles];
+      if (char === '"') {
+        if (inQuotes && next === '"') {
+          current += '"';
+          i++;
+        } else {
+          inQuotes = !inQuotes;
+        }
+      } else if (char === ',' && !inQuotes) {
+        row.push(current);
+        current = '';
+      } else if ((char === '\r' || char === '\n') && !inQuotes) {
+        if (char === '\r' && next === '\n') i++;
+        row.push(current);
+        lines.push(row);
+        row = [];
+        current = '';
+      } else {
+        current += char;
+      }
+    }
 
-    const activeFilter = document.querySelector('.art-filter-btn.active')?.getAttribute('data-filter') || 'all';
-    renderArticles(activeFilter);
+    if (row.length > 0 || current) {
+      row.push(current);
+      lines.push(row);
+    }
+
+    return lines;
   }
 });

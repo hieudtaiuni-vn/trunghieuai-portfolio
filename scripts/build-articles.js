@@ -54,9 +54,9 @@ function markdownToHtml(md) {
       // Detect author if line starts with — or -
       const parts = quoteText.split(/(?:—|-)\s+/);
       if (parts.length > 1) {
-        html.push(`<div class="article-quote"><p>${parts[0].trim()}</p><small>— ${parts.slice(1).join('—').trim()}</small></div>`);
+        html.push(`<div class="article-quote"><p>${formatInline(parts[0].trim())}</p><small>— ${formatInline(parts.slice(1).join('—').trim())}</small></div>`);
       } else {
-        html.push(`<div class="article-quote"><p>${quoteText}</p></div>`);
+        html.push(`<div class="article-quote"><p>${formatInline(quoteText)}</p></div>`);
       }
       quoteLines = [];
       inQuote = false;
@@ -179,15 +179,19 @@ function buildArticles() {
     return parseDate(b.date) - parseDate(a.date);
   });
 
-  // Ensure output dirs exist
-  fs.mkdirSync(path.dirname(OUTPUT_JSON), { recursive: true });
-  fs.mkdirSync(path.dirname(OUTPUT_JS), { recursive: true });
-
-  // Write JSON
+  // Xuất file JSON
+  const outputDir = path.dirname(OUTPUT_JSON);
+  if (!fs.existsSync(outputDir)) {
+    fs.mkdirSync(outputDir, { recursive: true });
+  }
   fs.writeFileSync(OUTPUT_JSON, JSON.stringify(articles, null, 2), 'utf-8');
   console.log(`✅ [Phương án 1] Đã xuất bản ${articles.length} bài viết ra ${OUTPUT_JSON}`);
 
-  // Write JS File for zero-delay offline loading
+  // Xuất file JS Data để load tức thì (0ms latency, không phụ thuộc fetch CORS khi mở trực tiếp file://)
+  const jsDir = path.dirname(OUTPUT_JS);
+  if (!fs.existsSync(jsDir)) {
+    fs.mkdirSync(jsDir, { recursive: true });
+  }
   const jsContent = `/**
  * TỰ ĐỘNG SINH BỞI scripts/build-articles.js
  * Thời gian: ${new Date().toISOString()}

@@ -19,6 +19,7 @@ Trong bối cảnh chuyển đổi số đang tác động sâu rộng đến ho
 Lớp tập huấn có sự hiện diện và phát biểu khai mạc của:
 - **Đồng chí Lê Viết Bảo** – Giám đốc Trung tâm Khoa học, Công nghệ và Đổi mới sáng tạo tỉnh Lào Cai.
 - **Ông Cao Đình Thắng** – Phụ trách Phòng Phát triển doanh nghiệp KH&CN, Trung tâm Phát triển doanh nghiệp KH&CN (Bộ KH&CN).
+- **Ông Nguyễn Đức Long** – Tổng Giám đốc Học viện Công nghệ AIUNI.
 - **Thầy Dương Trung Hiếu** cùng các chuyên gia, giảng viên cao cấp của **Học viện Công nghệ AIUNI**.
 - Cùng đông đảo đại diện lãnh đạo, hội viên đến từ **Hội Doanh nhân trẻ Lào Cai**, **Câu lạc bộ Đầu tư và Khởi nghiệp doanh nhân trẻ tỉnh Lào Cai**, **Hội Nữ doanh nhân tỉnh Lào Cai** và các doanh nghiệp tiêu biểu trên địa bàn.
 
@@ -31,7 +32,7 @@ Với thời lượng huấn luyện thực chiến trọn vẹn một ngày, ch
 3. **Lộ trình chuyển đổi số tinh gọn cho SME:** Hướng dẫn doanh nghiệp tự đánh giá mức độ sẵn sàng ứng dụng công nghệ, lựa chọn các khâu ưu tiên có thể triển khai nhanh chóng với chi phí tối ưu nhất.
 4. **Thực hành trực tiếp trên máy tính (Hands-on Practice):** 100% học viên được "cầm tay chỉ việc", trực tiếp thao tác sử dụng công cụ AI để nghiên cứu đối thủ cạnh tranh, phân tích thị trường Lào Cai, sản xuất nội dung truyền thông đa nền tảng và tự tay thiết lập kịch bản trợ lý ảo AI (Chatbot) phục vụ tư vấn khách hàng 24/7.
 
-> "Ứng dụng AI không chỉ dừng lại ở việc tiếp cận công nghệ mới, mà bắt buộc phải gắn liền với nhu cầu quản trị, tổ chức sản xuất và tháo gỡ điểm nghẽn cụ thể trong hoạt động thường nhật của từng doanh nghiệp."
+> "Ứng dụng AI không chỉ dừng lại ở việc tiếp cận công nghệ mới, mà bắt buộc phải gắn liền với nhu cầu quản trị, tổ chức sản xuất và tháo gỡ điểm nghẽn cụ thể trong hoạt động thường nhật của từng doanh nghiệp."  
 > — Thầy Dương Trung Hiếu, Giám đốc Đào tạo Học viện AIUNI
 
 ### 3. Đánh giá kết quả & Tinh thần lan tỏa
