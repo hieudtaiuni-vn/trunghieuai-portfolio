@@ -1,11 +1,11 @@
 {
-  "enabled": false,
+  "enabled": true,
   "provider": "google-sheets",
-  "note": "Để kích hoạt Phương án 3, chuyển 'enabled' thành true và điền ID Google Sheet hoặc Notion API URL bên dưới.",
+  "note": "Đã kết nối chính thức với Google Sheet CMS của Thầy Dương Trung Hiếu",
   "googleSheets": {
-    "sheetId": "",
-    "sheetName": "Trang tính1",
-    "description": "Tạo một Google Sheet công khai quyền xem (Viewer) với các cột: id, title, category, categorySlug, date, author, authorRole, readTime, thumbnail, excerpt, tags, content"
+    "sheetId": "11pM6j-ZVr-doMTRSs_L_nk4BUvvbxvaXSVHdwH3RkRQ",
+    "sheetName": "Bài viết",
+    "url": "https://docs.google.com/spreadsheets/d/11pM6j-ZVr-doMTRSs_L_nk4BUvvbxvaXSVHdwH3RkRQ/edit?usp=sharing"
   },
   "notion": {
     "apiUrl": "",

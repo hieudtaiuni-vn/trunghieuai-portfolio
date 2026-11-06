@@ -1,3 +1,18 @@
+function formatCellVal(cell) {
+  if (!cell) return '';
+  if (cell.f) return cell.f;
+  if (typeof cell.v === 'string' && cell.v.startsWith('Date(')) {
+    const m = cell.v.match(/Date\((\d+),\s*(\d+),\s*(\d+)/);
+    if (m) {
+      const y = m[1];
+      const month = String(parseInt(m[2], 10) + 1).padStart(2, '0');
+      const d = String(m[3]).padStart(2, '0');
+      return `${d}/${month}/${y}`;
+    }
+  }
+  return cell.v !== undefined ? cell.v : '';
+}
+
 /**
  * Cloud Sync Script - Phương án 3 (Notion / Google Docs / Google Sheets CMS)
  * Kéo dữ liệu bài viết từ Cloud về tạo thành các file Markdown trong posts/
@@ -55,7 +70,7 @@ async function syncGoogleSheets(sheetId, sheetName) {
     const rowData = {};
     row.c.forEach((cell, idx) => {
       const colName = cols[idx] || `col_${idx}`;
-      rowData[colName] = cell ? (cell.v !== undefined ? cell.v : cell.f || '') : '';
+      rowData[colName] = formatCellVal(cell);
     });
 
     const title = rowData.title || rowData['tiêu đề'] || rowData['tieu de'];
