@@ -2,7 +2,7 @@
 id: workshop-xay-dung-tro-ly-ai
 title: Workshop thực hành: Xây dựng Trợ lý AI và Chatbot thông minh cho phòng ban trong 1 ngày
 category: Ứng dụng AI
-categorySlug: cong-nghe
+categorySlug: ung-dung
 date: 03/11/2026
 author: Dương Trung Hiếu
 authorRole: Giám đốc Đào tạo Học viện Công nghệ AIUNI

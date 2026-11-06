@@ -19,6 +19,28 @@
     "content": "<p><h3>1. Tháo gỡ áp lực hồ sơ</h3><p>Ứng dụng AI giúp giáo viên tiết kiệm 60% thời gian hành chính để tập trung truyền cảm hứng cho học sinh.</p></p>"
   },
   {
+    "id": "dang-uy-phuong-kien-an-aiuni-app-tro-ly-ai",
+    "title": "Đảng ủy phường Kiến An làm việc với AIUNI & ADT: Ứng dụng App 'Gần dân, sát dân' và phát triển Trợ lý AI",
+    "category": "Đào tạo cộng đồng",
+    "categorySlug": "cong-dong",
+    "date": "06/11/2026",
+    "author": "Dương Trung Hiếu",
+    "authorRole": "Giám đốc Đào tạo Học viện Công nghệ AIUNI",
+    "readTime": "4 phút đọc",
+    "thumbnail": "public/images/posts/kien-an-aiuni-app.jpg",
+    "excerpt": "Thường trực Đảng uỷ phường Kiến An tổ chức buổi làm việc chuyên sâu với Học viện Công nghệ AIUNI và Công ty CP Công nghệ ADT về vận hành ứng dụng 'Gần dân, sát dân' và phát triển trợ lý AI hỗ trợ công tác lãnh đạo, điều hành tại cơ sở.",
+    "tags": [
+      "Đảng ủy Kiến An",
+      "AIUNI",
+      "App Gần dân sát dân",
+      "Trợ lý AI",
+      "Chuyển đổi số",
+      "Hải Phòng"
+    ],
+    "source": "local-git",
+    "content": "<h3>1. Đổi mới phương thức lãnh đạo từ cơ sở: Hướng tới mô hình \"Gần dân, sát dân\"</h3>\n<p>Thực hiện định hướng chuyển đổi số đồng bộ trong hệ thống chính trị và tăng cường hiệu quả công tác dân vận, Thường trực Đảng uỷ phường Kiến An đã tổ chức buổi làm việc chuyên đề cùng các đơn vị công nghệ tiên phong: <strong>Học viện Công nghệ AIUNI</strong> (do Thầy Dương Trung Hiếu đại diện chuyên môn) và <strong>Công ty Cổ phần Công nghệ ADT</strong>.</p>\n<p>Buổi làm việc tập trung vào việc đánh giá tính khả thi, hoàn thiện tính năng và xây dựng lộ trình triển khai thực tế ứng dụng di động mang tên <strong>\"Đảng uỷ phường Kiến An – Gần dân, sát dân\"</strong>. Đây là một bước đột phá quan trọng nhằm số hóa kênh liên lạc hai chiều giữa cấp ủy, chính quyền địa phương với từng cán bộ, đảng viên và các tầng lớp nhân dân.</p>\n<h3>2. Các trọng tâm hợp tác và giải pháp công nghệ đột phá</h3>\n<p>Tại buổi làm việc, đại diện Học viện Công nghệ AIUNI và Công ty ADT đã báo cáo chi tiết về kiến trúc hệ thống và các mô-đun chức năng then chốt:</p>\n<ul>\n  <li><strong>Ứng dụng \"Gần dân, sát dân\":</strong> Kênh thông tin chính thống, trực quan giúp người dân nhanh chóng nắm bắt các chủ trương, nghị quyết của Đảng ủy, kế hoạch phát triển kinh tế - xã hội của địa phương, đồng thời gửi ý kiến phản ánh, kiến nghị đến Thường trực Đảng ủy và UBND phường một cách nhanh chóng, minh bạch.</li>\n  <li><strong>Xây dựng Trợ lý ảo AI thông minh cho Đảng vụ & Hành chính công:</strong> AI Assistant được huấn luyện riêng biệt dựa trên kho cơ sở dữ liệu quy định, thủ tục hành chính và tài liệu sinh hoạt chi bộ. Trợ lý AI có khả năng:</li>\n  <li>Tự động tra cứu nhanh điều lệ Đảng, hướng dẫn thủ tục cho đảng viên mới.</li>\n  <li>Phân loại và tổng hợp tự động các phản ánh của cử tri theo từng địa bàn tổ dân phố, giảm tải 60-70% thời gian rà soát thủ công của cán bộ văn phòng.</li>\n  <li>Hỗ trợ công tác tuyên truyền chủ trương chính sách đến người dân 24/7 bằng ngôn ngữ gần gũi, chuẩn xác.</li>\n</ul>\n<div class=\"article-quote\"><p>\"Chuyển đổi số trong công tác Đảng không chỉ là câu chuyện mua sắm phần mềm, mà là chuyển biến tư duy phục vụ nhân dân. Việc đưa ứng dụng di động và Trợ lý AI vào vận hành sẽ giúp Thường trực Đảng ủy nắm bắt tình hình tư tưởng, đời sống nhân dân kịp thời từng giờ, từng ngày.\"</p><small>— Thầy Dương Trung Hiếu, Giám đốc Đào tạo Học viện AIUNI</small></div>\n<h3>3. Lộ trình triển khai và cam kết đồng hành của Học viện AIUNI</h3>\n<p>Kết thúc buổi làm việc, Thường trực Đảng ủy phường Kiến An đánh giá rất cao tinh thần trách nhiệm và tính ứng dụng thực tiễn của các giải pháp do AIUNI và ADT đề xuất. Hai bên đã thống nhất kế hoạch triển khai gồm:</p>\n<p>1. <strong>Giai đoạn thử nghiệm:</strong> Vận hành nội bộ App trong các chi bộ trực thuộc và lấy ý kiến phản hồi của các đồng chí Bí thư chi bộ, Tổ trưởng tổ dân phố.</p>\n<p>2. <strong>Tập huấn thực chiến:</strong> Học viện Công nghệ AIUNI sẽ trực tiếp tổ chức các buổi tập huấn chuyên sâu \"Cầm tay chỉ việc\", hướng dẫn cán bộ, công chức và lực lượng nòng cốt làm chủ App và sử dụng Trợ lý AI thuần thục.</p>\n<p>3. <strong>Lan tỏa cộng đồng:</strong> Phối hợp cùng Tổ công nghệ số cộng đồng phường hướng dẫn bà con nhân dân cài đặt và sử dụng ứng dụng rộng khắp.</p>\n<p>Chương trình hợp tác khẳng định cam kết mạnh mẽ của Học viện Công nghệ AIUNI và cá nhân Thầy Dương Trung Hiếu trong việc đồng hành cùng chính quyền cơ sở, đưa công nghệ AI và chuyển đổi số phục vụ trực tiếp đời sống nhân dân.</p>"
+  },
+  {
     "id": "tap-huan-ai-truc-ninh-cns",
     "title": "Ứng dụng Generative AI trong công tác Tổ Công nghệ số cộng đồng tại xã Trực Ninh",
     "category": "Đào tạo cộng đồng",
@@ -41,7 +63,7 @@
     "id": "workshop-xay-dung-tro-ly-ai",
     "title": "Workshop thực hành: Xây dựng Trợ lý AI và Chatbot thông minh cho phòng ban trong 1 ngày",
     "category": "Ứng dụng AI",
-    "categorySlug": "cong-nghe",
+    "categorySlug": "ung-dung",
     "date": "03/11/2026",
     "author": "Dương Trung Hiếu",
     "authorRole": "Giám đốc Đào tạo Học viện Công nghệ AIUNI",
