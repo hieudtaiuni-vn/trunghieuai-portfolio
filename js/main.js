@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 2. AI Assistant (Siêu trợ lý SI Drawer)
+  // 2. AI Assistant (ELON MUSK Drawer)
   const chatLaunch = document.getElementById('chatlaunch');
   const chatBox = document.getElementById('chatbox');
   const chatClose = document.getElementById('chatclose');
