@@ -1,12 +1,15 @@
 {
   "name": "duong-trung-hieu-portfolio",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "description": "Website Portfolio chính thức cho thương hiệu Dương Trung Hiếu - AI, Technology, Innovation",
   "scripts": {
     "dev": "python -m http.server 3000",
     "serve": "npx serve . -p 3000",
-    "build": "node -e \"console.log('Static site build check passed. All assets ready for Vercel deployment.')\""
+    "build:articles": "node scripts/build-articles.js",
+    "sync:cloud": "node scripts/sync-cloud.js",
+    "publish:articles": "node scripts/build-articles.js && git add . && git commit -m \"content: update articles\" && git push && vercel --prod --yes",
+    "build": "node scripts/build-articles.js"
   },
   "keywords": [
     "portfolio",

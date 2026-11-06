@@ -40,7 +40,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;850;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=3.3">
+  <link rel="stylesheet" href="css/styles.css?v=3.5">
 
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
@@ -616,50 +616,68 @@
   </footer>
 
   <!-- AI Assistant Launcher Button -->
-  <button class="chat-launch" id="chatlaunch" aria-label="Mở ELON MUSK" aria-expanded="false" aria-controls="chatbox">
+  <button class="chat-launch" id="chatlaunch" aria-label="Mở Trợ lý ELON MUSK" aria-expanded="false" aria-controls="chatbox">
     <span class="chat-pulse"></span>
-    <span>✳ Hỏi ELON MUSK</span>
+    <span>🚀 Hỏi Trợ lý ELON MUSK</span>
   </button>
 
-  <!-- AI Assistant Drawer Modal (Demo UI) -->
-  <aside class="chatbox" id="chatbox" role="dialog" aria-labelledby="chathead-title" aria-modal="true">
+  <!-- AI Assistant Drawer Modal (Interactive AI) -->
+  <aside class="chatbox" id="chatbox" role="dialog" aria-labelledby="chathead-name" aria-modal="true">
     <div class="chathead">
-      <div class="chathead-title" id="chathead-title">
-        <span style="font-size:16px;">🤖</span>
-        <span>ELON MUSK – Portfolio Assistant</span>
+      <div class="chathead-info">
+        <div class="chathead-avatar">🚀</div>
+        <div class="chathead-text">
+          <strong id="chathead-name">ELON MUSK</strong>
+          <small>Trực tuyến · Google Gemini AI</small>
+        </div>
       </div>
       <button class="chatclose" id="chatclose" aria-label="Đóng trợ lý">✕</button>
     </div>
 
-    <div class="chatbody">
-      <!-- Portfolio AI Information Guide -->
-      <div class="demo-banner" style="background:#f0f9ff; border-color:#e0f2fe; color:#0369a1;">
-        <span style="font-size:15px;">ℹ️</span>
-        <div><strong>Trợ lý Thông tin Portfolio</strong>: Hỗ trợ tra cứu nhanh các thông tin chính thức về hồ sơ, năng lực và hoạt động của Thầy Dương Trung Hiếu.</div>
+    <div class="chatbody" id="chat-messages-container">
+      <div class="chat-msg assistant">
+        <p>Xin chào! Tôi là <strong>ELON MUSK</strong> – Trợ lý AI trên Portfolio chính thức của Thầy <strong>Dương Trung Hiếu</strong> (Giám đốc Đào tạo Học viện Công nghệ AIUNI).</p>
+        <p>Tôi nắm vững toàn bộ hồ sơ, năng lực, 4 trụ cột chuyên môn và các giải pháp thực chiến của Thầy Hiếu. Tôi có thể tư vấn trực tiếp cho bạn về:</p>
+        <ul>
+          <li>🎓 <strong>Đào tạo AI:</strong> Cho giáo viên (Chuẩn 5512), cán bộ cơ sở (Tổ CNS), doanh nghiệp.</li>
+          <li>⚙️ <strong>Công nghệ:</strong> Xây dựng Trợ lý ảo AI Agent, Chatbot nghiệp vụ, tự động hóa.</li>
+          <li>📊 <strong>Tài chính & Quản trị:</strong> Phân tích tài chính, thẩm định ROI đầu tư AI cho SME.</li>
+          <li>📋 <strong>Kế hoạch:</strong> Xây dựng khung kế hoạch đào tạo hoặc chuyển đổi số cho đơn vị của bạn.</li>
+        </ul>
+        <p><em>Hãy đặt câu hỏi trực tiếp hoặc bấm vào các gợi ý bên dưới để bắt đầu:</em></p>
       </div>
 
-      <div class="chatbubble">
-        Xin chào! Tôi là giao diện trợ lý Portfolio của <strong>Dương Trung Hiếu</strong>. Tôi có thể hỗ trợ bạn tra cứu nhanh các thông tin đã được công bố chính thức về định vị, năng lực và nền tảng nghề nghiệp.
+      <div class="chat-quick-wrap" id="chat-quick-wrap">
+        <div class="chat-quick-title">Gợi ý tìm hiểu nhanh:</div>
+        <div class="chat-quick-pills">
+          <button type="button" class="chat-quick-btn" data-query="Tư vấn khóa học ứng dụng AI cho giáo viên và nhà trường theo Công văn 5512">🎓 Tư vấn khóa học AI cho Giáo viên (Chuẩn 5512)</button>
+          <button type="button" class="chat-quick-btn" data-query="Lộ trình chuyển đổi số và ứng dụng GenAI thực chiến cho doanh nghiệp vừa và nhỏ SME">🏢 Lộ trình chuyển đổi số tinh gọn cho SME</button>
+          <button type="button" class="chat-quick-btn" data-query="Tư vấn cách xây dựng Trợ lý ảo AI Agent và Chatbot nghiệp vụ trong 1 ngày">🤖 Xây dựng Trợ lý AI và Chatbot tự động hóa</button>
+          <button type="button" class="chat-quick-btn" data-query="Thầy Hiếu có nền tảng học vấn và kinh nghiệm tài chính - ngân hàng như thế nào?">💼 Nền tảng học vấn và kinh nghiệm của Thầy Hiếu</button>
+        </div>
       </div>
+    </div>
 
-      <div class="chat-suggestions">
-        <div class="chat-suggestions-title">Câu hỏi tìm hiểu nhanh:</div>
-        <button class="chip-btn" data-faq="dinhvi">🔹 Định vị thương hiệu & Slogan là gì?</button>
-        <button class="chip-btn" data-faq="trucot">🔹 Bốn trụ cột chuyên môn gồm những gì?</button>
-        <button class="chip-btn" data-faq="hocvan">🔹 Học vấn và kinh nghiệm công tác?</button>
-        <button class="chip-btn" data-faq="lienhe">🔹 Làm thế nào để liên hệ hợp tác?</button>
-      </div>
-
-      <!-- FAQ display response container -->
-      <div id="chatresponse" class="chat-response-area"></div>
+    <div class="chatfoot">
+      <form class="chat-form" id="chat-form">
+        <input type="text" class="chat-input" id="chat-input" placeholder="Hỏi Elon Musk về Thầy Hiếu, đào tạo, tài chính..." autocomplete="off" required>
+        <button type="submit" class="chat-send-btn" id="chat-send-btn" aria-label="Gửi tin nhắn">➤</button>
+      </form>
+      <div class="chat-disclaimer">Hỏi đáp trực tiếp với AI · Kết nối hợp tác qua Email: hieudt.aiuni@gmail.com</div>
     </div>
   </aside>
 
-  <!-- Articles & Training Module -->
-  <script src="js/articles.js?v=3.3"></script>
+  <!-- Portfolio Config & Cloud CMS Settings (Phương án 3) -->
+  <script src="js/config.js?v=3.5"></script>
 
-  <!-- Main JavaScript File -->
-  <script src="js/main.js?v=3.3"></script>
+  <!-- Pre-compiled Articles Data (Phương án 1) -->
+  <script src="js/articles-data.js?v=3.5"></script>
+
+  <!-- Articles & Training Activities Module (Phương án 1 + 3) -->
+  <script src="js/articles.js?v=3.5"></script>
+
+  <!-- Main JavaScript File (ELON MUSK AI Assistant) -->
+  <script src="js/main.js?v=3.5"></script>
 
   <!-- Article Reader Fullscreen Modal -->
   <div id="article-modal" class="article-modal-backdrop" role="dialog" aria-modal="true" aria-label="Đọc bài viết chi tiết">

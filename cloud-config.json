@@ -1,0 +1,14 @@
+{
+  "enabled": false,
+  "provider": "google-sheets",
+  "note": "Để kích hoạt Phương án 3, chuyển 'enabled' thành true và điền ID Google Sheet hoặc Notion API URL bên dưới.",
+  "googleSheets": {
+    "sheetId": "",
+    "sheetName": "Trang tính1",
+    "description": "Tạo một Google Sheet công khai quyền xem (Viewer) với các cột: id, title, category, categorySlug, date, author, authorRole, readTime, thumbnail, excerpt, tags, content"
+  },
+  "notion": {
+    "apiUrl": "",
+    "description": "Endpoint hoặc RSS/JSON Feed xuất từ Notion Database"
+  }
+}

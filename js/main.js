@@ -36,20 +36,37 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 2. AI Assistant (ELON MUSK Drawer)
+  // 2. AI Assistant (ELON MUSK Live Chat Drawer)
   const chatLaunch = document.getElementById('chatlaunch');
   const chatBox = document.getElementById('chatbox');
   const chatClose = document.getElementById('chatclose');
-  const chatResponse = document.getElementById('chatresponse');
-  const faqChips = document.querySelectorAll('.chip-btn');
+  const chatMessages = document.getElementById('chat-messages-container');
+  const chatForm = document.getElementById('chat-form');
+  const chatInput = document.getElementById('chat-input');
+  const chatSendBtn = document.getElementById('chat-send-btn');
+  const quickPills = document.querySelectorAll('.chat-quick-btn');
 
-  const faqData = {
-    'dinhvi': '<strong>Định vị thương hiệu:</strong> Dương Trung Hiếu hiện là <em>Giám đốc Đào tạo Học viện Công nghệ AIUNI</em>, hoạt động chuyên sâu trong lĩnh vực Đào tạo và Ứng dụng AI tạo sinh, Chuyển đổi số và Quản trị doanh nghiệp, với slogan: <em>"Kiến tạo giá trị mới bằng AI và công nghệ."</em>',
-    'trucot': '<strong>4 Trụ cột chuyên môn chính:</strong><br>1. AI Strategy & Education<br>2. AI Solutions & Automation<br>3. Digital Transformation<br>4. Business Management (Nền tảng tài chính - ngân hàng & quản trị).',
-    'hocvan': '<strong>Học vấn & Vị trí hiện tại:</strong><br>• Giám đốc Đào tạo · Học viện Công nghệ AIUNI (2025 – nay)<br>• Cử nhân Đại học Kinh tế Quốc dân (2002–2006)<br>• Thạc sĩ QTKD (MBA) Đại học FPT (2017–2019)<br>• Gần 20 năm kinh nghiệm trong lĩnh vực tài chính - ngân hàng và quản lý cấp cao.',
-    'lienhe': '<strong>Kênh liên hệ chính thức:</strong><br>• Email: <a href="mailto:hieudt.aiuni@gmail.com" style="color:#2d70b6;font-weight:700;">hieudt.aiuni@gmail.com</a><br>• Zalo: Quét mã QR chính thức tại mục Kết nối<br>• Facebook cá nhân: <a href="https://www.facebook.com/share/19d3eRzBgQ/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" style="color:#2d70b6;font-weight:700;">Dương Trung Hiếu ↗</a>'
-  };
+  // Lịch sử hội thoại
+  const chatHistory = [
+    {
+      role: 'assistant',
+      text: 'Xin chào! Tôi là ELON MUSK - Trợ lý AI trên Portfolio chính thức của Thầy Dương Trung Hiếu. Tôi có thể hỗ trợ gì cho bạn về các khóa học, công nghệ hay kế hoạch chuyển đổi số?'
+    }
+  ];
 
+  const GEMINI_API_KEY_FALLBACK = '';
+  const GEMINI_MODEL_FALLBACK = 'gemini-flash-lite-latest';
+  const SYSTEM_INSTRUCTION_TEXT = `Bạn là ELON MUSK - Trợ lý AI cao cấp trên website Portfolio của Thầy DƯƠNG TRUNG HIẾU (trunghieuai.io.vn).
+Nắm vững toàn bộ hồ sơ của Thầy Hiếu:
+- Giám đốc Đào tạo Học viện Công nghệ AIUNI (2025 - nay).
+- Cử nhân ĐH Kinh tế Quốc dân (K44), Thạc sĩ QTKD (MBA) ĐH FPT.
+- Gần 20 năm kinh nghiệm tài chính - ngân hàng & quản lý cấp cao (Vietcombank, OCB, GPBank, Techcombank).
+- 4 Trụ cột chuyên môn: AI Strategy & Education, AI Solutions & Automation, Digital Transformation, Business Management & Financial Analysis.
+- Các khóa học tiêu biểu: Ứng dụng GenAI cho Tổ CNS cộng đồng, Đổi mới dạy học chuẩn Công văn 5512 cho giáo viên, Lộ trình GenAI tinh gọn cho SME, Workshop Xây dựng Trợ lý ảo trong 1 ngày.
+- Tư vấn nhiệt tình, chuyên nghiệp, thông tuệ, trả lời bằng Tiếng Việt rõ ràng với gạch đầu dòng và in đậm.
+- Khi cần kết nối hợp tác, hướng dẫn gửi email hieudt.aiuni@gmail.com hoặc quét mã QR Zalo trên web.`;
+
+  // Toggle mở/đóng hộp chat
   if (chatLaunch && chatBox && chatClose) {
     chatLaunch.addEventListener('click', () => {
       const isOpen = chatBox.classList.contains('open');
@@ -59,6 +76,9 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         chatBox.classList.add('open');
         chatLaunch.setAttribute('aria-expanded', 'true');
+        setTimeout(() => {
+          if (chatInput) chatInput.focus();
+        }, 150);
       }
     });
 
@@ -67,25 +87,204 @@ document.addEventListener('DOMContentLoaded', () => {
       chatLaunch.setAttribute('aria-expanded', 'false');
     });
 
-    // Close on Escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && chatBox.classList.contains('open')) {
         chatBox.classList.remove('open');
         chatLaunch.setAttribute('aria-expanded', 'false');
       }
     });
+  }
 
-    // Handle FAQ interactive chips
-    faqChips.forEach(chip => {
-      chip.addEventListener('click', () => {
-        const key = chip.getAttribute('data-faq');
-        if (chatResponse && faqData[key]) {
-          chatResponse.innerHTML = `<div style="margin-bottom:6px; color:#2d70b6; font-weight:700;">📌 Thông tin từ hồ sơ công khai:</div>${faqData[key]}<div style="margin-top:8px; font-size:10.5px; color:#8c9ba5; font-style:italic;">* Trích xuất từ hồ sơ chính thức của Thầy Dương Trung Hiếu.</div>`;
-          chatResponse.classList.add('active');
-          chatResponse.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
-      });
+  // Xử lý bấm vào các câu hỏi gợi ý nhanh
+  quickPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      const query = pill.getAttribute('data-query');
+      if (query && chatInput) {
+        chatInput.value = query;
+        sendMessage(query);
+      }
     });
+  });
+
+  // Xử lý gửi tin nhắn từ form
+  if (chatForm && chatInput) {
+    chatForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const message = chatInput.value.trim();
+      if (!message) return;
+      sendMessage(message);
+    });
+  }
+
+  function formatMarkdown(text) {
+    let html = text
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+
+    // Bold
+    html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    // Italic
+    html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
+    // Links
+    html = html.replace(/\[(.+?)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" style="color:#2d70b6;text-decoration:underline;">$1</a>');
+
+    // Lists and paragraphs
+    const lines = html.split(/\r?\n/);
+    let inList = false;
+    const formattedLines = [];
+
+    lines.forEach(line => {
+      const trimmed = line.trim();
+      if (trimmed.startsWith('- ') || trimmed.startsWith('• ') || trimmed.startsWith('* ')) {
+        if (!inList) {
+          formattedLines.push('<ul style="margin:6px 0 8px 18px;padding:0;">');
+          inList = true;
+        }
+        formattedLines.push(`<li>${trimmed.replace(/^[-•*]\s*/, '')}</li>`);
+      } else {
+        if (inList) {
+          formattedLines.push('</ul>');
+          inList = false;
+        }
+        if (trimmed.length > 0) {
+          formattedLines.push(`<p style="margin:0 0 6px 0;">${trimmed}</p>`);
+        }
+      }
+    });
+
+    if (inList) {
+      formattedLines.push('</ul>');
+    }
+
+    return formattedLines.join('');
+  }
+
+  async function sendMessage(text) {
+    if (!text || !chatMessages) return;
+
+    // Reset input
+    if (chatInput) {
+      chatInput.value = '';
+    }
+
+    // 1. Thêm tin nhắn của User
+    const userMsgEl = document.createElement('div');
+    userMsgEl.className = 'chat-msg user';
+    userMsgEl.textContent = text;
+    chatMessages.appendChild(userMsgEl);
+
+    // 2. Thêm chỉ báo AI đang suy nghĩ
+    const thinkingEl = document.createElement('div');
+    thinkingEl.className = 'chat-thinking';
+    thinkingEl.id = 'chat-thinking-indicator';
+    thinkingEl.innerHTML = `
+      <span>Elon Musk đang trả lời</span>
+      <div class="chat-thinking-dots">
+        <span></span><span></span><span></span>
+      </div>
+    `;
+    chatMessages.appendChild(thinkingEl);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+    // Disable send button
+    if (chatSendBtn) chatSendBtn.disabled = true;
+    if (chatInput) chatInput.disabled = true;
+
+    try {
+      let replyText = '';
+
+      // Thử gọi qua Vercel Serverless Function /api/chat trước
+      try {
+        const response = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: text, history: chatHistory })
+        });
+
+        if (response.ok) {
+          const resData = await response.json();
+          if (resData.reply) {
+            replyText = resData.reply;
+          }
+        }
+      } catch (err) {
+        console.warn('Không gọi được /api/chat, chuyển sang gọi trực tiếp Google AI API:', err);
+      }
+
+      // Nếu /api/chat không có sẵn (khi chạy local test), fallback gọi trực tiếp Google Gemini API
+      if (!replyText) {
+        const googleUrl = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL_FALLBACK}:generateContent?key=${GEMINI_API_KEY_FALLBACK}`;
+        const contents = [];
+
+        chatHistory.slice(-4).forEach(h => {
+          contents.push({
+            role: h.role === 'assistant' ? 'model' : 'user',
+            parts: [{ text: h.text }]
+          });
+        });
+        contents.push({
+          role: 'user',
+          parts: [{ text: text }]
+        });
+
+        const directRes = await fetch(googleUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents,
+            systemInstruction: { parts: [{ text: SYSTEM_INSTRUCTION_TEXT }] },
+            generationConfig: {
+              temperature: 0.7,
+              maxOutputTokens: 1024
+            }
+          })
+        });
+
+        if (directRes.ok) {
+          const directData = await directRes.json();
+          replyText = directData?.candidates?.[0]?.content?.parts?.[0]?.text || '';
+        } else {
+          const errDetail = await directRes.text();
+          console.error('Lỗi Gemini Direct API:', errDetail);
+        }
+      }
+
+      // Xóa chỉ báo suy nghĩ
+      const currentThinking = document.getElementById('chat-thinking-indicator');
+      if (currentThinking) currentThinking.remove();
+
+      if (!replyText) {
+        replyText = 'Xin lỗi bạn, kết nối tới máy chủ AI đang bận. Bạn vui lòng thử lại sau vài giây hoặc liên hệ trực tiếp với Thầy Hiếu qua email: hieudt.aiuni@gmail.com.';
+      }
+
+      // Lưu vào lịch sử hội thoại
+      chatHistory.push({ role: 'user', text: text });
+      chatHistory.push({ role: 'assistant', text: replyText });
+
+      // Hiển thị tin nhắn trả lời của Elon Musk
+      const aiMsgEl = document.createElement('div');
+      aiMsgEl.className = 'chat-msg assistant';
+      aiMsgEl.innerHTML = formatMarkdown(replyText);
+      chatMessages.appendChild(aiMsgEl);
+
+    } catch (error) {
+      console.error('Chat error:', error);
+      const currentThinking = document.getElementById('chat-thinking-indicator');
+      if (currentThinking) currentThinking.remove();
+
+      const errMsgEl = document.createElement('div');
+      errMsgEl.className = 'chat-msg assistant';
+      errMsgEl.innerHTML = '<p style="color:#dc2626;">Đã xảy ra sự cố khi kết nối tới AI. Vui lòng kiểm tra lại kết nối mạng.</p>';
+      chatMessages.appendChild(errMsgEl);
+    } finally {
+      if (chatSendBtn) chatSendBtn.disabled = false;
+      if (chatInput) {
+        chatInput.disabled = false;
+        chatInput.focus();
+      }
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
   }
 
   // 3. Fallback for Portrait Image (check if real photo portrait.jpg exists)
