@@ -404,71 +404,279 @@ Nắm vững toàn bộ hồ sơ của Thầy Hiếu:
     }
   });
 
-  // 6. Interactive 3D Flip Photo Album
+    // 6. Interactive 3D Flip Photo Album (17 ảnh thực tế)
   const albumData = [
     {
-      img: 'public/images/gallery/event1.svg',
-      badge: 'SỰ KIỆN 01 / 04',
-      title: 'Tập huấn Ứng dụng AI – Xã Trực Ninh',
-      subtitle: 'Tổ Công nghệ số Cộng đồng · Hướng dẫn ứng dụng AI cho cán bộ và nhân dân cơ sở',
-      backKicker: 'CHI TIẾT CHUYÊN ĐỀ',
-      backTitle: 'Tập huấn Ứng dụng AI Cơ sở',
-      backDesc: 'Chương trình trang bị kỹ năng khai thác các công cụ trí tuệ nhân tạo tạo sinh (Generative AI) vào thực tế giải quyết công việc hành chính công, phổ cập kỹ năng số và hỗ trợ đời sống cộng đồng.',
+      img: 'public/images/gallery/4.11.2026.jpg',
+      badge: 'SỰ KIỆN 01 / 17',
+      title: 'Đảng ủy phường Kiến An: App Gần Dân Sát Dân & Trợ Lý AI',
+      subtitle: 'Thường trực Đảng ủy làm việc cùng Học viện AIUNI và Công ty ADT',
+      backKicker: 'CHUYỂN ĐỔI SỐ CƠ SỞ',
+      backTitle: 'Ứng Dụng Số Phục Vụ Nhân Dân & Đảng Vụ',
+      backDesc: 'Buổi làm việc chính thức tại phòng họp Đảng ủy phường Kiến An về vận hành ứng dụng di động "Gần dân, sát dân" và triển khai trợ lý ảo AI hỗ trợ chỉ đạo điều hành.',
       bullets: [
-        '✓ Phổ biến kỹ năng Prompting cơ bản',
-        '✓ Thực hành tạo nội dung tuyên truyền',
-        '✓ Hướng dẫn tra cứu văn bản quy phạm',
-        '✓ Ứng dụng AI xử lý văn bản hành chính'
+        '✓ Vận hành App di động "Đảng ủy phường Kiến An - Gần dân, sát dân"',
+        '✓ Huấn luyện Trợ lý AI tra cứu điều lệ Đảng & thủ tục hành chính',
+        '✓ Tiếp nhận và phân loại tự động ý kiến cử tri theo tổ dân phố',
+        '✓ Đào tạo chuyển giao kỹ năng số cho cán bộ Đảng ủy cơ sở'
       ],
-      time: 'Thời gian: 31/10/2026 · Địa điểm: Xã Trực Ninh'
+      time: 'Thời gian: 04/11/2026 · Địa điểm: Trụ sở Đảng ủy phường Kiến An, Hải Phòng'
     },
     {
-      img: 'public/images/gallery/event2.svg',
-      badge: 'SỰ KIỆN 02 / 04',
-      title: 'AI trong Giáo dục & Đào tạo',
-      subtitle: 'Tập huấn Cán bộ Quản lý & Giáo viên · Đổi mới phương pháp dạy học',
-      backKicker: 'ỨNG DỤNG GIÁO DỤC',
-      backTitle: 'Chuyển Đổi Số Giáo Dục Bằng AI',
-      backDesc: 'Hướng dẫn giáo viên và cán bộ quản lý khai thác AI để tối ưu hóa thời gian soạn bài giảng, xây dựng ma trận đề kiểm tra và thiết kế học liệu số đa phương tiện sinh động.',
+      img: 'public/images/gallery/4.11.2026_2.jpg',
+      badge: 'SỰ KIỆN 02 / 17',
+      title: 'Thuyết Trình Giải Pháp Trợ Lý AI tại Đảng Ủy Kiến An',
+      subtitle: 'Thầy Dương Trung Hiếu trực tiếp trình bày kiến trúc hệ thống và demo tính năng',
+      backKicker: 'TRÌNH DIỄN CÔNG NGHỆ',
+      backTitle: 'Kiến Trúc Trợ Lý Ảo Điều Hành Cấp Xã/Phường',
+      backDesc: 'Phiên trao đổi nghiệp vụ chuyên sâu về cách thức tích hợp kho dữ liệu văn bản quy phạm và tiếp nhận phản ánh nhân dân vào mô hình trợ lý ảo.',
       bullets: [
-        '✓ Thiết kế kế hoạch bài dạy chuẩn 5512',
-        '✓ Tạo câu hỏi trắc nghiệm & rubrics chấm điểm',
-        '✓ Tự động hóa slide bài giảng tương tác',
-        '✓ Đổi mới phương pháp đánh giá học sinh'
+        '✓ Báo cáo giải pháp số hóa quy trình tiếp nhận ý kiến nhân dân',
+        '✓ Demo hệ thống hỏi đáp quy định hành chính tự động 24/7',
+        '✓ Lắng nghe góp ý của các đồng chí Thường trực Đảng ủy phường',
+        '✓ Thống nhất lộ trình tập huấn thực chiến cho các chi bộ'
       ],
-      time: 'Thời gian: 01/11/2026 · Địa điểm: Xã Trực Ninh'
+      time: 'Thời gian: 04/11/2026 · Phòng họp Đảng ủy phường Kiến An'
     },
     {
-      img: 'public/images/gallery/event3.svg',
-      badge: 'SỰ KIỆN 03 / 04',
-      title: 'Chiến lược AI cho Nhà Lãnh đạo',
-      subtitle: 'Tái định nghĩa mô hình kinh doanh với GenAI & Tự động hóa quản trị',
-      backKicker: 'QUẢN TRỊ & DOANH NGHIỆP',
-      backTitle: 'Tối Ưu Hóa Chi Phí & Tăng Tốc Hiệu Suất',
-      backDesc: 'Chia sẻ góc nhìn chiến lược dành cho chủ doanh nghiệp SME và cấp quản lý về cách thức tích hợp AI vào quy trình vận hành, nâng cao năng suất nhân sự và giảm thiểu rủi ro.',
+      img: 'public/images/gallery/5.11.2026.jpg',
+      badge: 'SỰ KIỆN 03 / 17',
+      title: 'Tập Huấn Quản Trị & AI Doanh Nghiệp tại Lào Cai',
+      subtitle: 'NATEC (Bộ KH&CN) · Trung tâm KH, CN & ĐMST Tỉnh Lào Cai · Học viện AIUNI',
+      backKicker: 'HỢP TÁC BỘ KH&CN',
+      backTitle: 'Ứng Dụng AI Thúc Đẩy Tăng Trưởng Doanh Nghiệp',
+      backDesc: 'Khóa tập huấn chuyên sâu trang bị kiến thức và kỹ năng thực hành ứng dụng AI trong quản trị, vận hành và tự động hóa marketing cho cộng đồng doanh nghiệp trẻ Lào Cai.',
       bullets: [
-        '✓ Phân tích ROI & chi phí ứng dụng AI',
-        '✓ Tái cấu trúc quy trình công việc với AI',
-        '✓ Quản trị dữ liệu & bảo mật thông tin nội bộ',
-        '✓ Thiết kế trợ lý số chuyên trách từng phòng ban'
+        '✓ Tự động hóa marketing và chăm sóc khách hàng đa kênh',
+        '✓ Ứng dụng Generative AI phân tích thị trường và đối thủ',
+        '✓ Tối ưu hóa quy trình quản trị và chi phí vận hành SME',
+        '✓ Thực hành trực tiếp trên máy tính thiết lập kịch bản trợ lý ảo'
       ],
-      time: 'Chuyên đề đào tạo doanh nghiệp & SME'
+      time: 'Thời gian: 05/11/2026 · TP Lào Cai, Tỉnh Lào Cai'
     },
     {
-      img: 'public/images/gallery/event4.svg',
-      badge: 'SỰ KIỆN 04 / 04',
-      title: 'Xây dựng Trợ lý AI & Chatbot Thực chiến',
-      subtitle: 'Hands-on Workshop · Thiết kế và vận hành AI Agent doanh nghiệp',
-      backKicker: 'THỰC HÀNH CÔNG NGHỆ',
-      backTitle: 'Làm Chủ Trợ Lý AI Trong 1 Ngày',
-      backDesc: 'Khóa thực hành chuyên sâu kết nối tri thức doanh nghiệp vào các nền tảng AI Agent, tạo lập chatbot chăm sóc khách hàng và hệ thống thư ký số tự động.',
+      img: 'public/images/gallery/1.11.2026.jpg',
+      badge: 'SỰ KIỆN 04 / 17',
+      title: 'Tập Huấn AI Cán Bộ Quản Lý & Giáo Viên Trực Ninh',
+      subtitle: 'UBND Xã Trực Ninh · Trung tâm KHCN-ĐMST-CĐS Ninh Bình · AIUNI',
+      backKicker: 'CHUYỂN ĐỔI SỐ GIÁO DỤC',
+      backTitle: 'Đổi Mới Dạy Học Bằng Trí Tuệ Nhân Tạo',
+      backDesc: 'Hội nghị tập huấn chuyên đề cho cán bộ quản lý, giáo viên, nhân viên các trường Mầm non, Tiểu học, THCS trên địa bàn toàn xã ứng dụng AI trong giáo dục.',
       bullets: [
-        '✓ Cấu hình System Prompt chuẩn hóa',
-        '✓ Tích hợp kho tài liệu và tri thức nội bộ',
-        '✓ Kết nối kênh giao tiếp Telegram & Zalo',
-        '✓ Thực hành kiểm thử và tối ưu câu trả lời'
+        '✓ Ứng dụng AI thiết kế kế hoạch bài dạy chuẩn CV 5512',
+        '✓ Xây dựng đề kiểm tra và thang rubrics chấm điểm chuẩn',
+        '✓ Tự động hóa slide bài giảng đa phương tiện sinh động',
+        '✓ Đổi mới phương pháp tương tác và đánh giá năng lực học sinh'
       ],
-      time: 'Workshop thực hành & chuyển giao giải pháp'
+      time: 'Thời gian: 01/11/2026 · Hội trường Đảng ủy xã Trực Ninh'
+    },
+    {
+      img: 'public/images/gallery/31.10.2026.jpg',
+      badge: 'SỰ KIỆN 05 / 17',
+      title: 'Tập Huấn AI Tổ Công Nghệ Số Cộng Đồng Thôn',
+      subtitle: 'UBND Xã Trực Ninh · Sở KH&CN Tỉnh Ninh Bình · Học viện AIUNI',
+      backKicker: 'TỔ CÔNG NGHỆ SỐ CỘNG ĐỒNG',
+      backTitle: 'Phổ Cập Kỹ Năng Số Cơ Sở',
+      backDesc: 'Chương trình tập huấn thực hành bộ 5 công cụ AI hàng đầu: ChatGPT, Gemini, NotebookLM, Canva, VbeeAI cho đội ngũ nòng cốt các thôn xóm.',
+      bullets: [
+        '✓ Huấn luyện kỹ năng đặt câu lệnh (Prompting) thực chiến',
+        '✓ Hướng dẫn làm video tuyên truyền và thiết kế infographic số',
+        '✓ Ứng dụng AI tra cứu chính sách và thủ tục hành chính công',
+        '✓ Hướng dẫn kỹ năng an toàn thông tin số trong cộng đồng'
+      ],
+      time: 'Thời gian: 31/10/2026 · Trường Tiểu học Trực Ninh'
+    },
+    {
+      img: 'public/images/gallery/31.10.2026_1.jpg',
+      badge: 'SỰ KIỆN 06 / 17',
+      title: 'Tọa Đàm Hướng Dẫn Thực Hành Công Nghệ Bàn Tròn',
+      subtitle: 'Thầy Dương Trung Hiếu cùng cán bộ chuyên môn địa phương trao đổi nghiệp vụ',
+      backKicker: 'TẬP HUẤN CẦM TAY CHỈ VIỆC',
+      backTitle: 'Thực Hành Trực Tiếp Trên Thiết Bị',
+      backDesc: 'Phiên làm việc bàn tròn thực hành chi tiết từng thao tác công nghệ số, giải đáp thắc mắc thực tế từ cán bộ phụ trách các ban ngành đoàn thể xã.',
+      bullets: [
+        '✓ Hướng dẫn cài đặt và sử dụng ứng dụng AI trên điện thoại',
+        '✓ Thao tác xử lý dữ liệu và văn bản số thực tế tại phòng họp',
+        '✓ Giải đáp các vướng mắc của tổ công nghệ số cơ sở',
+        '✓ Đúc kết bài học thực tiễn để nhân rộng toàn xã'
+      ],
+      time: 'Thời gian: 31/10/2026 · Phòng họp Trực Ninh'
+    },
+    {
+      img: 'public/images/gallery/27.10.2026.jpg',
+      badge: 'SỰ KIỆN 07 / 17',
+      title: 'Hội Thảo Đổi Mới Sáng Tạo Doanh Nghiệp Ninh Bình',
+      subtitle: 'Sở KH&CN Tỉnh Ninh Bình · Trung tâm KHCN, ĐMST và Chuyển đổi số',
+      backKicker: 'DOANH NGHIỆP ĐỔI MỚI SÁNG TẠO',
+      backTitle: 'Ứng Dụng AI Thúc Đẩy Marketing Online',
+      backDesc: 'Hội thảo quy mô lớn quy tụ đông đảo doanh nghiệp trên địa bàn tỉnh tham gia tìm hiểu và thực hành ứng dụng AI tạo sinh vào kinh doanh.',
+      bullets: [
+        '✓ Cập nhật xu hướng AI marketing và tự động hóa bán hàng',
+        '✓ Xây dựng nội dung quảng bá sản phẩm tự động với AI',
+        '✓ Kết nối giao thương và hợp tác giữa các doanh nghiệp địa phương',
+        '✓ Định hướng chuyển đổi số thiết thực, tiết kiệm chi phí'
+      ],
+      time: 'Thời gian: 27/10/2026 · Hội trường Sở KH&CN Tỉnh Ninh Bình'
+    },
+    {
+      img: 'public/images/gallery/27.10.2026_1.jpg',
+      badge: 'SỰ KIỆN 08 / 17',
+      title: 'Đội Ngũ Chuyên Gia AIUNI tại Sự Kiện Ninh Bình',
+      subtitle: 'Hội nghị tập huấn Đổi mới sáng tạo cho doanh nghiệp tỉnh Ninh Bình',
+      backKicker: 'CHUYÊN GIA ĐÀO TẠO',
+      backTitle: 'Đội Ngũ Đồng Hành Cùng Doanh Nghiệp',
+      backDesc: 'Hình ảnh lưu niệm của Thầy Dương Trung Hiếu và đội ngũ chuyên gia đào tạo tại Hội trường tầng 7, Số 1A Trần Tế Xương.',
+      bullets: [
+        '✓ Đội ngũ giảng viên thực chiến từ Học viện Công nghệ AIUNI',
+        '✓ Tư vấn trực tiếp 1-1 cho các chủ doanh nghiệp tại sự kiện',
+        '✓ Chia sẻ tài liệu hướng dẫn ứng dụng AI độc quyền',
+        '✓ Cam kết hỗ trợ kỹ thuật lâu dài cho học viên'
+      ],
+      time: 'Thời gian: 27/10/2026 · Nam Định - Ninh Bình'
+    },
+    {
+      img: 'public/images/gallery/26.10.2026.jpg',
+      badge: 'SỰ KIỆN 09 / 17',
+      title: 'Bồi Dưỡng Chuyển Đổi Số & Bán Hàng Online Thái Nguyên',
+      subtitle: 'SATI (Bộ KH&CN) · Sở KH&CN Thái Nguyên · Học viện AIUNI',
+      backKicker: 'KỸ NĂNG THƯƠNG MẠI ĐIỆN TỬ',
+      backTitle: 'Phát Triển Thị Trường Trên Môi Trường Số',
+      backDesc: 'Khóa bồi dưỡng toàn diện kỹ năng chuyển đổi số, marketing, phát triển thị trường trực tuyến cho các hợp tác xã và hộ sản xuất tiêu biểu.',
+      bullets: [
+        '✓ Bồi dưỡng kỹ năng livestream và bán hàng trên sàn TMĐT',
+        '✓ Xây dựng video ngắn quảng bá sản vật quê hương với AI',
+        '✓ Tối ưu hóa gian hàng số và trải nghiệm mua sắm',
+        '✓ Đẩy mạnh tiêu thụ sản phẩm OCOP địa phương'
+      ],
+      time: 'Thời gian: 26/10/2026 · Tỉnh Thái Nguyên'
+    },
+    {
+      img: 'public/images/gallery/26.10.2026_1.jpg',
+      badge: 'SỰ KIỆN 10 / 17',
+      title: 'Sân Khấu Màn Hình LED Hiện Đại tại Thái Nguyên',
+      subtitle: 'Chương trình bồi dưỡng chuyển đổi số, marketing & bán hàng online',
+      backKicker: 'CHƯƠNG TRÌNH ĐÀO TẠO',
+      backTitle: 'Học Liệu Số & Bài Giảng Trực Quan',
+      backDesc: 'Sân khấu chương trình bồi dưỡng kiến thức, kỹ năng về chuyển đổi số, marketing, bán hàng online và phát triển thị trường trên môi trường số.',
+      bullets: [
+        '✓ Khung chương trình chuẩn hóa của Bộ Khoa học và Công nghệ',
+        '✓ Học liệu số và bài giảng tương tác trực quan cao',
+        '✓ 100% học viên thực hành ra sản phẩm ngay tại lớp',
+        '✓ Hỗ trợ kết nối cộng đồng doanh nghiệp số Thái Nguyên'
+      ],
+      time: 'Thời gian: 26/10/2026 · Tỉnh Thái Nguyên'
+    },
+    {
+      img: 'public/images/gallery/17.10.2026.jpg',
+      badge: 'SỰ KIỆN 11 / 17',
+      title: 'Toàn Cảnh Hội Trường Giảng Dạy AI Xã Trực Ninh',
+      subtitle: 'Thầy Dương Trung Hiếu đứng lớp trước sự tập trung của đông đảo cán bộ công chức',
+      backKicker: 'TRUYỀN CẢM HỨNG CÔNG NGHỆ',
+      backTitle: 'Hội Trường Đông Đủ Đại Biểu Cán Bộ',
+      backDesc: 'Góc nhìn toàn cảnh hội trường với hơn 100 cán bộ, công chức, viên chức chăm chú theo dõi bài giảng và các ví dụ thực tế về ứng dụng AI.',
+      bullets: [
+        '✓ Không khí học tập sôi nổi và tập trung cao độ',
+        '✓ Kết nối các tình huống thực tế của bộ máy chính quyền cơ sở',
+        '✓ Hướng dẫn trực quan từng bước dễ hiểu cho mọi độ tuổi',
+        '✓ Giải đáp các thắc mắc về bảo mật và quy định pháp lý AI'
+      ],
+      time: 'Thời gian: 17/10/2026 · Hội trường lớn Xã Trực Ninh'
+    },
+    {
+      img: 'public/images/gallery/17.10.2026_1.jpg',
+      badge: 'SỰ KIỆN 12 / 17',
+      title: 'Hội Nghị Tập Huấn AI Cán Bộ Công Chức Trực Ninh',
+      subtitle: 'Đảng ủy - HĐND - UBND - Ủy ban MTTQ Việt Nam Xã Trực Ninh năm 2026',
+      backKicker: 'ĐÀO TẠO HỆ THỐNG CHÍNH TRỊ',
+      backTitle: 'Nâng Cao Hiệu Quả Quản Lý Nhà Nước',
+      backDesc: 'Hội nghị tập huấn đào tạo ứng dụng trí tuệ nhân tạo (AI) cho cán bộ, công chức, viên chức thuộc các cơ quan, đơn vị của xã Trực Ninh.',
+      bullets: [
+        '✓ Nâng cao chất lượng soạn thảo công văn, tờ trình, báo cáo',
+        '✓ Rút ngắn thời gian tra cứu luật và xử lý hồ sơ hành chính',
+        '✓ Thống nhất tư duy hành động trong kỷ nguyên số',
+        '✓ Ảnh lưu niệm cùng Thường trực Đảng ủy và lãnh đạo UBND xã'
+      ],
+      time: 'Thời gian: 17/10/2026 · Trụ sở UBND Xã Trực Ninh'
+    },
+    {
+      img: 'public/images/gallery/15.10.2026.jpg',
+      badge: 'SỰ KIỆN 13 / 17',
+      title: 'Lớp Tập Huấn Chuyển Đổi Số & AI Thái Nguyên',
+      subtitle: 'Trung tâm Phát triển Khoa học Công nghệ & Đổi mới sáng tạo Thái Nguyên',
+      backKicker: 'ĐÀO TẠO CHUYÊN ĐỀ SỐ',
+      backTitle: 'Bồi Dưỡng Kiến Thức Số Hóa Sản Xuất',
+      backDesc: 'Lớp tập huấn trang bị kỹ năng số thực tiễn giúp nâng tầm thương hiệu nông sản và sản phẩm làng nghề truyền thống trên internet.',
+      bullets: [
+        '✓ Trang bị tư duy bán hàng hiện đại không phụ thuộc thương lái',
+        '✓ Thực hành chụp ảnh, thiết kế bao bì và tạo content với AI',
+        '✓ Xây dựng kênh truyền thông số bài bản cho cơ sở sản xuất',
+        '✓ Ảnh lưu niệm kết thúc khóa học tràn đầy năng lượng'
+      ],
+      time: 'Thời gian: 15/10/2026 · Tỉnh Thái Nguyên'
+    },
+    {
+      img: 'public/images/gallery/14.10.2026.jpg',
+      badge: 'SỰ KIỆN 14 / 17',
+      title: 'Chuyển Đổi Số Ngành Chè Thái Nguyên',
+      subtitle: 'SATI - Bộ KH&CN phối hợp Sở KH&CN Thái Nguyên & AIUNI',
+      backKicker: 'NÔNG NGHIỆP CÔNG NGHỆ CAO',
+      backTitle: 'Số Hóa Chuỗi Giá Trị Trà Thái Nguyên',
+      backDesc: 'Khóa đào tạo chuyên sâu về ứng dụng công nghệ thông tin và chuyển đổi số trong chuỗi sản xuất, chế biến và phân phối trà danh tiếng của Thái Nguyên.',
+      bullets: [
+        '✓ Hướng dẫn ứng dụng AI nhận diện và quảng bá thương hiệu trà',
+        '✓ Xây dựng kênh bán hàng online đưa chè Thái đi muôn nơi',
+        '✓ Truy xuất nguồn gốc và minh bạch thông tin sản phẩm',
+        '✓ Cùng bà con nông dân bắt tay làm chủ công nghệ mới'
+      ],
+      time: 'Thời gian: 14/10/2026 · Tỉnh Thái Nguyên'
+    },
+    {
+      img: 'public/images/gallery/13.10.2026.jpg',
+      badge: 'SỰ KIỆN 15 / 17',
+      title: 'Tôn Vinh Doanh Nhân & Giảng Viên Đổi Mới Sáng Tạo',
+      subtitle: 'UBND Tỉnh Nghệ An · Trường Đại học Nghệ An (NAU) · Chúc mừng 13/10',
+      backKicker: 'VINH DANH CHUYÊN GIA',
+      backTitle: 'Ngày Doanh Nhân Việt Nam 13/10',
+      backDesc: 'Thầy Dương Trung Hiếu cùng các giảng viên, doanh nhân đổi mới sáng tạo nhận hoa chúc mừng tại lễ kỷ niệm Ngày Doanh nhân Việt Nam.',
+      bullets: [
+        '✓ Tôn vinh các đóng góp đào tạo nguồn nhân lực số',
+        '✓ Gắn kết hợp tác giữa trường đại học và viện công nghệ',
+        '✓ Lan tỏa khát vọng khởi nghiệp sáng tạo đến sinh viên',
+        '✓ Khẳng định vai trò đồng hành của AIUNI tại miền Trung'
+      ],
+      time: 'Thời gian: 13/10/2026 · Đại học Nghệ An (NAU)'
+    },
+    {
+      img: 'public/images/gallery/3.10.2026.jpg',
+      badge: 'SỰ KIỆN 16 / 17',
+      title: 'Buổi Làm Việc Tạo Sản Phẩm & Đào Tạo Thực Chiến',
+      subtitle: 'Học viện Công nghệ AIUNI · Chia nhóm nghiệp vụ thực tế & Trao giải pháp số',
+      backKicker: 'VĂN HÓA AIUNI',
+      backTitle: 'Học Đi Đôi Với Hành · Tạo Sản Phẩm Thật',
+      backDesc: 'Phiên làm việc chuyên sâu phân tích quy trình nghiệp vụ và xây dựng giải pháp AI ứng dụng, nhận hoa chúc mừng từ đại diện các tổ chức đối tác.',
+      bullets: [
+        '✓ Bám sát triết lý giáo dục: Tạo ra sản phẩm ngay trong khóa',
+        '✓ Giải quyết trực tiếp các bài toán nan giải của đơn vị',
+        '✓ Chuyển giao công nghệ và tài liệu hướng dẫn chi tiết',
+        '✓ Khẳng định uy tín học viện hàng đầu về AI thực chiến'
+      ],
+      time: 'Thời gian: 03/10/2026 · Học viện Công nghệ AIUNI'
+    },
+    {
+      img: 'public/images/gallery/12.8.2026.jpg',
+      badge: 'SỰ KIỆN 17 / 17',
+      title: 'Tập Huấn Ứng Dụng AI Trong Thiết Kế & Chuyển Đổi Số',
+      subtitle: 'Sở KH&CN Tỉnh Ninh Bình · Hội Quảng Cáo Ninh Bình · AIUNI',
+      backKicker: 'DOANH NGHIỆP QUẢNG CÁO',
+      backTitle: 'Nâng Tầm Thiết Kế Bằng Trí Tuệ Nhân Tạo',
+      backDesc: 'Chương trình tập huấn chuyên đề đột phá ứng dụng AI tạo sinh trong ngành mỹ thuật quảng cáo, thiết kế đồ họa truyền thông và chuyển đổi số doanh nghiệp.',
+      bullets: [
+        '✓ Nắm bắt công nghệ dẫn đầu xu hướng thiết kế tương lai',
+        '✓ Nâng cao năng lực sáng tạo và tăng tốc tiến độ thực hiện',
+        '✓ Tối ưu chi phí sản xuất và gia tăng lợi nhuận doanh nghiệp',
+        '✓ Kết nối học hỏi và phát triển cộng đồng quảng cáo tỉnh nhà'
+      ],
+      time: 'Thời gian: 12/08/2026 · TP Ninh Bình'
     }
   ];
 
@@ -515,6 +723,17 @@ Nắm vững toàn bộ hồ sơ của Thầy Hiếu:
       if (flipBackBullets) {
         flipBackBullets.innerHTML = data.bullets.map(b => `<li>${b}</li>`).join('');
       }
+
+      // Cập nhật trạng thái active trên danh sách thumbnail
+      const thumbItems = document.querySelectorAll('.album-thumb-item');
+      thumbItems.forEach((th, idx) => {
+        if (idx === index) {
+          th.classList.add('active');
+          th.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        } else {
+          th.classList.remove('active');
+        }
+      });
     }, 250);
   }
 
@@ -539,6 +758,27 @@ Nắm vững toàn bộ hồ sơ của Thầy Hiếu:
         flipCard.classList.remove('is-flipped');
       });
     }
+  }
+
+  // Khởi tạo thanh thumbnail cho Album 17 ảnh
+  const thumbsContainer = document.getElementById('album-thumbs-container');
+  if (thumbsContainer) {
+    thumbsContainer.innerHTML = albumData.map((item, idx) => `
+      <div class="album-thumb-item ${idx === 0 ? 'active' : ''}" data-index="${idx}" title="${item.title}">
+        <img src="${item.img}" alt="${item.title}" loading="lazy">
+        <span class="thumb-idx">${idx + 1}</span>
+      </div>
+    `).join('');
+
+    thumbsContainer.addEventListener('click', (e) => {
+      const item = e.target.closest('.album-thumb-item');
+      if (!item) return;
+      const idx = parseInt(item.getAttribute('data-index'), 10);
+      if (!isNaN(idx)) {
+        currentSlide = idx;
+        renderSlide(currentSlide);
+      }
+    });
   }
 
   if (btnPrev && btnNext) {

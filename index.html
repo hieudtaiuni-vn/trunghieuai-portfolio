@@ -40,7 +40,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;850;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=5.1">
+  <link rel="stylesheet" href="css/styles.css?v=5.3">
 
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
@@ -405,16 +405,16 @@
               <!-- Mặt trước (Ảnh hiển thị) -->
               <div class="flip-face flip-face-front">
                 <div class="flip-photo-box">
-                  <img id="flip-img" src="public/images/gallery/event1.svg" alt="Tập huấn Ứng dụng AI - Xã Trực Ninh" loading="lazy">
-                  <span id="flip-badge" class="flip-badge-top">SỰ KIỆN 01 / 04</span>
+                  <img id="flip-img" src="public/images/gallery/4.11.2026.jpg" alt="Đảng ủy phường Kiến An: App Gần Dân Sát Dân & Trợ Lý AI" loading="lazy">
+                  <span id="flip-badge" class="flip-badge-top">SỰ KIỆN 01 / 17</span>
                   <div class="flip-hint-badge">
                     <span>🔄 Chạm / Bấm để lật xem chi tiết</span>
                   </div>
                 </div>
                 <div class="flip-front-caption">
                   <div>
-                    <h3 id="flip-title">Tập huấn Ứng dụng AI – Xã Trực Ninh</h3>
-                    <p id="flip-subtitle">Tổ Công nghệ số Cộng đồng · Hướng dẫn ứng dụng AI cho cán bộ và nhân dân cơ sở</p>
+                    <h3 id="flip-title">Đảng ủy phường Kiến An: App Gần Dân Sát Dân & Trợ Lý AI</h3>
+                    <p id="flip-subtitle">Thường trực Đảng ủy làm việc cùng Học viện AIUNI và Công ty ADT</p>
                   </div>
                   <button class="btn sm ghost" id="flip-btn-action" aria-label="Lật thẻ xem chi tiết">Lật mặt sau ↻</button>
                 </div>
@@ -423,12 +423,12 @@
               <!-- Mặt sau (Nội dung chi tiết & Đúc kết) -->
               <div class="flip-face flip-face-back">
                 <div class="flip-back-header">
-                  <small id="flip-back-kicker">CHI TIẾT CHUYÊN ĐỀ</small>
-                  <h3 id="flip-back-title">Tập huấn Ứng dụng AI Cơ sở</h3>
+                  <small id="flip-back-kicker">CHUYỂN ĐỔI SỐ CƠ SỞ</small>
+                  <h3 id="flip-back-title">Ứng Dụng Số Phục Vụ Nhân Dân & Đảng Vụ</h3>
                 </div>
                 <div class="flip-back-body">
                   <p id="flip-back-desc">
-                    Chương trình trang bị kỹ năng khai thác các công cụ trí tuệ nhân tạo tạo sinh (Generative AI) vào thực tế giải quyết công việc hành chính công, phổ cập kỹ năng số và hỗ trợ đời sống cộng đồng.
+                    Buổi làm việc chính thức tại phòng họp Đảng ủy phường Kiến An về vận hành ứng dụng di động "Gần dân, sát dân" và triển khai trợ lý ảo AI hỗ trợ chỉ đạo điều hành.
                   </p>
                   <ul class="flip-bullets" id="flip-back-bullets">
                     <li>✓ Phổ biến kỹ năng Prompting cơ bản</li>
@@ -438,7 +438,7 @@
                   </ul>
                 </div>
                 <div class="flip-back-footer">
-                  <span id="flip-back-time">Thời gian: 31/10/2026 · Địa điểm: Xã Trực Ninh</span>
+                  <span id="flip-back-time">Thời gian: 04/11/2026 · Địa điểm: Trụ sở Đảng ủy phường Kiến An, Hải Phòng</span>
                   <button class="btn sm" style="background:#ffffff; color:var(--navy); border-color:#ffffff;" id="flip-btn-back" aria-label="Lật lại ảnh mặt trước">↺ Lật lại ảnh</button>
                 </div>
               </div>
@@ -457,7 +457,18 @@
               </button>
             </div>
             <div class="album-indicator">
-              <span id="album-counter">1 / 4</span>
+              <span id="album-counter">1 / 17</span>
+            </div>
+          </div>
+
+          <!-- Thanh chọn nhanh tất cả 17 hình ảnh trong Album -->
+          <div class="album-thumbs-wrapper">
+            <div class="album-thumbs-header">
+              <span>📸 TẤT CẢ 17 HÌNH ẢNH HOẠT ĐỘNG THỰC TẾ (Bấm để chọn xem)</span>
+              <small id="album-thumb-tip">Vuốt hoặc cuộn ngang để duyệt ảnh</small>
+            </div>
+            <div class="album-thumbs-scroll" id="album-thumbs-container">
+              <!-- Render tự động 17 thumbnail bằng JS -->
             </div>
           </div>
         </div>
@@ -689,16 +700,16 @@
   </aside>
 
   <!-- Portfolio Config & Cloud CMS Settings (Phương án 3) -->
-  <script src="js/config.js?v=5.2"></script>
+  <script src="js/config.js?v=5.3"></script>
 
   <!-- Pre-compiled Articles Data (Phương án 1) -->
-  <script src="js/articles-data.js?v=5.2"></script>
+  <script src="js/articles-data.js?v=5.3"></script>
 
   <!-- Articles & Training Activities Module (Phương án 1 + 3) -->
-  <script src="js/articles.js?v=5.2"></script>
+  <script src="js/articles.js?v=5.3"></script>
 
   <!-- Main JavaScript File (ELON MUSK AI Assistant) -->
-  <script src="js/main.js?v=5.2"></script>
+  <script src="js/main.js?v=5.3"></script>
 
   <!-- Article Reader Fullscreen Modal -->
   <div id="article-modal" class="article-modal-backdrop" role="dialog" aria-modal="true" aria-label="Đọc bài viết chi tiết">

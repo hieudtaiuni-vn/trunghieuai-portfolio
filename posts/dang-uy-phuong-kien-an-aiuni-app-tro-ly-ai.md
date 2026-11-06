@@ -7,7 +7,7 @@ date: "06/11/2026"
 author: "Dương Trung Hiếu"
 authorRole: "Giám đốc Đào tạo Học viện Công nghệ AIUNI"
 readTime: "4 phút đọc"
-thumbnail: "public/images/posts/kien-an-aiuni-app.jpg"
+thumbnail: "public/images/posts/dang-uy-kien-an-hop.jpg"
 tags: ["Đảng ủy Kiến An", "AIUNI", "App Gần dân sát dân", "Trợ lý AI", "Chuyển đổi số", "Hải Phòng"]
 excerpt: "Thường trực Đảng uỷ phường Kiến An tổ chức buổi làm việc chuyên sâu với Học viện Công nghệ AIUNI và Công ty CP Công nghệ ADT về vận hành ứng dụng 'Gần dân, sát dân' và phát triển trợ lý AI hỗ trợ công tác lãnh đạo, điều hành tại cơ sở."
 ---

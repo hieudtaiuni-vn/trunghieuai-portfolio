@@ -27,7 +27,7 @@
     "author": "Dương Trung Hiếu",
     "authorRole": "Giám đốc Đào tạo Học viện Công nghệ AIUNI",
     "readTime": "4 phút đọc",
-    "thumbnail": "public/images/posts/kien-an-aiuni-app.jpg",
+    "thumbnail": "public/images/posts/dang-uy-kien-an-hop.jpg",
     "excerpt": "Thường trực Đảng uỷ phường Kiến An tổ chức buổi làm việc chuyên sâu với Học viện Công nghệ AIUNI và Công ty CP Công nghệ ADT về vận hành ứng dụng 'Gần dân, sát dân' và phát triển trợ lý AI hỗ trợ công tác lãnh đạo, điều hành tại cơ sở.",
     "tags": [
       "Đảng ủy Kiến An",
@@ -58,6 +58,29 @@
     ],
     "source": "local-git",
     "content": "<p><h3>1. Bối cảnh</h3><p>Chương trình tập huấn thực chiến do Thầy Dương Trung Hiếu trực tiếp giảng dạy giúp cán bộ cơ sở làm chủ công nghệ và tạo sản phẩm tuyên truyền số ngay tại lớp.</p></p>"
+  },
+  {
+    "id": "tap-huan-ai-doanh-nghiep-lao-cai",
+    "title": "Tập huấn chuyên sâu về quản trị sản xuất và ứng dụng trí tuệ nhân tạo trong doanh nghiệp tại Lào Cai",
+    "category": "Quản trị & Doanh nghiệp",
+    "categorySlug": "quan-tri",
+    "date": "05/11/2026",
+    "author": "Dương Trung Hiếu",
+    "authorRole": "Giám đốc Đào tạo Học viện Công nghệ AIUNI",
+    "readTime": "5 phút đọc",
+    "thumbnail": "public/images/posts/tap-huan-ai-lao-cai.jpg",
+    "excerpt": "Trung tâm Khoa học, Công nghệ và Đổi mới sáng tạo tỉnh Lào Cai phối hợp cùng Cục Khởi nghiệp và Doanh nghiệp công nghệ (Bộ KH&CN) và Học viện Công nghệ AIUNI tổ chức lớp tập huấn chuyên sâu ứng dụng AI cho cộng đồng doanh nghiệp địa phương.",
+    "tags": [
+      "Lào Cai",
+      "NATEC",
+      "Bộ KH&CN",
+      "AIUNI",
+      "Quản trị doanh nghiệp",
+      "Trợ lý AI",
+      "Chuyển đổi số"
+    ],
+    "source": "local-git",
+    "content": "<h3>1. Bối cảnh & Khai mạc lớp tập huấn tại tỉnh Lào Cai</h3>\n<p>Trong bối cảnh chuyển đổi số đang tác động sâu rộng đến hoạt động sản xuất, kinh doanh, trí tuệ nhân tạo (AI) ngày càng trở thành công cụ đắc lực hỗ trợ doanh nghiệp nâng cao năng suất, tối ưu hóa chi phí vận hành và gia tăng lợi thế cạnh tranh. Nhằm hiện thực hóa mục tiêu đó, sáng ngày <strong>05/11/2026</strong>, <strong>Trung tâm Khoa học, Công nghệ và Đổi mới sáng tạo tỉnh Lào Cai</strong> đã phối hợp cùng <strong>Trung tâm Phát triển doanh nghiệp khoa học và công nghệ</strong> (thuộc Cục Khởi nghiệp và Doanh nghiệp công nghệ, Bộ Khoa học và Công nghệ - NATEC) và <strong>Học viện Công nghệ AIUNI</strong> long trọng tổ chức lớp tập huấn chuyên sâu: <strong>“Đổi mới sáng tạo và ứng dụng công nghệ trong quản trị doanh nghiệp”</strong>.</p>\n<p>Lớp tập huấn có sự hiện diện và phát biểu khai mạc của:</p>\n<ul>\n  <li><strong>Đồng chí Lê Viết Bảo</strong> – Giám đốc Trung tâm Khoa học, Công nghệ và Đổi mới sáng tạo tỉnh Lào Cai.</li>\n  <li><strong>Ông Cao Đình Thắng</strong> – Phụ trách Phòng Phát triển doanh nghiệp KH&CN, Trung tâm Phát triển doanh nghiệp KH&CN (Bộ KH&CN).</li>\n  <li><strong>Thầy Dương Trung Hiếu</strong> cùng các chuyên gia, giảng viên cao cấp của <strong>Học viện Công nghệ AIUNI</strong>.</li>\n  <li>Cùng đông đảo đại diện lãnh đạo, hội viên đến từ <strong>Hội Doanh nhân trẻ Lào Cai</strong>, <strong>Câu lạc bộ Đầu tư và Khởi nghiệp doanh nhân trẻ tỉnh Lào Cai</strong>, <strong>Hội Nữ doanh nhân tỉnh Lào Cai</strong> và các doanh nghiệp tiêu biểu trên địa bàn.</li>\n</ul>\n<h3>2. Bốn nội dung trọng tâm: Gắn AI vào bài toán quản trị thực tế</h3>\n<p>Với thời lượng huấn luyện thực chiến trọn vẹn một ngày, chương trình được thiết kế cô đọng, đi thẳng vào các giải pháp thực tế giải quyết bài toán sản xuất kinh doanh:</p>\n<p>1. <strong>Tổng quan xu hướng phát triển GenAI & Bài học ứng dụng thực tiễn:</strong> Chuyên gia AIUNI giới thiệu cách thức các tập đoàn và doanh nghiệp SME ứng dụng AI để thúc đẩy tăng trưởng doanh thu, cắt giảm chi phí vận hành, rút ngắn thời gian đưa sản phẩm ra thị trường và nâng cao trải nghiệm khách hàng.</p>\n<p>2. <strong>Tự động hóa Marketing, Bán hàng & Chăm sóc khách hàng:</strong> Khai thác AI trong việc phân tích dữ liệu kinh doanh, nhận diện nhu cầu thị trường, dự báo xu hướng tiêu dùng vùng miền và hỗ trợ quản trị dòng tiền.</p>\n<p>3. <strong>Lộ trình chuyển đổi số tinh gọn cho SME:</strong> Hướng dẫn doanh nghiệp tự đánh giá mức độ sẵn sàng ứng dụng công nghệ, lựa chọn các khâu ưu tiên có thể triển khai nhanh chóng với chi phí tối ưu nhất.</p>\n<p>4. <strong>Thực hành trực tiếp trên máy tính (Hands-on Practice):</strong> 100% học viên được \"cầm tay chỉ việc\", trực tiếp thao tác sử dụng công cụ AI để nghiên cứu đối thủ cạnh tranh, phân tích thị trường Lào Cai, sản xuất nội dung truyền thông đa nền tảng và tự tay thiết lập kịch bản trợ lý ảo AI (Chatbot) phục vụ tư vấn khách hàng 24/7.</p>\n<div class=\"article-quote\"><p>\"Ứng dụng AI không chỉ dừng lại ở việc tiếp cận công nghệ mới, mà bắt buộc phải gắn liền với nhu cầu quản trị, tổ chức sản xuất và tháo gỡ điểm nghẽn cụ thể trong hoạt động thường nhật của từng doanh nghiệp.\"</p><small>— Thầy Dương Trung Hiếu, Giám đốc Đào tạo Học viện AIUNI</small></div>\n<h3>3. Đánh giá kết quả & Tinh thần lan tỏa</h3>\n<p>Lớp tập huấn diễn ra trong không khí trao đổi sôi nổi, thực chất. Những vướng mắc do chính các chủ doanh nghiệp, nhà quản lý đưa ra tại lớp đều được các chuyên gia AIUNI phân tích và hướng dẫn giải pháp xử lý ngay trên hệ thống. Kết thúc chương trình, các học viên đều nắm vững phương pháp và tự tin đưa các trợ lý số vào quy trình vận hành của đơn vị.</p>\n<p>---</p>\n<div class=\"article-quote\"><p>📌 **Tham khảo chi tiết bài viết trên Cổng thông tin Trung tâm Khoa học, Công nghệ và Đổi mới sáng tạo tỉnh Lào Cai:** [https://ttkhcn.laocai.gov.vn/tin-tuc-su-kien/hoi-nghi-hoi-thao-tap-huan/tap-huan-chuyen-sau-ve-quan-tri-san-xuat-va-ung-dung-tri-tue-nhan-tao-trong-doanh-nghiep](https://ttkhcn.laocai.gov.vn/tin-tuc-su-kien/hoi-nghi-hoi-thao-tap-huan/tap-huan-chuyen-sau-ve-quan-tri-san-xuat-va-ung-dung-tri-tue-nhan-tao-trong-doanh-nghiep)</p></div>"
   },
   {
     "id": "workshop-xay-dung-tro-ly-ai",
