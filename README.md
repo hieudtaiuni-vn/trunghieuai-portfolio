@@ -153,7 +153,7 @@ Vercel đã khởi tạo cấu hình cho dự án của bạn và yêu cầu nh�
 ## 7. Kiến trúc Trợ lý AI (Kế hoạch Mở rộng Tương lai)
 
 Trong phiên bản MVP hiện tại:
-- Trợ lý **Trung AI** hoạt động ở chế độ **UI Demo**: tra cứu nhanh các thông tin đã được kiểm chứng từ chính hồ sơ công khai, có thông báo minh bạch `Chưa kết nối mô hình AI`.
+- Trợ lý **Siêu trợ lý SI** hoạt động ở chế độ **UI Demo**: tra cứu nhanh các thông tin đã được kiểm chứng từ chính hồ sơ công khai, có thông báo minh bạch `Chưa kết nối mô hình AI`.
 - **Tuyệt đối không nhúng API Key hoặc mật khẩu vào mã frontend.**
 
 ### Khi sẵn sàng nâng cấp AI thực thụ:

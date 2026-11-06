@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 2. AI Assistant (Trung AI Demo Drawer)
+  // 2. AI Assistant (Siêu trợ lý SI Drawer)
   const chatLaunch = document.getElementById('chatlaunch');
   const chatBox = document.getElementById('chatbox');
   const chatClose = document.getElementById('chatclose');
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
       chip.addEventListener('click', () => {
         const key = chip.getAttribute('data-faq');
         if (chatResponse && faqData[key]) {
-          chatResponse.innerHTML = `<div style="margin-bottom:6px; color:#2d70b6; font-weight:700;">📌 Thông tin từ hồ sơ công khai:</div>${faqData[key]}<div style="margin-top:8px; font-size:10.5px; color:#8c9ba5; font-style:italic;">* Lưu ý: Đây là câu trả lời tĩnh từ bản giới thiệu MVP; chưa kết nối API AI.</div>`;
+          chatResponse.innerHTML = `<div style="margin-bottom:6px; color:#2d70b6; font-weight:700;">📌 Thông tin từ hồ sơ công khai:</div>${faqData[key]}<div style="margin-top:8px; font-size:10.5px; color:#8c9ba5; font-style:italic;">* Trích xuất từ hồ sơ chính thức của Thầy Dương Trung Hiếu.</div>`;
           chatResponse.classList.add('active');
           chatResponse.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
