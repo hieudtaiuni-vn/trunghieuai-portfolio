@@ -186,19 +186,97 @@
           </div>
         </div>
 
-        <!-- Portrait Box - Phương án 2: Interactive 3D Tilt & Holographic Sweep -->
-        <div class="portrait-card" id="portrait-card" aria-label="Chân dung Dương Trung Hiếu">
-          <!-- Fallback dynamic check: If portrait.jpeg exists it displays, else vector placeholder -->
-          <img id="portrait-real-img" class="portrait-img" src="public/images/anh-the-hieu.jpg?v=5.1" alt="Chân dung Dương Trung Hiếu - Giám đốc Đào tạo Học viện Công nghệ AIUNI" style="display:none;" loading="eager">
-          
-          <div id="portrait-vector-placeholder" class="portrait-inner">
-            <div class="monogram">DTH</div>
-            <strong>DƯƠNG TRUNG HIẾU</strong>
-            <span>Giám đốc Đào tạo · Học viện Công nghệ AIUNI</span>
+        <!-- Second Brain 3D Interactive Console (1 Second Brain & 10 AI Agents Ecosystem) -->
+        <div class="hero-brain-console" id="hero-brain-console" aria-label="Mô hình 3D Second Brain và 10 AI Agents đang hoạt động">
+          <!-- Console Top HUD -->
+          <div class="brain-console-header">
+            <div class="brain-live-badge">
+              <span class="live-dot-pulse"></span>
+              <span class="live-text">10/10 AI AGENTS ONLINE</span>
+            </div>
+            <div class="brain-console-title">
+              <strong>SECOND BRAIN ARCHITECTURE</strong>
+              <small>Hệ thống Tri thức & Mạng lưới 10 AI Agents Thực thi</small>
+            </div>
+            <!-- Architect Micro Badge -->
+            <div class="brain-architect-badge" title="Kiến trúc sư hệ thống: Dương Trung Hiếu">
+              <img src="public/images/anh-the-hieu.jpg?v=5.1" alt="Dương Trung Hiếu" class="architect-thumb" onerror="this.style.display='none'">
+              <div class="architect-info">
+                <span class="arch-name">DƯƠNG TRUNG HIẾU</span>
+                <span class="arch-role">Architect & Director</span>
+              </div>
+            </div>
           </div>
 
-          <!-- Holographic Light Shimmer Layer -->
-          <div class="portrait-shimmer" aria-hidden="true"></div>
+          <!-- WebGL 3D Canvas Stage -->
+          <div class="brain-3d-stage" id="brain-3d-stage">
+            <canvas id="second-brain-canvas" class="second-brain-canvas"></canvas>
+            
+            <!-- 3D Projected Agent HTML Badges Container -->
+            <div id="brain-agent-pins" class="brain-agent-pins" aria-hidden="true"></div>
+
+            <!-- Central Brain Hologram HUD Label -->
+            <div class="brain-center-hud" id="brain-center-hud">
+              <span class="center-hud-tag">CORE KERNEL</span>
+              <span class="center-hud-title">SECOND BRAIN</span>
+              <span class="center-hud-sub">GraphRAG · Vector Memory · Dual Hemispheres</span>
+            </div>
+
+            <!-- Quick Instructions Pill -->
+            <div class="brain-hint-pill">
+              <span class="hint-icon">🖱️</span> Kéo xoay 3D · Cuộn phóng to · Nhấp vào Agent xem luồng dữ liệu
+            </div>
+          </div>
+
+          <!-- Inspector HUD Drawer (Hiển thị chi tiết khi chọn Agent) -->
+          <div class="brain-inspector-hud" id="brain-inspector-hud">
+            <div class="inspector-header">
+              <div class="inspector-agent-meta">
+                <span class="inspector-icon" id="inspector-icon">🎯</span>
+                <div>
+                  <div class="inspector-code" id="inspector-code">AGENT A01 • ONLINE</div>
+                  <h4 class="inspector-title" id="inspector-title">AI Strategy & Leadership</h4>
+                </div>
+              </div>
+              <button class="inspector-close" id="inspector-close" aria-label="Đóng bảng chi tiết">✕</button>
+            </div>
+            <p class="inspector-desc" id="inspector-desc">Hoạch định kiến trúc AI tổng thể, lộ trình ứng dụng GenAI và chuyển đổi số cho cơ quan, trường học và doanh nghiệp.</p>
+            <div class="inspector-telemetry">
+              <div class="telemetry-item">
+                <span class="tel-label">BĂNG THÔNG DỮ LIỆU</span>
+                <span class="tel-val" id="inspector-stream">3.8 GB/s</span>
+              </div>
+              <div class="telemetry-item">
+                <span class="tel-label">ĐỘ TRỄ PHẢN HỒI</span>
+                <span class="tel-val" id="inspector-latency">6 ms</span>
+              </div>
+              <div class="telemetry-item">
+                <span class="tel-label">GIAO THỨC ĐIỀU PHỐI</span>
+                <span class="tel-val" id="inspector-protocol">C-Level Graph / LangGraph</span>
+              </div>
+            </div>
+            <div class="inspector-actions">
+              <a href="#expertise" class="btn-micro" id="inspector-link">Khám phá Năng Lực Chiến Lược ↗</a>
+            </div>
+          </div>
+
+          <!-- Console Bottom Controls & Quick Selector -->
+          <div class="brain-console-footer">
+            <div class="agent-quick-selector" id="agent-quick-selector">
+              <!-- Nạp động 10 Agent pills -->
+            </div>
+            <div class="brain-console-actions">
+              <button class="brain-ctrl-btn active" id="btn-toggle-spin" title="Bật/Tắt tự động xoay 3D">
+                <span class="btn-icon">🔄</span> Xoay 3D
+              </button>
+              <button class="brain-ctrl-btn" id="btn-toggle-speed" title="Tăng tốc độ luồng dữ liệu">
+                <span class="btn-icon">⚡</span> Luồng nhanh
+              </button>
+              <button class="brain-ctrl-btn" id="btn-reset-view" title="Căn giữa góc nhìn mặc định">
+                <span class="btn-icon">🎯</span> Căn giữa
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -794,30 +872,43 @@
             <span class="kicker">EVENT MEDIA & VIDEO</span>
             <h2>Video sự kiện & Bài giảng thực tế</h2>
           </div>
-          <p>Xem lại các video bài giảng, sự kiện tập huấn và hoạt động chia sẻ ứng dụng AI thực tế qua danh sách phát video chạy liên tục.</p>
+          <p>Xem lại các video giới thiệu, bài giảng chuyên sâu và các hoạt động tập huấn ứng dụng AI thực tế của Học viện Công nghệ AIUNI.</p>
         </div>
 
         <div class="video-container-card">
+          <!-- Video Quick Switcher Tabs -->
+          <div class="video-channel-tabs" style="display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap;">
+            <button class="btn sm video-tab-btn active" id="tab-video-intro" onclick="switchVideoChannel('intro')" style="display: inline-flex; align-items: center; gap: 6px;">
+              <span>▶</span> Video Giới thiệu AIUNI
+            </button>
+            <button class="btn sm ghost video-tab-btn" id="tab-video-playlist" onclick="switchVideoChannel('playlist')" style="display: inline-flex; align-items: center; gap: 6px;">
+              <span>📺</span> Playlist Tập huấn AI liên tục
+            </button>
+          </div>
+
           <!-- 16:9 Video Responsive Player -->
           <div class="video-responsive-frame">
             <iframe id="event-playlist-iframe"
-              src="https://www.youtube.com/embed/videoseries?list=PLr6-GrHGF5mNH00jAfi4o4R0a_8_YqX9J&autoplay=0&rel=0&loop=1"
-              title="Danh sách phát Video Sự kiện Dương Trung Hiếu"
+              width="560" height="315"
+              src="https://www.youtube.com/embed/W2YSUnCU5yE?si=jzDo9hyCT0G9aMIK"
+              title="GIỚI THIỆU HỌC VIỆN CÔNG NGHỆ AIUNI - DƯƠNG TRUNG HIẾU"
+              frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
               allowfullscreen></iframe>
           </div>
 
           <!-- Playlist Meta Bar & Dynamic Link Input -->
           <div class="playlist-meta-bar">
-            <div class="playlist-meta-info">
-              <span class="playlist-badge">DANH SÁCH PHÁT CHẠY LIÊN TỤC (PLAYLIST)</span>
-              <h3>Kho Video Đào tạo, Hội thảo & Ứng dụng AI</h3>
-              <p>Tổng hợp các video ghi lại bài giảng, hội thảo chuyên đề và khoảnh khắc tập huấn ứng dụng AI thực tế. Hỗ trợ phát tuần tự liên tục theo danh sách phát.</p>
+            <div class="playlist-meta-info" id="video-meta-info">
+              <span class="playlist-badge" id="video-badge">VIDEO TIÊU ĐIỂM · CHÍNH THỨC</span>
+              <h3 id="video-title">GIỚI THIỆU HỌC VIỆN CÔNG NGHỆ AIUNI</h3>
+              <p id="video-desc">Khám phá tầm nhìn, sứ mệnh phổ cập AI toàn dân, phong trào Bình dân học vụ số, đào tạo 1.000 Giảng viên GenAI và hệ sinh thái giải pháp AI ứng dụng thực chiến của Học viện Công nghệ AIUNI cùng Thầy Dương Trung Hiếu.</p>
             </div>
 
             <div class="playlist-input-box">
-              <input type="text" id="playlist-url-input" placeholder="Dán link playlist YouTube vào đây..." aria-label="Đường dẫn danh sách phát YouTube">
-              <button id="playlist-update-btn" class="btn sm">Phát Playlist ↗</button>
+              <input type="text" id="playlist-url-input" placeholder="Dán link video hoặc playlist YouTube vào đây..." aria-label="Đường dẫn video hoặc danh sách phát YouTube">
+              <button id="playlist-update-btn" class="btn sm">Phát Video ↗</button>
             </div>
           </div>
         </div>
@@ -1138,5 +1229,8 @@
   <!-- Press & Media Coverage Data & Controller -->
   <script src="js/press-data.js?v=5.4"></script>
   <script src="js/press.js?v=5.4"></script>
+  <!-- Three.js 3D Library for Second Brain & 10 AI Agents -->
+  <script src="js/three.min.js"></script>
+  <script src="js/second-brain-3d.js?v=6.0"></script>
 </body>
 </html>

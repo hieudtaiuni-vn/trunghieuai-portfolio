@@ -827,6 +827,34 @@ Nắm vững toàn bộ hồ sơ của Thầy Hiếu:
   }
 
   // 7. Video Playlist URL Dynamic Updater
+  
+  // Switch between Intro Video and Continuous Training Playlist
+  window.switchVideoChannel = function(type) {
+    const iframe = document.getElementById('event-playlist-iframe');
+    const btnIntro = document.getElementById('tab-video-intro');
+    const btnPlaylist = document.getElementById('tab-video-playlist');
+    const badge = document.getElementById('video-badge');
+    const title = document.getElementById('video-title');
+    const desc = document.getElementById('video-desc');
+    if (!iframe) return;
+
+    if (type === 'intro') {
+      iframe.src = 'https://www.youtube.com/embed/W2YSUnCU5yE?si=jzDo9hyCT0G9aMIK&autoplay=1';
+      if (btnIntro) { btnIntro.classList.add('active'); btnIntro.classList.remove('ghost'); }
+      if (btnPlaylist) { btnPlaylist.classList.remove('active'); btnPlaylist.classList.add('ghost'); }
+      if (badge) badge.textContent = 'VIDEO TIÊU ĐIỂM · CHÍNH THỨC';
+      if (title) title.textContent = 'GIỚI THIỆU HỌC VIỆN CÔNG NGHỆ AIUNI';
+      if (desc) desc.textContent = 'Khám phá tầm nhìn, sứ mệnh phổ cập AI toàn dân, phong trào Bình dân học vụ số, đào tạo 1.000 Giảng viên GenAI và hệ sinh thái giải pháp AI ứng dụng thực chiến của Học viện Công nghệ AIUNI cùng Thầy Dương Trung Hiếu.';
+    } else {
+      iframe.src = 'https://www.youtube.com/embed/videoseries?list=PLr6-GrHGF5mNH00jAfi4o4R0a_8_YqX9J&autoplay=1&loop=1&rel=0';
+      if (btnPlaylist) { btnPlaylist.classList.add('active'); btnPlaylist.classList.remove('ghost'); }
+      if (btnIntro) { btnIntro.classList.remove('active'); btnIntro.classList.add('ghost'); }
+      if (badge) badge.textContent = 'DANH SÁCH PHÁT CHẠY LIÊN TỤC (PLAYLIST)';
+      if (title) title.textContent = 'Kho Video Đào tạo, Hội thảo & Ứng dụng AI';
+      if (desc) desc.textContent = 'Tổng hợp các video ghi lại bài giảng, hội thảo chuyên đề và khoảnh khắc tập huấn ứng dụng AI thực tế. Hỗ trợ phát tuần tự liên tục theo danh sách phát.';
+    }
+  };
+
   const playlistInput = document.getElementById('playlist-url-input');
   const playlistBtn = document.getElementById('playlist-update-btn');
   const playlistIframe = document.getElementById('event-playlist-iframe');
