@@ -615,4 +615,274 @@ Nắm vững toàn bộ hồ sơ của Thầy Hiếu:
       }
     });
   }
+
+
+  // ==========================================================================
+  // GÓI B: UI MOTION, SCROLL-DRIVEN PARALLAX & 3D INTERACTIVE CANVAS
+  // ==========================================================================
+
+  // B1. Scroll Progress Bar & Smart Sticky Navbar
+  const progressBar = document.getElementById('scroll-progress');
+  const mainNav = document.querySelector('.nav');
+
+  function handleScrollProgress() {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+
+    if (progressBar) {
+      progressBar.style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+    }
+
+    if (mainNav) {
+      if (scrollTop > 35) {
+        mainNav.classList.add('scrolled');
+      } else {
+        mainNav.classList.remove('scrolled');
+      }
+    }
+  }
+  window.addEventListener('scroll', handleScrollProgress, { passive: true });
+  handleScrollProgress();
+
+  // B2. Ambient Pointer Glow (Desktop Mouse Following)
+  const pointerGlow = document.getElementById('pointer-glow');
+  if (pointerGlow && window.matchMedia('(hover: hover)').matches) {
+    let mouseX = -500;
+    let mouseY = -500;
+    let currentX = -500;
+    let currentY = -500;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      pointerGlow.style.opacity = '1';
+    }, { passive: true });
+
+    document.addEventListener('mouseleave', () => {
+      pointerGlow.style.opacity = '0';
+    });
+
+    function animatePointerGlow() {
+      // Smooth lerp
+      currentX += (mouseX - currentX) * 0.15;
+      currentY += (mouseY - currentY) * 0.15;
+      pointerGlow.style.left = `${currentX}px`;
+      pointerGlow.style.top = `${currentY}px`;
+      requestAnimationFrame(animatePointerGlow);
+    }
+    animatePointerGlow();
+  }
+
+  // B3. Hero Neural Mesh Interactive Canvas
+  const neuralCanvas = document.getElementById('hero-neural-canvas');
+  const heroSection = document.getElementById('hero-section');
+
+  if (neuralCanvas && heroSection) {
+    const ctx = neuralCanvas.getContext('2d');
+    let width = 0;
+    let height = 0;
+    let particles = [];
+    let isHeroVisible = true;
+    let mouse = { x: -1000, y: -1000, active: false };
+
+    function resizeCanvas() {
+      width = heroSection.offsetWidth;
+      height = heroSection.offsetHeight;
+      neuralCanvas.width = width;
+      neuralCanvas.height = height;
+      initParticles();
+    }
+
+    function initParticles() {
+      particles = [];
+      const particleCount = Math.floor(Math.min(50, Math.max(25, width / 30)));
+      for (let i = 0; i < particleCount; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.7,
+          vy: (Math.random() - 0.5) * 0.7,
+          radius: Math.random() * 1.5 + 1.2,
+          alpha: Math.random() * 0.5 + 0.3
+        });
+      }
+    }
+
+    heroSection.addEventListener('mousemove', (e) => {
+      const rect = heroSection.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+      mouse.active = true;
+    }, { passive: true });
+
+    heroSection.addEventListener('mouseleave', () => {
+      mouse.active = false;
+      mouse.x = -1000;
+      mouse.y = -1000;
+    });
+
+    // Pause animation when hero is off-screen to preserve battery & CPU
+    const heroObserver = new IntersectionObserver((entries) => {
+      isHeroVisible = entries[0].isIntersecting;
+      if (isHeroVisible) {
+        requestAnimationFrame(renderNeural);
+      }
+    }, { threshold: 0.05 });
+    heroObserver.observe(heroSection);
+
+    function renderNeural() {
+      if (!isHeroVisible) return;
+
+      ctx.clearRect(0, 0, width, height);
+
+      // Update & Draw particles
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+
+        // Bounce boundaries
+        if (p.x < 0 || p.x > width) p.vx *= -1;
+        if (p.y < 0 || p.y > height) p.vy *= -1;
+
+        // Mouse gentle interaction
+        if (mouse.active) {
+          const dx = p.x - mouse.x;
+          const dy = p.y - mouse.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 120) {
+            const force = (120 - dist) / 120;
+            p.x += (dx / dist) * force * 1.2;
+            p.y += (dy / dist) * force * 1.2;
+          }
+        }
+
+        // Draw dot
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(56, 189, 248, ${p.alpha})`;
+        ctx.fill();
+
+        // Connect nearby particles
+        for (let j = i + 1; j < particles.length; j++) {
+          const p2 = particles[j];
+          const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+          if (dist < 110) {
+            const lineAlpha = (1 - dist / 110) * 0.28;
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.strokeStyle = `rgba(45, 112, 182, ${lineAlpha})`;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+        }
+
+        // Connect to mouse cursor
+        if (mouse.active) {
+          const mDist = Math.hypot(p.x - mouse.x, p.y - mouse.y);
+          if (mDist < 140) {
+            const mAlpha = (1 - mDist / 140) * 0.45;
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(mouse.x, mouse.y);
+            ctx.strokeStyle = `rgba(56, 189, 248, ${mAlpha})`;
+            ctx.lineWidth = 1.2;
+            ctx.stroke();
+          }
+        }
+      }
+
+      requestAnimationFrame(renderNeural);
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+  }
+
+  // B4. Scroll-Driven Reveal on Scroll
+  const revealElements = document.querySelectorAll('.reveal-on-scroll');
+  if (revealElements.length > 0) {
+    const revealObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-revealed');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+  }
+
+  // B5. Animated Numeric Counters (Stats HUD)
+  const statsHud = document.querySelector('.hero-stats-hud');
+  if (statsHud) {
+    let hasAnimated = false;
+    const counters = statsHud.querySelectorAll('.stat-counter');
+
+    const statsObserver = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && !hasAnimated) {
+        hasAnimated = true;
+        counters.forEach(counter => {
+          const target = parseInt(counter.getAttribute('data-target'), 10) || 0;
+          const duration = 1600; // ms
+          const startTime = performance.now();
+
+          function updateCount(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            // Ease out cubic
+            const easeOut = 1 - Math.pow(1 - progress, 3);
+            const currentVal = Math.floor(easeOut * target);
+
+            counter.textContent = currentVal;
+
+            if (progress < 1) {
+              requestAnimationFrame(updateCount);
+            } else {
+              counter.textContent = target;
+            }
+          }
+          requestAnimationFrame(updateCount);
+        });
+      }
+    }, { threshold: 0.3 });
+
+    statsObserver.observe(statsHud);
+  }
+
+  // B6. 3D Tilt for 4 Pillar Cards
+  const pillarCards = document.querySelectorAll('.pillar-card');
+  if (pillarCards.length > 0 && window.matchMedia('(hover: hover)').matches) {
+    pillarCards.forEach(card => {
+      let b = null;
+
+      card.addEventListener('mouseenter', () => {
+        b = card.getBoundingClientRect();
+        card.style.transition = 'transform 0.12s ease-out, box-shadow 0.3s ease';
+      });
+
+      card.addEventListener('mousemove', (e) => {
+        if (!b) b = card.getBoundingClientRect();
+        const x = e.clientX - b.left;
+        const y = e.clientY - b.top;
+        const xPct = (x / b.width) - 0.5;
+        const yPct = (y / b.height) - 0.5;
+
+        const rotX = -yPct * 8; // degrees
+        const rotY = xPct * 8;
+
+        card.style.transform = `perspective(800px) rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) scale3d(1.02, 1.02, 1.02)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease';
+        card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+        b = null;
+      });
+    });
+  }
+
 });
