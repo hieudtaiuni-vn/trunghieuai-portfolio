@@ -171,10 +171,10 @@ const newIndexHtml = `<!DOCTYPE html>
                 <small>Trợ lý AI Đảng vụ, thủ tục hành chính công & Tổ CNS cộng đồng</small>
               </div>
             </a>
-            <a href="ho-so-chi-tiet.html#nang-luc" class="hero-portal-card" title="Dành cho Doanh nghiệp & Quản trị SME">
+            <a href="ho-so-chi-tiet.html#nang-luc" class="hero-portal-card" title="Dành cho Doanh nghiệp & Hộ kinh doanh">
               <span class="portal-icon">🏢</span>
               <div class="portal-info">
-                <strong>Doanh nghiệp SME</strong>
+                <strong>Doanh nghiệp & Hộ kinh doanh</strong>
                 <small>Tự động hóa vận hành, CSKH 24/7 & tối ưu chi phí quản trị</small>
               </div>
             </a>
