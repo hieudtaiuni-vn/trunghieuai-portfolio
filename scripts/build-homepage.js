@@ -102,7 +102,7 @@ const newIndexHtml = `<!DOCTYPE html>
 
   <!-- Fixed Video Background cho toàn bộ trang (Neo lại không bị trôi khi cuộn) -->
   <div class="site-fixed-video-bg" aria-hidden="true">
-    <video autoplay loop muted playsinline poster="public/images/video-nen-poster.jpg" id="hero-bg-video">
+    <video autoplay loop muted playsinline webkit-playsinline x5-playsinline preload="auto" disablepictureinpicture disableremoteplayback poster="public/images/video-nen-poster.jpg" id="hero-bg-video">
       <source src="public/videos/video-nen.mp4" type="video/mp4">
     </video>
   </div>

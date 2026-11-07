@@ -961,11 +961,82 @@ Nắm vững toàn bộ hồ sơ của Thầy Hiếu:
   }
 
   
-  // Hero Video Background: Tắt hoàn toàn âm thanh (100% Muted Silent)
+  // ==========================================================================
+  // UNSTOPPABLE CONTINUOUS BACKGROUND VIDEO ENGINE (TỰ ĐỘNG CHẠY LẶP LẠI LIÊN TỤC)
+  // - Luôn tắt tiếng 100% (Muted)
+  // - Tự động lặp lại liên tục (Seamless Loop Watchdog)
+  // - Chống đóng băng / chống treo do trình duyệt tối ưu pin (Keep-Alive Watchdog)
+  // ==========================================================================
   const heroBgVideo = document.getElementById('hero-bg-video');
   if (heroBgVideo) {
     heroBgVideo.muted = true;
+    heroBgVideo.defaultMuted = true;
     heroBgVideo.volume = 0;
+    heroBgVideo.loop = true;
+    heroBgVideo.playsInline = true;
+
+    function safePlayBgVideo() {
+      if (!heroBgVideo) return;
+      heroBgVideo.muted = true;
+      heroBgVideo.defaultMuted = true;
+      heroBgVideo.volume = 0;
+      if (heroBgVideo.paused) {
+        const p = heroBgVideo.play();
+        if (p && typeof p.catch === 'function') {
+          p.catch(() => {});
+        }
+      }
+    }
+
+    // 1. Kích hoạt phát video ngay lập tức
+    safePlayBgVideo();
+
+    // 2. Kích hoạt dự phòng ngay khi người dùng có tương tác đầu tiên (chạm, cuộn, click)
+    const unlockEvents = ['touchstart', 'touchend', 'click', 'scroll', 'pointerdown'];
+    function onFirstInteraction() {
+      safePlayBgVideo();
+      unlockEvents.forEach(evt => window.removeEventListener(evt, onFirstInteraction));
+    }
+    unlockEvents.forEach(evt => window.addEventListener(evt, onFirstInteraction, { passive: true, once: true }));
+
+    // 3. Watchdog tự động lặp lại ngay khi hết thời lượng video (Seamless Loop Failsafe)
+    heroBgVideo.addEventListener('ended', () => {
+      heroBgVideo.currentTime = 0;
+      safePlayBgVideo();
+    });
+
+    // 4. Watchdog chống treo video: kiểm tra định kỳ mỗi 1.2 giây
+    let lastVideoTime = -1;
+    let freezeCount = 0;
+    setInterval(() => {
+      if (document.hidden) return; // Không can thiệp nếu tab đang ẩn
+      if (heroBgVideo.paused) {
+        safePlayBgVideo();
+      } else if (heroBgVideo.currentTime === lastVideoTime && heroBgVideo.readyState >= 2) {
+        // Video bị đứng cùng 1 frame
+        freezeCount++;
+        if (freezeCount >= 2) {
+          heroBgVideo.currentTime = (heroBgVideo.currentTime + 0.1) % (heroBgVideo.duration || 10);
+          safePlayBgVideo();
+          freezeCount = 0;
+        }
+      } else {
+        freezeCount = 0;
+        lastVideoTime = heroBgVideo.currentTime;
+      }
+    }, 1200);
+
+    // 5. Khi người dùng quay lại tab trình duyệt, tiếp tục phát ngay
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) {
+        safePlayBgVideo();
+      }
+    });
+
+    // 6. Cập nhật khi xoay màn hình điện thoại
+    window.addEventListener('orientationchange', () => {
+      setTimeout(safePlayBgVideo, 300);
+    });
   }
 
   // 7. Video Playlist URL Dynamic Updater
