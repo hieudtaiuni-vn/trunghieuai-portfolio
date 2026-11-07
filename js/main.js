@@ -312,46 +312,180 @@ Nắm vững toàn bộ hồ sơ của Thầy Hiếu:
     };
   }
 
-  // 3b. Interactive 3D Tilt & Parallax for Hero Portrait Card (Phương án 2)
+  // 3b. Interactive 3D Tilt & Gyroscope Engine for Portrait Card
+  // - Máy tính: Nghiêng 3D mượt mà theo hướng di chuyển của chuột
+  // - Điện thoại: Nghiêng 3D theo góc nghiêng của thiết bị (DeviceOrientation Gyroscope)
   const portraitCard = document.getElementById('portrait-card');
-  if (portraitCard && window.matchMedia('(hover: hover)').matches) {
+  const heroSectionEl = document.getElementById('hero-section');
+  const portraitRealImg = document.getElementById('portrait-real-img');
+  const portraitShimmerEl = portraitCard ? portraitCard.querySelector('.portrait-shimmer') : null;
+
+  if (portraitCard) {
+    let currentRotX = 0;
+    let currentRotY = 0;
+    let targetRotX = 0;
+    let targetRotY = 0;
+    let targetScale = 1;
+    let isDirectHover = false;
     let bounds = null;
+    let isGyroActive = false;
+    let initialBeta = null;
 
     function updateBounds() {
-      bounds = portraitCard.getBoundingClientRect();
+      if (portraitCard) {
+        bounds = portraitCard.getBoundingClientRect();
+      }
+    }
+
+    // Vòng lặp vật lý mượt mà (Physics Lerp Loop 60fps)
+    function renderTiltLoop() {
+      const lerpFactor = 0.09;
+      currentRotX += (targetRotX - currentRotX) * lerpFactor;
+      currentRotY += (targetRotY - currentRotY) * lerpFactor;
+
+      const scale = isDirectHover ? 1.035 : targetScale;
+      portraitCard.style.transform = `perspective(1000px) rotateX(${currentRotX.toFixed(2)}deg) rotateY(${currentRotY.toFixed(2)}deg) scale3d(${scale}, ${scale}, ${scale})`;
+
+      // Parallax nổi khối cho ảnh chân dung
+      if (portraitRealImg && portraitRealImg.style.display !== 'none') {
+        const transX = (-currentRotY * 0.75).toFixed(1);
+        const transY = (currentRotX * 0.75).toFixed(1);
+        portraitRealImg.style.transform = `translate3d(${transX}px, ${transY}px, 20px) scale(1.04)`;
+      }
+
+      // Quét ánh sáng Holographic Shimmer theo góc nghiêng
+      if (portraitShimmerEl) {
+        const glareX = 50 + currentRotY * 3.2;
+        const glareY = 50 - currentRotX * 3.2;
+        portraitShimmerEl.style.backgroundPosition = `${glareX.toFixed(1)}% ${glareY.toFixed(1)}%`;
+      }
+
+      requestAnimationFrame(renderTiltLoop);
+    }
+    renderTiltLoop();
+
+    // ----------------------------------------------------
+    // 1. MÁY TÍNH: Tương tác theo hướng di chuyển của chuột
+    // ----------------------------------------------------
+    function handleMouseMove(e) {
+      if (!bounds) updateBounds();
+      const cardCenterX = bounds.left + bounds.width / 2;
+      const cardCenterY = bounds.top + bounds.height / 2;
+
+      const deltaX = e.clientX - cardCenterX;
+      const deltaY = e.clientY - cardCenterY;
+
+      if (isDirectHover) {
+        const xPct = (e.clientX - bounds.left) / bounds.width - 0.5;
+        const yPct = (e.clientY - bounds.top) / bounds.height - 0.5;
+        targetRotX = -yPct * 16;
+        targetRotY = xPct * 16;
+        targetScale = 1.035;
+      } else {
+        const maxDist = Math.max(window.innerWidth / 2, 500);
+        const normX = Math.max(-1, Math.min(1, deltaX / maxDist));
+        const normY = Math.max(-1, Math.min(1, deltaY / maxDist));
+        targetRotX = -normY * 8;
+        targetRotY = normX * 8;
+        targetScale = 1.01;
+      }
     }
 
     portraitCard.addEventListener('mouseenter', () => {
+      isDirectHover = true;
       updateBounds();
-      portraitCard.style.transition = 'transform 0.12s ease-out, box-shadow 0.3s ease';
-    });
-
-    portraitCard.addEventListener('mousemove', (e) => {
-      if (!bounds) updateBounds();
-      const mouseX = e.clientX - bounds.left;
-      const mouseY = e.clientY - bounds.top;
-      const xPct = (mouseX / bounds.width) - 0.5;
-      const yPct = (mouseY / bounds.height) - 0.5;
-
-      const maxRotate = 7; // độ nghiêng 3D tối đa
-      const rotX = -yPct * maxRotate;
-      const rotY = xPct * maxRotate;
-
-      portraitCard.style.transform = `perspective(1000px) rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) scale3d(1.02, 1.02, 1.02)`;
     });
 
     portraitCard.addEventListener('mouseleave', () => {
-      portraitCard.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease';
-      portraitCard.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-      bounds = null;
+      isDirectHover = false;
+      targetScale = 1;
     });
+
+    if (heroSectionEl) {
+      heroSectionEl.addEventListener('mousemove', handleMouseMove, { passive: true });
+      heroSectionEl.addEventListener('mouseleave', () => {
+        if (!isGyroActive) {
+          targetRotX = 0;
+          targetRotY = 0;
+          targetScale = 1;
+        }
+      });
+    }
+
+    window.addEventListener('mousemove', (e) => {
+      if (window.scrollY < window.innerHeight * 0.9) {
+        handleMouseMove(e);
+      }
+    }, { passive: true });
+
+    // ----------------------------------------------------
+    // 2. ĐIỆN THOẠI: Nghiêng 3D theo con quay hồi chuyển (DeviceOrientation)
+    // ----------------------------------------------------
+    function handleDeviceOrientation(e) {
+      if (e.gamma === null || e.beta === null) return;
+      isGyroActive = true;
+
+      const gamma = e.gamma; // deg [-90, 90]
+      const beta = e.beta;   // deg [-180, 180]
+
+      if (initialBeta === null) {
+        initialBeta = (beta >= 20 && beta <= 75) ? beta : 45;
+      }
+
+      const deltaBeta = beta - initialBeta;
+      targetRotX = Math.max(-16, Math.min(16, deltaBeta * 0.45));
+      targetRotY = Math.max(-18, Math.min(18, gamma * 0.5));
+      targetScale = 1.02;
+    }
+
+    portraitCard.addEventListener('touchmove', (e) => {
+      if (e.touches && e.touches.length > 0) {
+        if (!bounds) updateBounds();
+        const touch = e.touches[0];
+        const xPct = (touch.clientX - bounds.left) / bounds.width - 0.5;
+        const yPct = (touch.clientY - bounds.top) / bounds.height - 0.5;
+        targetRotX = -yPct * 18;
+        targetRotY = xPct * 18;
+      }
+    }, { passive: true });
+
+    portraitCard.addEventListener('touchend', () => {
+      if (!isGyroActive) {
+        targetRotX = 0;
+        targetRotY = 0;
+        targetScale = 1;
+      }
+    });
+
+    if (window.DeviceOrientationEvent) {
+      if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+        const requestOrientationPermission = () => {
+          DeviceOrientationEvent.requestPermission()
+            .then(perm => {
+              if (perm === 'granted') {
+                window.addEventListener('deviceorientation', handleDeviceOrientation, true);
+              }
+            })
+            .catch(err => console.log('DeviceOrientation permission error:', err));
+          window.removeEventListener('touchstart', requestOrientationPermission);
+          window.removeEventListener('click', requestOrientationPermission);
+        };
+        window.addEventListener('touchstart', requestOrientationPermission, { once: true });
+        window.addEventListener('click', requestOrientationPermission, { once: true });
+      } else {
+        window.addEventListener('deviceorientation', handleDeviceOrientation, true);
+      }
+    }
 
     window.addEventListener('resize', () => {
-      bounds = null;
+      updateBounds();
     });
+    window.addEventListener('scroll', () => {
+      if (bounds) updateBounds();
+    }, { passive: true });
   }
 
-  // 4. Back to top smooth scroll
+    // 4. Back to top smooth scroll
   const backToTopBtn = document.getElementById('backtotop');
   if (backToTopBtn) {
     backToTopBtn.addEventListener('click', (e) => {
