@@ -1,0 +1,462 @@
+const fs = require('fs');
+
+const oldIndexHtml = fs.readFileSync('index.html', 'utf8');
+
+// Helper to extract content inside tags
+function extractSection(html, startTag, endTag) {
+  const startIdx = html.indexOf(startTag);
+  if (startIdx === -1) return '';
+  const endIdx = html.indexOf(endTag, startIdx);
+  if (endIdx === -1) return '';
+  return html.substring(startIdx, endIdx + endTag.length);
+}
+
+// Extract contact section
+const contactSection = extractSection(oldIndexHtml, '<section id="contact">', '</section>');
+
+// Extract chatbox and modals
+const chatboxHtml = oldIndexHtml.substring(
+  oldIndexHtml.indexOf('<!-- AI Assistant Launcher Button -->'),
+  oldIndexHtml.indexOf('</aside>') + '</aside>'.length
+);
+
+const zaloModalHtml = oldIndexHtml.substring(
+  oldIndexHtml.indexOf('<!-- Zalo QR Code Fullscreen Modal Lightbox -->'),
+  oldIndexHtml.indexOf('<!-- Press & Media Coverage Data & Controller -->')
+);
+
+const newIndexHtml = `<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <!-- Primary Meta Tags -->
+  <title>Dương Trung Hiếu | AI · Technology · Innovation</title>
+  <meta name="title" content="Dương Trung Hiếu | AI · Technology · Innovation">
+  <meta name="description" content="Website Portfolio chính thức của Dương Trung Hiếu. Kiến tạo giá trị mới bằng AI và công nghệ: Đào tạo Generative AI, Chuyển đổi số, Tự động hóa và Nền tảng quản trị.">
+  <meta name="keywords" content="Dương Trung Hiếu, trunghieuai, AI, Trí tuệ nhân tạo, Generative AI, Đào tạo AI, AI Strategy, Digital Transformation, Quản trị doanh nghiệp">
+  <meta name="author" content="Dương Trung Hiếu">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://trunghieuai.io.vn/">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="favicon.svg">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://trunghieuai.io.vn/">
+  <meta property="og:title" content="Dương Trung Hiếu | AI · Technology · Innovation">
+  <meta property="og:description" content="Website Portfolio chính thức của Dương Trung Hiếu. Kiến tạo giá trị mới bằng AI và công nghệ: Đào tạo Generative AI, Chuyển đổi số và Quản trị.">
+  <meta property="og:image" content="https://trunghieuai.io.vn/public/images/og-cover.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:locale" content="vi_VN">
+  <meta property="og:site_name" content="Dương Trung Hiếu Portfolio">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://trunghieuai.io.vn/">
+  <meta name="twitter:title" content="Dương Trung Hiếu | AI · Technology · Innovation">
+  <meta name="twitter:description" content="Website Portfolio chính thức của Dương Trung Hiếu. Kiến tạo giá trị mới bằng AI và công nghệ.">
+  <meta name="twitter:image" content="https://trunghieuai.io.vn/public/images/og-cover.png">
+
+  <!-- Fonts & Stylesheet -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;850;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=5.5">
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Dương Trung Hiếu",
+    "url": "https://trunghieuai.io.vn",
+    "image": "https://trunghieuai.io.vn/public/images/anh-the-hieu.jpg",
+    "jobTitle": "Giám đốc Đào tạo",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Học viện Công nghệ AIUNI"
+    },
+    "email": "hieudt.aiuni@gmail.com",
+    "sameAs": [
+      "https://www.facebook.com/share/19d3eRzBgQ/?mibextid=wwXIfr"
+    ],
+    "description": "Giám đốc Đào tạo Học viện Công nghệ AIUNI. Nghiên cứu, đào tạo và ứng dụng trí tuệ nhân tạo vào công việc, tổ chức và hoạt động thực tiễn."
+  }
+  </script>
+</head>
+<body>
+  <!-- Scroll Progress Indicator -->
+  <div id="scroll-progress" class="scroll-progress-bar" aria-hidden="true"></div>
+
+  <!-- Ambient Pointer Glow -->
+  <div id="pointer-glow" class="pointer-glow" aria-hidden="true"></div>
+
+  <!-- Fixed Video Background cho toàn bộ trang (Neo lại không bị trôi khi cuộn) -->
+  <div class="site-fixed-video-bg" aria-hidden="true">
+    <video autoplay loop muted playsinline poster="public/images/video-nen-poster.jpg" id="hero-bg-video">
+      <source src="public/videos/video-nen.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="site-fixed-video-overlay" aria-hidden="true"></div>
+
+  <!-- Nút Bật/Tắt Âm Thanh Video Nền Cố Định -->
+  <button id="hero-sound-toggle" class="hero-sound-btn" aria-label="Bật/Tắt âm thanh video nền" title="Bật/Tắt âm thanh video nền">
+    <span class="sound-icon">🔇</span>
+    <span class="sound-label">Bật âm thanh</span>
+  </button>
+
+  <!-- Navigation Header -->
+  <header class="nav">
+    <div class="wrap navin">
+      <a class="brand" href="#hero-section" aria-label="Trang chủ Dương Trung Hiếu">
+        <div class="brand-row">
+          <div class="brand-icon">TH</div>
+          <span>DƯƠNG TRUNG HIẾU</span>
+        </div>
+        <small>AI · TECHNOLOGY · INNOVATION</small>
+      </a>
+
+      <nav class="nav-links" id="navlinks" aria-label="Menu điều hướng">
+        <a href="#hero-section">Trang chủ</a>
+        <a href="#pillars-section">4 Trụ cột</a>
+        <a href="#projects-section">3 Dự án</a>
+        <a href="#activities-section">3 Hoạt động</a>
+        <a href="ho-so-chi-tiet.html" style="color: #0284c7; font-weight: 750;">Hồ sơ & Chi tiết ↗</a>
+        <a href="#contact">Liên hệ</a>
+      </nav>
+
+      <a class="btn nav-cta" href="ho-so-chi-tiet.html">Hồ sơ chi tiết ↗</a>
+      <button class="menu-toggle" id="menubtn" aria-label="Mở menu điều hướng" aria-expanded="false" aria-controls="navlinks">☰</button>
+    </div>
+  </header>
+
+  <main id="home">
+
+    <!-- 1. Hero Section -->
+    <section class="hero hero-video-stage" id="hero-section">
+      <div class="wrap hero-grid">
+        <div class="hero-copy-col frosted-card" style="padding: 38px 40px; border-radius: 24px;">
+          <div class="eyebrow" style="background: rgba(2, 132, 199, 0.1); color: #0284c7; border: 1px solid rgba(2, 132, 199, 0.25);">AI STRATEGY · EDUCATION · DIGITAL TRANSFORMATION</div>
+          <h1 class="hero-title" style="color: var(--navy); text-shadow: none; font-size: 38px; line-height: 1.25; margin: 12px 0 16px;">Kiến tạo giá trị mới bằng AI và công nghệ.</h1>
+          <p class="lead hero-lead" style="color: #334155; text-shadow: none; font-size: 16px; line-height: 1.6; margin-bottom: 24px;">Nghiên cứu, đào tạo và ứng dụng trí tuệ nhân tạo vào công việc, tổ chức và hoạt động thực tiễn.</p>
+          
+          <div class="hero-actions" style="display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 22px;">
+            <a class="btn hero-btn-primary" href="#projects-section" style="background: linear-gradient(135deg, #0284c7, #2563eb); color: #ffffff; box-shadow: 0 8px 24px rgba(2, 132, 199, 0.35);">Khám phá dự án ↗</a>
+            <a class="btn ghost" href="ho-so-chi-tiet.html" style="background: #ffffff; color: var(--navy); border: 1.5px solid #cbd5e1; box-shadow: 0 4px 12px rgba(0,0,0,0.06); font-weight: 750;">Xem Hồ sơ & Chi tiết ↗</a>
+          </div>
+
+          <div class="tags hero-tags" style="margin-bottom: 22px;">
+            <span class="tag" style="background: #f1f5f9; color: #1e293b; border: 1px solid #e2e8f0;">Generative AI</span>
+            <span class="tag" style="background: #f1f5f9; color: #1e293b; border: 1px solid #e2e8f0;">AI Education</span>
+            <span class="tag" style="background: #f1f5f9; color: #1e293b; border: 1px solid #e2e8f0;">AI Solutions</span>
+            <span class="tag" style="background: #f1f5f9; color: #1e293b; border: 1px solid #e2e8f0;">Digital Transformation</span>
+            <span class="tag" style="background: #f1f5f9; color: #1e293b; border: 1px solid #e2e8f0;">Business Management</span>
+          </div>
+
+          <!-- 3 Lối vào nhanh chuyên biệt: Nền trắng mờ, chữ tối màu cực nét -->
+          <div class="hero-portals">
+            <a href="ho-so-chi-tiet.html#dao-tao" class="hero-portal-card" title="Dành cho Trường học & Giáo viên">
+              <span class="portal-icon">🎓</span>
+              <div class="portal-info">
+                <strong>Trường học & Nhà giáo</strong>
+                <small>Soạn giáo án Chuẩn 5512, ngân hàng đề thi & học liệu số</small>
+              </div>
+            </a>
+            <a href="ho-so-chi-tiet.html#du-an" class="hero-portal-card" title="Dành cho Cơ quan & Cán bộ cơ sở">
+              <span class="portal-icon">🏛️</span>
+              <div class="portal-info">
+                <strong>Cơ quan & Chính quyền</strong>
+                <small>Trợ lý AI Đảng vụ, thủ tục hành chính công & Tổ CNS cộng đồng</small>
+              </div>
+            </a>
+            <a href="ho-so-chi-tiet.html#nang-luc" class="hero-portal-card" title="Dành cho Doanh nghiệp & Quản trị SME">
+              <span class="portal-icon">🏢</span>
+              <div class="portal-info">
+                <strong>Doanh nghiệp SME</strong>
+                <small>Tự động hóa vận hành, CSKH 24/7 & tối ưu chi phí quản trị</small>
+              </div>
+            </a>
+          </div>
+
+          <!-- Hero Dynamic Stats HUD -->
+          <div class="hero-stats-hud reveal-on-scroll" style="background: #ffffff; border: 1px solid #e2e8f0; box-shadow: 0 6px 20px rgba(0,0,0,0.06); border-radius: 14px;">
+            <div class="stat-hud-item">
+              <div class="stat-hud-num" style="color: #0284c7;"><span class="stat-counter" data-target="20">20</span><span class="stat-unit">+</span></div>
+              <div class="stat-hud-label" style="color: #475569;">Năm Kinh Nghiệm Quản Trị & Tài Chính</div>
+            </div>
+            <div class="stat-hud-item">
+              <div class="stat-hud-num" style="color: #0284c7;"><span class="stat-counter" data-target="4">4</span></div>
+              <div class="stat-hud-label" style="color: #475569;">Trụ Cột Năng Lực AI & Chuyển Đổi Số</div>
+            </div>
+            <div class="stat-hud-item">
+              <div class="stat-hud-num" style="color: #0284c7;"><span class="stat-counter" data-target="100">100</span><span class="stat-unit">%</span></div>
+              <div class="stat-hud-label" style="color: #475569;">Đào Tạo Thực Chiến Gắn Sản Phẩm</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Portrait Box - Chân dung Dương Trung Hiếu -->
+        <div class="portrait-card" id="portrait-card" aria-label="Chân dung Dương Trung Hiếu">
+          <img id="portrait-real-img" class="portrait-img" src="public/images/anh-the-hieu.jpg?v=5.1" alt="Chân dung Dương Trung Hiếu - Giám đốc Đào tạo Học viện Công nghệ AIUNI" style="display:none;" loading="eager">
+          
+          <div id="portrait-vector-placeholder" class="portrait-inner">
+            <div class="monogram">DTH</div>
+            <strong>DƯƠNG TRUNG HIẾU</strong>
+            <span>Giám đốc Đào tạo · Học viện Công nghệ AIUNI</span>
+          </div>
+
+          <div class="portrait-shimmer" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. 4 Trụ Cột Năng Lực (Mỗi mục đúng 1 câu) -->
+    <section id="pillars-section" style="padding: 70px 0;">
+      <div class="wrap">
+        <div class="section-head reveal-on-scroll frosted-card" style="padding: 24px 32px; border-radius: 20px; margin-bottom: 24px;">
+          <div>
+            <span class="kicker">CORE PILLARS</span>
+            <h2 style="font-size: 28px; font-weight: 850; color: var(--navy); margin-top: 4px;">4 Trụ Cột Năng Lực Cốt Lõi</h2>
+          </div>
+          <p style="color: #475569; font-size: 15px; margin: 0;">Mỗi trụ cột định hình một năng lực chuyên sâu kết hợp giữa tư duy quản trị tài chính và công nghệ trí tuệ nhân tạo.</p>
+        </div>
+
+        <div class="pillars-summary-grid">
+          <!-- Trụ cột 1 -->
+          <article class="pillar-summary-card frosted-card">
+            <div class="pillar-icon">✳</div>
+            <h3>Nghiên cứu & Chiến lược GenAI</h3>
+            <p>Tư vấn lộ trình chuyển đổi số và ứng dụng Generative AI đo lường hiệu quả thực tế cho từng tổ chức, trường học và doanh nghiệp.</p>
+          </article>
+
+          <!-- Trụ cột 2 -->
+          <article class="pillar-summary-card frosted-card">
+            <div class="pillar-icon">⌘</div>
+            <h3>Đào tạo Chuyển đổi số & Vibe Coding</h3>
+            <p>Đào tạo thực chiến gắn sản phẩm, chuyển giao kỹ năng prompt engineering, vibe coding và tự động hóa quy trình nghiệp vụ ngay tại lớp.</p>
+          </article>
+
+          <!-- Trụ cột 3 -->
+          <article class="pillar-summary-card frosted-card">
+            <div class="pillar-icon">◈</div>
+            <h3>Tự động hóa Doanh nghiệp & Multi-Agent</h3>
+            <p>Phát triển hệ sinh thái AI Agent, trợ lý ảo CSKH 24/7 và giải pháp xử lý văn bản hành chính thông minh chuẩn quy phạm.</p>
+          </article>
+
+          <!-- Trụ cột 4 -->
+          <article class="pillar-summary-card frosted-card">
+            <div class="pillar-icon">▥</div>
+            <h3>Quản trị Tài chính & Pháp lý Dự án</h3>
+            <p>Gần hai thập kỷ kinh nghiệm thẩm định tín dụng, quản trị rủi ro dòng tiền và bảo đảm tuân thủ khung pháp lý công nghệ AI.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. 3 Dự Án Tiêu Biểu Dạng Hàng Gọn (Compact Rows) -->
+    <section id="projects-section" style="padding: 20px 0 70px;">
+      <div class="wrap">
+        <div class="section-head reveal-on-scroll frosted-card" style="padding: 24px 32px; border-radius: 20px; margin-bottom: 24px;">
+          <div>
+            <span class="kicker">FEATURED PROJECTS</span>
+            <h2 style="font-size: 28px; font-weight: 850; color: var(--navy); margin-top: 4px;">3 Dự Án Tiêu Biểu Thực Chiến</h2>
+          </div>
+          <p style="color: #475569; font-size: 15px; margin: 0;">Các giải pháp trí tuệ nhân tạo đã chuyển giao và ứng dụng thực tiễn thành công cho chính quyền, giáo dục và doanh nghiệp.</p>
+        </div>
+
+        <div class="projects-compact-list">
+          <!-- Row 1: Chính quyền số -->
+          <a href="ho-so-chi-tiet.html#du-an" class="project-compact-row frosted-card" title="Xem chi tiết dự án Chính quyền số Kiến An">
+            <div class="project-row-badge" style="background: linear-gradient(135deg, #1e3a8a, #0284c7); color: #ffffff;">🏛️</div>
+            <div class="project-row-content">
+              <div class="project-row-meta">
+                <span class="project-row-tag">CHÍNH QUYỀN SỐ · CƠ SỞ</span>
+                <span style="font-size: 11px; color: #10b981; font-weight: 750;">✓ Đã ứng dụng thực tế (2026)</span>
+              </div>
+              <h3 class="project-row-title">Trợ Lý Ảo AI Đảng Vụ & Văn Thư Hành Chính Cơ Sở</h3>
+              <p class="project-row-desc">Phối hợp phát triển cùng Đảng ủy phường Kiến An và Đặc khu Cát Hải; tự động hóa soạn thảo văn bản chuẩn Nghị định 30/2020 và vận hành App phục vụ nhân dân.</p>
+            </div>
+            <div class="project-row-stats">
+              <div class="project-row-stat-box">
+                <div class="project-row-stat-val">65%</div>
+                <div class="project-row-stat-lbl">Giảm thời gian</div>
+              </div>
+              <div class="project-row-stat-box">
+                <div class="project-row-stat-val">24/7</div>
+                <div class="project-row-stat-lbl">Giải đáp cử tri</div>
+              </div>
+              <div class="project-row-arrow">↗</div>
+            </div>
+          </a>
+
+          <!-- Row 2: Giáo dục 4.0 -->
+          <a href="ho-so-chi-tiet.html#du-an" class="project-compact-row frosted-card" title="Xem chi tiết dự án Giáo dục 4.0 Chuẩn 5512">
+            <div class="project-row-badge" style="background: linear-gradient(135deg, #065f46, #10b981); color: #ffffff;">🎓</div>
+            <div class="project-row-content">
+              <div class="project-row-meta">
+                <span class="project-row-tag">GIÁO DỤC 4.0 · SƯ PHẠM</span>
+                <span style="font-size: 11px; color: #10b981; font-weight: 750;">✓ Chuyển giao toàn quốc</span>
+              </div>
+              <h3 class="project-row-title">Trợ Lý AI Sư Phạm & Thiết Kế Giáo Án Chuẩn 5512</h3>
+              <p class="project-row-desc">Hỗ trợ giáo viên các cấp xây dựng kế hoạch bài dạy chuẩn Công văn 5512/BGDĐT, ma trận đặc tả đề kiểm tra phân hóa theo năng lực GDPT 2018 và học liệu số thông minh.</p>
+            </div>
+            <div class="project-row-stats">
+              <div class="project-row-stat-box">
+                <div class="project-row-stat-val">60%</div>
+                <div class="project-row-stat-lbl">Tiết kiệm thời gian</div>
+              </div>
+              <div class="project-row-stat-box">
+                <div class="project-row-stat-val">1.000+</div>
+                <div class="project-row-stat-lbl">Giáo viên tập huấn</div>
+              </div>
+              <div class="project-row-arrow">↗</div>
+            </div>
+          </a>
+
+          <!-- Row 3: Doanh nghiệp SME -->
+          <a href="ho-so-chi-tiet.html#du-an" class="project-compact-row frosted-card" title="Xem chi tiết dự án Tự động hóa SME">
+            <div class="project-row-badge" style="background: linear-gradient(135deg, #7c2d12, #ea580c); color: #ffffff;">🏢</div>
+            <div class="project-row-content">
+              <div class="project-row-meta">
+                <span class="project-row-tag">QUẢN TRỊ SME · MARKETING</span>
+                <span style="font-size: 11px; color: #10b981; font-weight: 750;">✓ Thực chiến thành công</span>
+              </div>
+              <h3 class="project-row-title">Tự Động Hóa Vận Hành & Trợ Lý Bán Hàng 24/7 Cho Doanh Nghiệp</h3>
+              <p class="project-row-desc">Phối hợp cùng NATEC (Bộ KH&CN) và tỉnh Lào Cai; giúp doanh nghiệp SME tự đóng gói tri thức, thiết lập Chatbot tư vấn 24/7 và tự động hóa marketing đa kênh.</p>
+            </div>
+            <div class="project-row-stats">
+              <div class="project-row-stat-box">
+                <div class="project-row-stat-val">40%</div>
+                <div class="project-row-stat-lbl">Tối ưu chi phí</div>
+              </div>
+              <div class="project-row-stat-box">
+                <div class="project-row-stat-val">100%</div>
+                <div class="project-row-stat-lbl">Chạy tại lớp</div>
+              </div>
+              <div class="project-row-arrow">↗</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 3 Hoạt Động Gần Đây -->
+    <section id="activities-section" style="padding: 20px 0 70px;">
+      <div class="wrap">
+        <div class="section-head reveal-on-scroll frosted-card" style="padding: 24px 32px; border-radius: 20px; margin-bottom: 24px;">
+          <div>
+            <span class="kicker">RECENT ACTIVITIES</span>
+            <h2 style="font-size: 28px; font-weight: 850; color: var(--navy); margin-top: 4px;">3 Hoạt Động Đào Tạo & Chuyển Giao Mới Nhất</h2>
+          </div>
+          <p style="color: #475569; font-size: 15px; margin: 0;">Ghi nhận các sự kiện đào tạo thực tế, hội thảo chuyên môn và tư vấn chuyển đổi số tại các địa phương.</p>
+        </div>
+
+        <div class="activities-summary-grid">
+          <!-- Hoạt động 1 -->
+          <article class="activity-summary-card frosted-card">
+            <div>
+              <div class="activity-card-meta">
+                <span class="activity-date-pill">THÁNG 02/2026</span>
+                <span class="activity-loc-pill">📍 Tỉnh Lào Cai</span>
+              </div>
+              <h3 style="margin-top: 10px;">Khóa Đào Tạo AI Nâng Cao Hiệu Suất Cho Cán Bộ & Doanh Nhân Lào Cai</h3>
+              <p style="margin-top: 8px;">Phối hợp cùng Trung tâm KHCN & ĐMST Lào Cai, hướng dẫn hơn 80 cán bộ và doanh nghiệp ứng dụng GenAI vào tự động hóa công việc và phân tích dữ liệu kinh doanh.</p>
+            </div>
+            <a href="ho-so-chi-tiet.html#tin-tuc" class="activity-card-link">Đọc bài viết chi tiết ↗</a>
+          </article>
+
+          <!-- Hoạt động 2 -->
+          <article class="activity-summary-card frosted-card">
+            <div>
+              <div class="activity-card-meta">
+                <span class="activity-date-pill">THÁNG 01/2026</span>
+                <span class="activity-loc-pill">📍 TP. Hải Phòng</span>
+              </div>
+              <h3 style="margin-top: 10px;">Tập Huấn Ứng Dụng AI Giáo Dục & Chuẩn 5512 Tại THPT Kiến An</h3>
+              <p style="margin-top: 8px;">Chuyển giao giải pháp AI xây dựng kế hoạch bài dạy chuẩn 5512, ngân hàng đề kiểm tra ma trận phân hóa và học liệu số tương tác cho toàn thể giáo viên nhà trường.</p>
+            </div>
+            <a href="ho-so-chi-tiet.html#tin-tuc" class="activity-card-link">Đọc bài viết chi tiết ↗</a>
+          </article>
+
+          <!-- Hoạt động 3 -->
+          <article class="activity-summary-card frosted-card">
+            <div>
+              <div class="activity-card-meta">
+                <span class="activity-date-pill">THÁNG 12/2025</span>
+                <span class="activity-loc-pill">📍 Tỉnh Nam Định</span>
+              </div>
+              <h3 style="margin-top: 10px;">Hội Thảo Chuyển Đổi Số & Tự Động Hóa Doanh Nghiệp Trực Ninh</h3>
+              <p style="margin-top: 8px;">Tư vấn lộ trình AI-First, thiết lập hệ thống Bot CSKH 24/7 và chuyển giao kỹ năng prompt engineering cho các chủ cơ sở kinh doanh và hợp tác xã địa phương.</p>
+            </div>
+            <a href="ho-so-chi-tiet.html#tin-tuc" class="activity-card-link">Đọc bài viết chi tiết ↗</a>
+          </article>
+        </div>
+
+        <!-- Banner Chuyển Tiếp Sang Trang "Hồ Sơ & Chi Tiết" -->
+        <div class="homepage-detail-banner frosted-card">
+          <div class="banner-left">
+            <div class="banner-icon">📑</div>
+            <div class="banner-info">
+              <h3>Khám Phá Toàn Diện Trang "Hồ Sơ & Chi Tiết"</h3>
+              <p>Xem toàn bộ tài liệu chuyên sâu: Triết lý quản trị, Hành trình 20+ năm ngân hàng, 4 Khung đào tạo chuẩn mực (CT-01 đến CT-04), 6 Bài viết tin tức, Video 1080p, Album ảnh 3D, 37+ báo chí nói về AIUNI và Hệ sinh thái đối tác.</p>
+            </div>
+          </div>
+          <a href="ho-so-chi-tiet.html" class="banner-cta-btn">Mở Trang Hồ Sơ & Chi Tiết Đầy Đủ ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Khối Liên Hệ -->
+    <div style="padding: 20px 0 80px;">
+      ${contactSection}
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="wrap footin">
+      <div class="foot-left">
+        <div class="brand-row">
+          <div class="brand-icon">TH</div>
+          <span>DƯƠNG TRUNG HIẾU</span>
+        </div>
+        <small>Giám đốc Đào tạo · Học viện Công nghệ AIUNI</small>
+        <div style="margin-top: 10px; font-size: 13px; color: var(--muted); line-height: 1.5;">
+          Hồ sơ năng lực & hệ sinh thái chuyển đổi số toàn diện.
+        </div>
+      </div>
+      <div class="foot-center">AI · TECHNOLOGY · INNOVATION</div>
+      <div class="foot-right">
+        <a href="ho-so-chi-tiet.html" style="color: var(--blue); font-weight: 600;">Xem Hồ sơ chi tiết ↗</a>
+        <a href="https://www.facebook.com/share/19d3eRzBgQ/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" style="color: var(--blue); font-weight: 600;">Facebook ↗</a>
+        <span>© 2026 Dương Trung Hiếu</span>
+        <a href="#hero-section" id="backtotop" class="back-to-top" aria-label="Lên đầu trang">↑ Đầu trang</a>
+      </div>
+    </div>
+  </footer>
+
+  ${chatboxHtml}
+
+  <!-- Portfolio Config & Cloud CMS Settings -->
+  <script src="js/config.js?v=5.5"></script>
+
+  <!-- Main JavaScript File (ELON MUSK AI Assistant) -->
+  <script src="js/main.js?v=5.5"></script>
+
+  ${zaloModalHtml}
+</body>
+</html>
+`;
+
+fs.writeFileSync('index.html', newIndexHtml, 'utf8');
+console.log('Successfully generated new compact index.html');

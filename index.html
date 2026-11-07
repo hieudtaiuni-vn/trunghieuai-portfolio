@@ -43,7 +43,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;850;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=5.3">
+  <link rel="stylesheet" href="css/styles.css?v=5.5">
 
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
@@ -62,38 +62,35 @@
     "sameAs": [
       "https://www.facebook.com/share/19d3eRzBgQ/?mibextid=wwXIfr"
     ],
-    "description": "Giám đốc Đào tạo Học viện Công nghệ AIUNI. Nghiên cứu, đào tạo và ứng dụng trí tuệ nhân tạo vào công việc, tổ chức và hoạt động thực tiễn.",
-    "alumniOf": [
-      {
-        "@type": "EducationalOrganization",
-        "name": "Đại học Kinh tế Quốc dân"
-      },
-      {
-        "@type": "EducationalOrganization",
-        "name": "Đại học FPT"
-      }
-    ],
-    "knowsAbout": [
-      "Artificial Intelligence",
-      "Generative AI",
-      "Digital Transformation",
-      "Business Management",
-      "Financial Analysis"
-    ]
+    "description": "Giám đốc Đào tạo Học viện Công nghệ AIUNI. Nghiên cứu, đào tạo và ứng dụng trí tuệ nhân tạo vào công việc, tổ chức và hoạt động thực tiễn."
   }
   </script>
 </head>
 <body>
-  <!-- Scroll Progress Indicator (Gói B) -->
+  <!-- Scroll Progress Indicator -->
   <div id="scroll-progress" class="scroll-progress-bar" aria-hidden="true"></div>
 
-  <!-- Ambient Pointer Glow (Gói B) -->
+  <!-- Ambient Pointer Glow -->
   <div id="pointer-glow" class="pointer-glow" aria-hidden="true"></div>
+
+  <!-- Fixed Video Background cho toàn bộ trang (Neo lại không bị trôi khi cuộn) -->
+  <div class="site-fixed-video-bg" aria-hidden="true">
+    <video autoplay loop muted playsinline poster="public/images/video-nen-poster.jpg" id="hero-bg-video">
+      <source src="public/videos/video-nen.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="site-fixed-video-overlay" aria-hidden="true"></div>
+
+  <!-- Nút Bật/Tắt Âm Thanh Video Nền Cố Định -->
+  <button id="hero-sound-toggle" class="hero-sound-btn" aria-label="Bật/Tắt âm thanh video nền" title="Bật/Tắt âm thanh video nền">
+    <span class="sound-icon">🔇</span>
+    <span class="sound-label">Bật âm thanh</span>
+  </button>
 
   <!-- Navigation Header -->
   <header class="nav">
     <div class="wrap navin">
-      <a class="brand" href="#home" aria-label="Trang chủ Dương Trung Hiếu">
+      <a class="brand" href="#hero-section" aria-label="Trang chủ Dương Trung Hiếu">
         <div class="brand-row">
           <div class="brand-icon">TH</div>
           <span>DƯƠNG TRUNG HIẾU</span>
@@ -102,103 +99,85 @@
       </a>
 
       <nav class="nav-links" id="navlinks" aria-label="Menu điều hướng">
-        <a href="#about">Giới thiệu</a>
-        <a href="#expertise">Năng lực</a>
-        <a href="#projects">Dự án</a>
-        <a href="#training">Đào tạo</a>
-        <a href="#articles">Tin tức</a>
-        <a href="#press">Báo chí</a>
-        <a href="#album">Album ảnh</a>
-        <a href="#media">Video</a>
-        <a href="#partners">Đối tác</a>
-        <a href="#contact">Kết nối</a>
+        <a href="#hero-section">Trang chủ</a>
+        <a href="#pillars-section">4 Trụ cột</a>
+        <a href="#projects-section">3 Dự án</a>
+        <a href="#activities-section">3 Hoạt động</a>
+        <a href="ho-so-chi-tiet.html" style="color: #0284c7; font-weight: 750;">Hồ sơ & Chi tiết ↗</a>
+        <a href="#contact">Liên hệ</a>
       </nav>
 
-      <a class="btn nav-cta" href="#contact">Liên hệ hợp tác ↗</a>
+      <a class="btn nav-cta" href="ho-so-chi-tiet.html">Hồ sơ chi tiết ↗</a>
       <button class="menu-toggle" id="menubtn" aria-label="Mở menu điều hướng" aria-expanded="false" aria-controls="navlinks">☰</button>
     </div>
   </header>
 
   <main id="home">
 
-    <!-- Hero Section: Video Nền & Thông Điệp Chiến Lược -->
+    <!-- 1. Hero Section -->
     <section class="hero hero-video-stage" id="hero-section">
-      <!-- Video Nền Website (video nen.mp4) -->
-      <div class="hero-video-bg-wrap" aria-hidden="true">
-        <video id="hero-bg-video" class="hero-video-bg" autoplay loop muted playsinline poster="public/images/video-nen-poster.jpg">
-          <source src="public/videos/video-nen.mp4" type="video/mp4">
-        </video>
-        <div class="hero-video-overlay"></div>
-      </div>
-
-      <!-- Nút Bật/Tắt Âm Thanh Video Nền -->
-      <button id="hero-sound-toggle" class="hero-sound-btn" aria-label="Bật/Tắt âm thanh video nền" title="Bật/Tắt âm thanh video nền">
-        <span class="sound-icon">🔇</span>
-        <span class="sound-label">Bật âm thanh</span>
-      </button>
-
       <div class="wrap hero-grid">
-        <div class="hero-copy-col">
-          <div class="eyebrow">AI STRATEGY · EDUCATION · DIGITAL TRANSFORMATION</div>
-          <h1 class="hero-title">Kiến tạo giá trị mới bằng AI và công nghệ.</h1>
-          <p class="lead hero-lead">Nghiên cứu, đào tạo và ứng dụng trí tuệ nhân tạo vào công việc, tổ chức và hoạt động thực tiễn.</p>
+        <div class="hero-copy-col frosted-card" style="padding: 38px 40px; border-radius: 24px;">
+          <div class="eyebrow" style="background: rgba(2, 132, 199, 0.1); color: #0284c7; border: 1px solid rgba(2, 132, 199, 0.25);">AI STRATEGY · EDUCATION · DIGITAL TRANSFORMATION</div>
+          <h1 class="hero-title" style="color: var(--navy); text-shadow: none; font-size: 38px; line-height: 1.25; margin: 12px 0 16px;">Kiến tạo giá trị mới bằng AI và công nghệ.</h1>
+          <p class="lead hero-lead" style="color: #334155; text-shadow: none; font-size: 16px; line-height: 1.6; margin-bottom: 24px;">Nghiên cứu, đào tạo và ứng dụng trí tuệ nhân tạo vào công việc, tổ chức và hoạt động thực tiễn.</p>
           
-          <div class="hero-actions">
-            <a class="btn hero-btn-primary" href="#projects">Khám phá dự án ↗</a>
-            <a class="btn ghost hero-btn-ghost" href="#about">Tìm hiểu về tôi</a>
+          <div class="hero-actions" style="display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 22px;">
+            <a class="btn hero-btn-primary" href="#projects-section" style="background: linear-gradient(135deg, #0284c7, #2563eb); color: #ffffff; box-shadow: 0 8px 24px rgba(2, 132, 199, 0.35);">Khám phá dự án ↗</a>
+            <a class="btn ghost" href="ho-so-chi-tiet.html" style="background: #ffffff; color: var(--navy); border: 1.5px solid #cbd5e1; box-shadow: 0 4px 12px rgba(0,0,0,0.06); font-weight: 750;">Xem Hồ sơ & Chi tiết ↗</a>
           </div>
 
-          <div class="tags hero-tags">
-            <span class="tag">Generative AI</span>
-            <span class="tag">AI Education</span>
-            <span class="tag">AI Solutions</span>
-            <span class="tag">Digital Transformation</span>
-            <span class="tag">Business Management</span>
+          <div class="tags hero-tags" style="margin-bottom: 22px;">
+            <span class="tag" style="background: #f1f5f9; color: #1e293b; border: 1px solid #e2e8f0;">Generative AI</span>
+            <span class="tag" style="background: #f1f5f9; color: #1e293b; border: 1px solid #e2e8f0;">AI Education</span>
+            <span class="tag" style="background: #f1f5f9; color: #1e293b; border: 1px solid #e2e8f0;">AI Solutions</span>
+            <span class="tag" style="background: #f1f5f9; color: #1e293b; border: 1px solid #e2e8f0;">Digital Transformation</span>
+            <span class="tag" style="background: #f1f5f9; color: #1e293b; border: 1px solid #e2e8f0;">Business Management</span>
           </div>
 
-          <!-- 3 Lối vào nhanh theo đối tượng chuyên biệt -->
+          <!-- 3 Lối vào nhanh chuyên biệt: Nền trắng mờ, chữ tối màu cực nét -->
           <div class="hero-portals">
-            <a href="#training" class="hero-portal-card" title="Dành cho Trường học & Giáo viên">
+            <a href="ho-so-chi-tiet.html#dao-tao" class="hero-portal-card" title="Dành cho Trường học & Giáo viên">
               <span class="portal-icon">🎓</span>
               <div class="portal-info">
-                <strong>Trường học & Nhà giáo</strong>
-                <small>Soạn giáo án Chuẩn 5512, ngân hàng đề thi & học liệu số</small>
+                <strong style="color: #0f172a !important; font-weight: 800; font-size: 14px;">Trường học & Nhà giáo</strong>
+                <small style="color: #475569 !important; font-size: 11.5px; line-height: 1.35;">Soạn giáo án Chuẩn 5512, ngân hàng đề thi & học liệu số</small>
               </div>
             </a>
-            <a href="#projects" class="hero-portal-card" title="Dành cho Cơ quan & Cán bộ cơ sở">
+            <a href="ho-so-chi-tiet.html#du-an" class="hero-portal-card" title="Dành cho Cơ quan & Cán bộ cơ sở">
               <span class="portal-icon">🏛️</span>
               <div class="portal-info">
-                <strong>Cơ quan & Chính quyền</strong>
-                <small>Trợ lý AI Đảng vụ, thủ tục hành chính công & Tổ CNS cộng đồng</small>
+                <strong style="color: #0f172a !important; font-weight: 800; font-size: 14px;">Cơ quan & Chính quyền</strong>
+                <small style="color: #475569 !important; font-size: 11.5px; line-height: 1.35;">Trợ lý AI Đảng vụ, thủ tục hành chính công & Tổ CNS cộng đồng</small>
               </div>
             </a>
-            <a href="#expertise" class="hero-portal-card" title="Dành cho Doanh nghiệp & Quản trị SME">
+            <a href="ho-so-chi-tiet.html#nang-luc" class="hero-portal-card" title="Dành cho Doanh nghiệp & Quản trị SME">
               <span class="portal-icon">🏢</span>
               <div class="portal-info">
-                <strong>Doanh nghiệp SME</strong>
-                <small>Tự động hóa vận hành, CSKH 24/7 & tối ưu chi phí quản trị</small>
+                <strong style="color: #0f172a !important; font-weight: 800; font-size: 14px;">Doanh nghiệp SME</strong>
+                <small style="color: #475569 !important; font-size: 11.5px; line-height: 1.35;">Tự động hóa vận hành, CSKH 24/7 & tối ưu chi phí quản trị</small>
               </div>
             </a>
           </div>
 
           <!-- Hero Dynamic Stats HUD -->
-          <div class="hero-stats-hud reveal-on-scroll">
+          <div class="hero-stats-hud reveal-on-scroll" style="background: #ffffff; border: 1px solid #e2e8f0; box-shadow: 0 6px 20px rgba(0,0,0,0.06); border-radius: 14px;">
             <div class="stat-hud-item">
-              <div class="stat-hud-num"><span class="stat-counter" data-target="20">20</span><span class="stat-unit">+</span></div>
-              <div class="stat-hud-label">Năm Kinh Nghiệm Quản Trị & Tài Chính</div>
+              <div class="stat-hud-num" style="color: #0284c7;"><span class="stat-counter" data-target="20">20</span><span class="stat-unit">+</span></div>
+              <div class="stat-hud-label" style="color: #475569;">Năm Kinh Nghiệm Quản Trị & Tài Chính</div>
             </div>
             <div class="stat-hud-item">
-              <div class="stat-hud-num"><span class="stat-counter" data-target="4">4</span></div>
-              <div class="stat-hud-label">Trụ Cột Năng Lực AI & Chuyển Đổi Số</div>
+              <div class="stat-hud-num" style="color: #0284c7;"><span class="stat-counter" data-target="4">4</span></div>
+              <div class="stat-hud-label" style="color: #475569;">Trụ Cột Năng Lực AI & Chuyển Đổi Số</div>
             </div>
             <div class="stat-hud-item">
-              <div class="stat-hud-num"><span class="stat-counter" data-target="100">100</span><span class="stat-unit">%</span></div>
-              <div class="stat-hud-label">Đào Tạo Thực Chiến Gắn Sản Phẩm</div>
+              <div class="stat-hud-num" style="color: #0284c7;"><span class="stat-counter" data-target="100">100</span><span class="stat-unit">%</span></div>
+              <div class="stat-hud-label" style="color: #475569;">Đào Tạo Thực Chiến Gắn Sản Phẩm</div>
             </div>
           </div>
         </div>
 
-        <!-- Portrait Box - Chân dung Dương Trung Hiếu với 3D Tilt & Holographic Sweep -->
+        <!-- Portrait Box - Chân dung Dương Trung Hiếu -->
         <div class="portrait-card" id="portrait-card" aria-label="Chân dung Dương Trung Hiếu">
           <img id="portrait-real-img" class="portrait-img" src="public/images/anh-the-hieu.jpg?v=5.1" alt="Chân dung Dương Trung Hiếu - Giám đốc Đào tạo Học viện Công nghệ AIUNI" style="display:none;" loading="eager">
           
@@ -213,783 +192,205 @@
       </div>
     </section>
 
-    <!-- Expertise Section -->
-    <section id="expertise">
+    <!-- 2. 4 Trụ Cột Năng Lực (Mỗi mục đúng 1 câu) -->
+    <section id="pillars-section" style="padding: 70px 0;">
       <div class="wrap">
-        <div class="section-head reveal-on-scroll">
+        <div class="section-head reveal-on-scroll frosted-card" style="padding: 24px 32px; border-radius: 20px; margin-bottom: 24px;">
           <div>
-            <span class="kicker">WHAT I DO</span>
-            <h2>Năng lực chuyên môn</h2>
+            <span class="kicker">CORE PILLARS</span>
+            <h2 style="font-size: 28px; font-weight: 850; color: var(--navy); margin-top: 4px;">4 Trụ Cột Năng Lực Cốt Lõi</h2>
           </div>
-          <p>Kết hợp nền tảng quản trị với tư duy công nghệ để phát triển các giải pháp AI có khả năng ứng dụng thực tế cao.</p>
+          <p style="color: #475569; font-size: 15px; margin: 0;">Mỗi trụ cột định hình một năng lực chuyên sâu kết hợp giữa tư duy quản trị tài chính và công nghệ trí tuệ nhân tạo.</p>
         </div>
 
-        <div class="grid4">
-          <article class="card pillar-card reveal-on-scroll">
-            <div class="icon">✳</div>
-            <h3>AI Strategy & Education</h3>
-            <p>Đào tạo Generative AI, thiết kế chương trình và phát triển năng lực ứng dụng AI bài bản cho cá nhân và tổ chức.</p>
+        <div class="pillars-summary-grid">
+          <!-- Trụ cột 1 -->
+          <article class="pillar-summary-card frosted-card">
+            <div class="pillar-icon">✳</div>
+            <h3>Nghiên cứu & Chiến lược GenAI</h3>
+            <p>Tư vấn lộ trình chuyển đổi số và ứng dụng Generative AI đo lường hiệu quả thực tế cho từng tổ chức, trường học và doanh nghiệp.</p>
           </article>
 
-          <article class="card pillar-card reveal-on-scroll">
-            <div class="icon">⌘</div>
-            <h3>AI Solutions & Automation</h3>
-            <p>Trợ lý AI, chatbot, AI Agent, hệ thống tri thức và tự động hóa quy trình nghiệp vụ thông minh.</p>
+          <!-- Trụ cột 2 -->
+          <article class="pillar-summary-card frosted-card">
+            <div class="pillar-icon">⌘</div>
+            <h3>Đào tạo Chuyển đổi số & Vibe Coding</h3>
+            <p>Đào tạo thực chiến gắn sản phẩm, chuyển giao kỹ năng prompt engineering, vibe coding và tự động hóa quy trình nghiệp vụ ngay tại lớp.</p>
           </article>
 
-          <article class="card pillar-card reveal-on-scroll">
-            <div class="icon">◈</div>
-            <h3>Digital Transformation</h3>
-            <p>Ứng dụng công nghệ trong giáo dục, quản trị, hành chính và đổi mới mô hình vận hành kinh doanh.</p>
+          <!-- Trụ cột 3 -->
+          <article class="pillar-summary-card frosted-card">
+            <div class="pillar-icon">◈</div>
+            <h3>Tự động hóa Doanh nghiệp & Multi-Agent</h3>
+            <p>Phát triển hệ sinh thái AI Agent, trợ lý ảo CSKH 24/7 và giải pháp xử lý văn bản hành chính thông minh chuẩn quy phạm.</p>
           </article>
 
-          <article class="card pillar-card reveal-on-scroll">
-            <div class="icon">▥</div>
-            <h3>Business Management</h3>
-            <p>Nền tảng tài chính – ngân hàng, thẩm định tín dụng, quản trị rủi ro và quản trị doanh nghiệp vững chắc.</p>
+          <!-- Trụ cột 4 -->
+          <article class="pillar-summary-card frosted-card">
+            <div class="pillar-icon">▥</div>
+            <h3>Quản trị Tài chính & Pháp lý Dự án</h3>
+            <p>Gần hai thập kỷ kinh nghiệm thẩm định tín dụng, quản trị rủi ro dòng tiền và bảo đảm tuân thủ khung pháp lý công nghệ AI.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about" id="about">
-      <div class="wrap about-grid reveal-on-scroll">
-        <div class="about-panel">
-          <span class="kicker" style="color: #93c5fd;">ABOUT PHILOSOPHY</span>
-          <div class="big">Tư duy quản trị.<br>Ứng dụng công nghệ.</div>
-          <p>Định hướng đưa AI từ kiến thức công nghệ đơn thuần thành năng lực cốt lõi và giải pháp giải quyết vấn đề thực tiễn.</p>
-          
-          <div class="edu-box">
-            <div class="edu-item">
-              <strong>🎓 Đại học Kinh tế Quốc dân (2002 – 2006)</strong>
-              <span>Cử nhân Kinh tế</span>
-            </div>
-            <div class="edu-item">
-              <strong>🎓 Đại học FPT (2017 – 2019)</strong>
-              <span>Thạc sĩ Quản trị Kinh doanh (MBA)</span>
-            </div>
+    <!-- 3. 3 Dự Án Tiêu Biểu Dạng Hàng Gọn (Compact Rows) -->
+    <section id="projects-section" style="padding: 20px 0 70px;">
+      <div class="wrap">
+        <div class="section-head reveal-on-scroll frosted-card" style="padding: 24px 32px; border-radius: 20px; margin-bottom: 24px;">
+          <div>
+            <span class="kicker">FEATURED PROJECTS</span>
+            <h2 style="font-size: 28px; font-weight: 850; color: var(--navy); margin-top: 4px;">3 Dự Án Tiêu Biểu Thực Chiến</h2>
           </div>
+          <p style="color: #475569; font-size: 15px; margin: 0;">Các giải pháp trí tuệ nhân tạo đã chuyển giao và ứng dụng thực tiễn thành công cho chính quyền, giáo dục và doanh nghiệp.</p>
         </div>
 
-        <div class="about-copy">
-          <span class="kicker">PROFESSIONAL PROFILE</span>
-          <h3>Dương Trung Hiếu</h3>
-          <p>Hoạt động trong lĩnh vực đào tạo và ứng dụng trí tuệ nhân tạo tạo sinh, chuyển đổi số và quản trị doanh nghiệp. Nền tảng nghề nghiệp được hình thành và tôi luyện qua gần hai thập kỷ trong lĩnh vực tài chính – ngân hàng, thẩm định và quản lý điều hành.</p>
-          
-          <div class="timeline">
-            <div class="tl">
-              <strong>2025 – nay · Học viện Công nghệ AIUNI</strong>
-              <span>Giám đốc Đào tạo</span>
+        <div class="projects-compact-list">
+          <!-- Row 1: Chính quyền số -->
+          <a href="ho-so-chi-tiet.html#du-an" class="project-compact-row frosted-card" title="Xem chi tiết dự án Chính quyền số Kiến An">
+            <div class="project-row-badge" style="background: linear-gradient(135deg, #1e3a8a, #0284c7); color: #ffffff;">🏛️</div>
+            <div class="project-row-content">
+              <div class="project-row-meta">
+                <span class="project-row-tag">CHÍNH QUYỀN SỐ · CƠ SỞ</span>
+                <span style="font-size: 11px; color: #10b981; font-weight: 750;">✓ Đã ứng dụng thực tế (2026)</span>
+              </div>
+              <h3 class="project-row-title">Trợ Lý Ảo AI Đảng Vụ & Văn Thư Hành Chính Cơ Sở</h3>
+              <p class="project-row-desc">Phối hợp phát triển cùng Đảng ủy phường Kiến An và Đặc khu Cát Hải; tự động hóa soạn thảo văn bản chuẩn Nghị định 30/2020 và vận hành App phục vụ nhân dân.</p>
             </div>
-            <div class="tl">
-              <strong>2019 – 2025 · Vietcombank</strong>
-              <span>Team Lead Thẩm định Khách hàng Doanh nghiệp</span>
+            <div class="project-row-stats">
+              <div class="project-row-stat-box">
+                <div class="project-row-stat-val">65%</div>
+                <div class="project-row-stat-lbl">Giảm thời gian</div>
+              </div>
+              <div class="project-row-stat-box">
+                <div class="project-row-stat-val">24/7</div>
+                <div class="project-row-stat-lbl">Giải đáp cử tri</div>
+              </div>
+              <div class="project-row-arrow">↗</div>
             </div>
-            <div class="tl">
-              <strong>2016 – 2019 · OCB</strong>
-              <span>Trưởng phòng SME</span>
+          </a>
+
+          <!-- Row 2: Giáo dục 4.0 -->
+          <a href="ho-so-chi-tiet.html#du-an" class="project-compact-row frosted-card" title="Xem chi tiết dự án Giáo dục 4.0 Chuẩn 5512">
+            <div class="project-row-badge" style="background: linear-gradient(135deg, #065f46, #10b981); color: #ffffff;">🎓</div>
+            <div class="project-row-content">
+              <div class="project-row-meta">
+                <span class="project-row-tag">GIÁO DỤC 4.0 · SƯ PHẠM</span>
+                <span style="font-size: 11px; color: #10b981; font-weight: 750;">✓ Chuyển giao toàn quốc</span>
+              </div>
+              <h3 class="project-row-title">Trợ Lý AI Sư Phạm & Thiết Kế Giáo Án Chuẩn 5512</h3>
+              <p class="project-row-desc">Hỗ trợ giáo viên các cấp xây dựng kế hoạch bài dạy chuẩn Công văn 5512/BGDĐT, ma trận đặc tả đề kiểm tra phân hóa theo năng lực GDPT 2018 và học liệu số thông minh.</p>
             </div>
-            <div class="tl">
-              <strong>2009 – 2015 · GPBank</strong>
-              <span>Trưởng phòng Giao dịch</span>
+            <div class="project-row-stats">
+              <div class="project-row-stat-box">
+                <div class="project-row-stat-val">60%</div>
+                <div class="project-row-stat-lbl">Tiết kiệm thời gian</div>
+              </div>
+              <div class="project-row-stat-box">
+                <div class="project-row-stat-val">1.000+</div>
+                <div class="project-row-stat-lbl">Giáo viên tập huấn</div>
+              </div>
+              <div class="project-row-arrow">↗</div>
             </div>
-            <div class="tl">
-              <strong>2006 – 2009 · Techcombank</strong>
-              <span>Chuyên viên Quản lý Khách hàng</span>
+          </a>
+
+          <!-- Row 3: Doanh nghiệp SME -->
+          <a href="ho-so-chi-tiet.html#du-an" class="project-compact-row frosted-card" title="Xem chi tiết dự án Tự động hóa SME">
+            <div class="project-row-badge" style="background: linear-gradient(135deg, #7c2d12, #ea580c); color: #ffffff;">🏢</div>
+            <div class="project-row-content">
+              <div class="project-row-meta">
+                <span class="project-row-tag">QUẢN TRỊ SME · MARKETING</span>
+                <span style="font-size: 11px; color: #10b981; font-weight: 750;">✓ Thực chiến thành công</span>
+              </div>
+              <h3 class="project-row-title">Tự Động Hóa Vận Hành & Trợ Lý Bán Hàng 24/7 Cho Doanh Nghiệp</h3>
+              <p class="project-row-desc">Phối hợp cùng NATEC (Bộ KH&CN) và tỉnh Lào Cai; giúp doanh nghiệp SME tự đóng gói tri thức, thiết lập Chatbot tư vấn 24/7 và tự động hóa marketing đa kênh.</p>
             </div>
-          </div>
+            <div class="project-row-stats">
+              <div class="project-row-stat-box">
+                <div class="project-row-stat-val">40%</div>
+                <div class="project-row-stat-lbl">Tối ưu chi phí</div>
+              </div>
+              <div class="project-row-stat-box">
+                <div class="project-row-stat-val">100%</div>
+                <div class="project-row-stat-lbl">Chạy tại lớp</div>
+              </div>
+              <div class="project-row-arrow">↗</div>
+            </div>
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects">
+    <!-- 4. 3 Hoạt Động Gần Đây -->
+    <section id="activities-section" style="padding: 20px 0 70px;">
       <div class="wrap">
-        <div class="section-head reveal-on-scroll">
+        <div class="section-head reveal-on-scroll frosted-card" style="padding: 24px 32px; border-radius: 20px; margin-bottom: 24px;">
           <div>
-            <span class="kicker">SELECTED WORK</span>
-            <h2>Dự án & giải pháp</h2>
+            <span class="kicker">RECENT ACTIVITIES</span>
+            <h2 style="font-size: 28px; font-weight: 850; color: var(--navy); margin-top: 4px;">3 Hoạt Động Đào Tạo & Chuyển Giao Mới Nhất</h2>
           </div>
-          <p>Nghiên cứu, thiết kế và phát triển các giải pháp trợ lý số thông minh, tối ưu hóa quy trình hành chính và đổi mới phương pháp giảng dạy.</p>
+          <p style="color: #475569; font-size: 15px; margin: 0;">Ghi nhận các sự kiện đào tạo thực tế, hội thảo chuyên môn và tư vấn chuyển đổi số tại các địa phương.</p>
         </div>
 
-        <div class="projects">
-          <article class="project">
-            <div class="project-art" style="background: linear-gradient(135deg, #1e3a8a, #0284c7);">
-              <div class="project-art-icon">🏛️</div>
-            </div>
-            <div class="project-body">
-              <small>CASE STUDY · CHÍNH QUYỀN SỐ</small>
-              <h3>Trợ lý Ảo AI Đảng Vụ & Văn Thư Hành Chính Cơ Sở</h3>
-              <p>Phối hợp phát triển cùng Đảng ủy phường Kiến An và Đặc khu Cát Hải (Hải Phòng). Ứng dụng AI tra cứu văn bản quy phạm, tự động hóa quy trình soạn thảo chuẩn Nghị định 30/2020/NĐ-CP và vận hành App 'Gần dân, sát dân'.</p>
-              
-              <div class="project-case-stats">
-                <div class="case-stat-item">
-                  <span class="case-stat-num">65%</span>
-                  <span class="case-stat-lbl">Giảm thời gian soạn thảo</span>
-                </div>
-                <div class="case-stat-item">
-                  <span class="case-stat-num">24/7</span>
-                  <span class="case-stat-lbl">Giải đáp cử tri & Đảng vụ</span>
-                </div>
-              </div>
-
-              <div class="project-footer">
-                <span class="status active">✓ Đã ứng dụng thực tế (2026)</span>
-                <a href="#article-dang-uy-phuong-kien-an-aiuni-app-tro-ly-ai" class="project-case-link">Xem case study ↗</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="project">
-            <div class="project-art" style="background: linear-gradient(135deg, #065f46, #10b981);">
-              <div class="project-art-icon">🎓</div>
-            </div>
-            <div class="project-body">
-              <small>CASE STUDY · GIÁO DỤC 4.0</small>
-              <h3>Trợ Lý AI Sư Phạm & Thiết Kế Giáo Án Chuẩn 5512</h3>
-              <p>Giải pháp trợ lý số hỗ trợ giáo viên các cấp xây dựng kế hoạch bài dạy chuẩn Công văn 5512/BGDĐT, ma trận đặc tả đề kiểm tra phân hóa theo năng lực GDPT 2018 và kho học liệu tương tác trực quan.</p>
-              
-              <div class="project-case-stats">
-                <div class="case-stat-item">
-                  <span class="case-stat-num">60%</span>
-                  <span class="case-stat-lbl">Tiết kiệm thời gian hồ sơ</span>
-                </div>
-                <div class="case-stat-item">
-                  <span class="case-stat-num">1.000+</span>
-                  <span class="case-stat-lbl">Giáo viên đã tập huấn</span>
-                </div>
-              </div>
-
-              <div class="project-footer">
-                <span class="status active">✓ Chuyển giao toàn quốc</span>
-                <a href="#article-ai-trong-giao-duc-doi-moi-day-hoc" class="project-case-link">Xem giải pháp ↗</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="project">
-            <div class="project-art" style="background: linear-gradient(135deg, #7c2d12, #ea580c);">
-              <div class="project-art-icon">🏢</div>
-            </div>
-            <div class="project-body">
-              <small>CASE STUDY · QUẢN TRỊ SME</small>
-              <h3>Tự Động Hóa Vận Hành & Trợ Lý Bán Hàng 24/7 Cho Doanh Nghiệp</h3>
-              <p>Chương trình phối hợp cùng NATEC (Bộ KH&CN) và Trung tâm KHCN & ĐMST Lào Cai. Giúp doanh nghiệp SME tự đóng gói tri thức, thiết lập Chatbot tư vấn 24/7 và tự động hóa marketing đa kênh.</p>
-              
-              <div class="project-case-stats">
-                <div class="case-stat-item">
-                  <span class="case-stat-num">40%</span>
-                  <span class="case-stat-lbl">Tối ưu chi phí Marketing</span>
-                </div>
-                <div class="case-stat-item">
-                  <span class="case-stat-num">100%</span>
-                  <span class="case-stat-lbl">Sản phẩm chạy tại lớp</span>
-                </div>
-              </div>
-
-              <div class="project-footer">
-                <span class="status active">✓ Thực chiến thành công</span>
-                <a href="#article-tap-huan-ai-doanh-nghiep-lao-cai" class="project-case-link">Xem bài viết ↗</a>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Training Section: Khung Chương Trình Đào Tạo Chuẩn -->
-    <section class="training" id="training">
-      <div class="wrap">
-        <div class="section-head reveal-on-scroll">
-          <div>
-            <span class="kicker">CURRICULUM FRAMEWORKS</span>
-            <h2>Khung chương trình đào tạo chuẩn mực</h2>
-          </div>
-          <p>Hệ thống chương trình đào tạo được chuẩn hóa theo khung năng lực thực chiến, kết hợp giữa tư duy quản trị tài chính chuyên sâu và công nghệ AI tạo sinh tiên tiến từ Thầy Dương Trung Hiếu và Học viện AIUNI.</p>
-        </div>
-
-        <div class="curriculum-grid">
-          
-          <!-- Khung 01: 1.000 Giảng viên GenAI -->
-          <article class="curriculum-card">
-            <div class="curriculum-card-head">
-              <div class="curriculum-meta-row">
-                <span class="curriculum-code-badge">KHUNG CT-01 · GIẢNG VIÊN HẠT NHÂN</span>
-                <span class="curriculum-duration-tag">⏱ 3 – 5 Ngày / 30 Tiết</span>
-              </div>
-              <h3 class="curriculum-card-title">Đào Tạo 1.000 Giảng Viên GenAI Chuyên Nghiệp (Train-the-Trainer)</h3>
-              <div class="curriculum-target">
-                <strong>Đối tượng:</strong> Giảng viên đại học, cao đẳng, giáo viên phổ thông, chuyên gia đào tạo nội bộ và cán bộ nòng cốt chuyển đổi số.
-              </div>
-            </div>
-
-            <div class="curriculum-modules-title">📚 4 Mô-đun đào tạo trọng tâm:</div>
-            <ul class="curriculum-modules-list">
-              <li class="curriculum-module-item">
-                <span class="module-num">1</span>
-                <div><strong>Kỹ nghệ Prompting & Làm chủ LLM:</strong> Làm chủ các mô hình AI tạo sinh hàng đầu, kỹ thuật prompt theo ngữ cảnh và kiểm soát sai số.</div>
-              </li>
-              <li class="curriculum-module-item">
-                <span class="module-num">2</span>
-                <div><strong>Phương pháp Sư phạm Công nghệ:</strong> Nghệ thuật truyền cảm hứng số, phương pháp huấn luyện "Cầm tay chỉ việc" thực chiến.</div>
-              </li>
-              <li class="curriculum-module-item">
-                <span class="module-num">3</span>
-                <div><strong>Đóng gói Giáo trình & Học liệu số:</strong> Thiết kế bài giảng đa phương tiện, ngân hàng tình huống và biểu mẫu chấm điểm năng lực.</div>
-              </li>
-              <li class="curriculum-module-item">
-                <span class="module-num">4</span>
-                <div><strong>Xây dựng Trợ lý AI Trợ giảng:</strong> Tự động hóa giải đáp học viên, chấm bài sơ bộ và theo dõi tiến độ đào tạo 24/7.</div>
-              </li>
-            </ul>
-
-            <div class="curriculum-outcome-box">
-              <span class="icon">🎯</span>
-              <div><strong>Chuẩn đầu ra:</strong> Tốt nghiệp đạt chuẩn giảng viên hạt nhân phong trào Bình dân học vụ số, tự thiết kế giáo trình và độc lập đứng lớp khóa học AI ứng dụng.</div>
-            </div>
-
-            <div class="curriculum-card-footer">
-              <span class="curriculum-trainer-info">👨‍🏫 Giảng viên: <strong>Dương Trung Hiếu</strong></span>
-              <a href="#contact-form" class="curriculum-action-btn" onclick="selectTrainingTopic('Chương trình đào tạo 1.000 Giảng viên GenAI')">Đăng ký khung này ↗</a>
-            </div>
-          </article>
-
-          <!-- Khung 02: Giáo dục 4.0 & Chuẩn 5512 -->
-          <article class="curriculum-card">
-            <div class="curriculum-card-head">
-              <div class="curriculum-meta-row">
-                <span class="curriculum-code-badge">KHUNG CT-02 · GIÁO DỤC 4.0</span>
-                <span class="curriculum-duration-tag">⏱ 1 – 2 Ngày Thực Chiến</span>
-              </div>
-              <h3 class="curriculum-card-title">Ứng Dụng AI Đổi Mới Dạy Học & Kế Hoạch Bài Dạy Chuẩn 5512</h3>
-              <div class="curriculum-target">
-                <strong>Đối tượng:</strong> Cán bộ quản lý trường học, tổ trưởng chuyên môn và giáo viên các cấp (Mầm non, Tiểu học, THCS, THPT).
-              </div>
-            </div>
-
-            <div class="curriculum-modules-title">📚 4 Mô-đun đào tạo trọng tâm:</div>
-            <ul class="curriculum-modules-list">
-              <li class="curriculum-module-item">
-                <span class="module-num">1</span>
-                <div><strong>Kế hoạch bài dạy Chuẩn 5512:</strong> Rút ngắn 60% thời gian soạn giáo án 4 bước theo Công văn 5512/BGDĐT.</div>
-              </li>
-              <li class="curriculum-module-item">
-                <span class="module-num">2</span>
-                <div><strong>Ma trận đặc tả & Đề kiểm tra phân hóa:</strong> Tự động sinh đề thi trắc nghiệm và tự luận 4 mức độ bám sát chuẩn GDPT 2018.</div>
-              </li>
-              <li class="curriculum-module-item">
-                <span class="module-num">3</span>
-                <div><strong>Sản xuất Học liệu số & Sơ đồ tư duy:</strong> Biến bài giảng chữ thành infographic, hình ảnh minh họa chân thực và video mô phỏng.</div>
-              </li>
-              <li class="curriculum-module-item">
-                <span class="module-num">4</span>
-                <div><strong>Gia sư AI cá nhân hóa:</strong> Hỗ trợ học sinh tự học, tháo gỡ điểm nghẽn kiến thức và tối ưu hóa hồ sơ sổ sách giáo viên.</div>
-              </li>
-            </ul>
-
-            <div class="curriculum-outcome-box">
-              <span class="icon">🎯</span>
-              <div><strong>Chuẩn đầu ra:</strong> 100% giáo viên tự tay hoàn thành kế hoạch bài dạy chuẩn 5512 và ngân hàng câu hỏi đề thi ngay tại buổi học.</div>
-            </div>
-
-            <div class="curriculum-card-footer">
-              <span class="curriculum-trainer-info">👨‍🏫 Giảng viên: <strong>Dương Trung Hiếu</strong></span>
-              <a href="#contact-form" class="curriculum-action-btn" onclick="selectTrainingTopic('Tập huấn AI cho giáo viên & Chuẩn 5512')">Đăng ký khung này ↗</a>
-            </div>
-          </article>
-
-          <!-- Khung 03: Chính quyền số & Hành chính công -->
-          <article class="curriculum-card">
-            <div class="curriculum-card-head">
-              <div class="curriculum-meta-row">
-                <span class="curriculum-code-badge">KHUNG CT-03 · CHÍNH QUYỀN SỐ</span>
-                <span class="curriculum-duration-tag">⏱ 1 – 2 Ngày Thực Tế</span>
-              </div>
-              <h3 class="curriculum-card-title">Trí Tuệ Nhân Tạo Trong Quản Trị Công Quyền, Đảng Vụ & Cải Cách Hành Chính</h3>
-              <div class="curriculum-target">
-                <strong>Đối tượng:</strong> Thường trực Đảng ủy, HĐND, UBND, lãnh đạo phòng ban, công chức xã/phường và thành viên Tổ CNS cộng đồng.
-              </div>
-            </div>
-
-            <div class="curriculum-modules-title">📚 4 Mô-đun đào tạo trọng tâm:</div>
-            <ul class="curriculum-modules-list">
-              <li class="curriculum-module-item">
-                <span class="module-num">1</span>
-                <div><strong>Soạn thảo văn bản chuẩn Nghị định 30:</strong> Tự động tra cứu căn cứ pháp lý, chuẩn hóa thể thức công văn, báo cáo, tờ trình.</div>
-              </li>
-              <li class="curriculum-module-item">
-                <span class="module-num">2</span>
-                <div><strong>Trợ lý AI Chỉ đạo điều hành Đảng vụ:</strong> Tổng hợp nhanh nghị quyết, số hóa tài liệu sinh hoạt chi bộ và xây dựng dự thảo báo cáo.</div>
-              </li>
-              <li class="curriculum-module-item">
-                <span class="module-num">3</span>
-                <div><strong>Xử lý phản ánh cử tri & Thủ tục Một cửa:</strong> Phân loại tự động kiến nghị nhân dân, hỗ trợ hướng dẫn thủ tục hành chính 24/7.</div>
-              </li>
-              <li class="curriculum-module-item">
-                <span class="module-num">4</span>
-                <div><strong>Ấn phẩm tuyên truyền số địa phương:</strong> Tự tạo tin tức, bài phát thanh cơ sở và infographic phòng chống tội phạm, lừa đảo mạng.</div>
-              </li>
-            </ul>
-
-            <div class="curriculum-outcome-box">
-              <span class="icon">🎯</span>
-              <div><strong>Chuẩn đầu ra:</strong> Giảm 65% thời gian xử lý hồ sơ hành chính, cán bộ thành thạo vận hành Trợ lý AI và App phục vụ nhân dân.</div>
-            </div>
-
-            <div class="curriculum-card-footer">
-              <span class="curriculum-trainer-info">👨‍🏫 Giảng viên: <strong>Dương Trung Hiếu</strong></span>
-              <a href="#contact-form" class="curriculum-action-btn" onclick="selectTrainingTopic('Ứng dụng AI cho cơ quan Đảng, chính quyền & Tổ CNS')">Đăng ký khung này ↗</a>
-            </div>
-          </article>
-
-          <!-- Khung 04: Doanh nghiệp SME & Quản trị tinh gọn -->
-          <article class="curriculum-card">
-            <div class="curriculum-card-head">
-              <div class="curriculum-meta-row">
-                <span class="curriculum-code-badge">KHUNG CT-04 · DOANH NGHIỆP SME</span>
-                <span class="curriculum-duration-tag">⏱ 2 – 3 Ngày Gắn Sản Phẩm</span>
-              </div>
-              <h3 class="curriculum-card-title">Tự Động Hóa Vận Hành & Quản Trị Doanh Nghiệp Tinh Gọn Với GenAI</h3>
-              <div class="curriculum-target">
-                <strong>Đối tượng:</strong> Chủ doanh nghiệp SME, Giám đốc điều hành (CEO), Trưởng phòng Kinh doanh, Marketing, Nhân sự và Tài chính.
-              </div>
-            </div>
-
-            <div class="curriculum-modules-title">📚 4 Mô-đun đào tạo trọng tâm:</div>
-            <ul class="curriculum-modules-list">
-              <li class="curriculum-module-item">
-                <span class="module-num">1</span>
-                <div><strong>Chiến lược AI-First & Lộ trình SME:</strong> Đánh giá mức độ sẵn sàng công nghệ, tái định hình quy trình vận hành tinh gọn.</div>
-              </li>
-              <li class="curriculum-module-item">
-                <span class="module-num">2</span>
-                <div><strong>Tự động hóa Marketing & Bán hàng:</strong> Sản xuất nội dung đa nền tảng, thiết lập kịch bản video ngắn và thông điệp bán hàng AI.</div>
-              </li>
-              <li class="curriculum-module-item">
-                <span class="module-num">3</span>
-                <div><strong>Trợ lý Chatbot CSKH & Tư vấn 24/7:</strong> Tự đóng gói tri thức doanh nghiệp, thiết lập bot tư vấn tự động trên Zalo, Facebook, Web.</div>
-              </li>
-              <li class="curriculum-module-item">
-                <span class="module-num">4</span>
-                <div><strong>Phân tích Báo cáo Tài chính & Dòng tiền:</strong> Ứng dụng AI thẩm định chỉ số tài chính, dự báo dòng tiền và quản trị rủi ro kinh doanh.</div>
-              </li>
-            </ul>
-
-            <div class="curriculum-outcome-box">
-              <span class="icon">🎯</span>
-              <div><strong>Chuẩn đầu ra:</strong> Doanh nghiệp sở hữu ngay hệ thống Trợ lý ảo AI hoạt động thực tế, cắt giảm tối thiểu 40% chi phí vận hành.</div>
-            </div>
-
-            <div class="curriculum-card-footer">
-              <span class="curriculum-trainer-info">👨‍🏫 Giảng viên: <strong>Dương Trung Hiếu</strong></span>
-              <a href="#contact-form" class="curriculum-action-btn" onclick="selectTrainingTopic('Đào tạo AI & Tự động hóa vận hành cho Doanh nghiệp SME')">Đăng ký khung này ↗</a>
-            </div>
-          </article>
-
-        </div>
-
-        <!-- Training Action Banner -->
-        <div class="training-cta-box" style="margin-top: 36px;">
-          <div class="training-cta-text">
-            <h4>Quý cơ quan, trường học hoặc doanh nghiệp có nhu cầu thiết kế chương trình theo yêu cầu riêng?</h4>
-            <p>Học viện AIUNI và Thầy Dương Trung Hiếu sẵn sàng khảo sát hiện trạng, may đo khung đào tạo sát thực tế và cam kết 100% học viên hoàn thành sản phẩm tại lớp.</p>
-          </div>
-          <a href="#contact-form" class="btn sm" style="background:var(--navy); color:#ffffff; white-space:nowrap;">Mời giảng / Đăng ký tập huấn ↗</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Tin Tức Cập Nhật -->
-    <section id="articles" class="articles-section">
-      <div class="wrap">
-        <div class="section-head reveal-on-scroll">
-          <div>
-            <span class="kicker">NEWS & UPDATES</span>
-            <h2>Tin tức cập nhật</h2>
-          </div>
-          <p>Các bài viết tổng kết sự kiện tập huấn, phân tích chuyên môn và chia sẻ kinh nghiệm ứng dụng AI thực tiễn từ Thầy Dương Trung Hiếu.</p>
-        </div>
-
-        <!-- Bộ lọc danh mục bài viết -->
-        <div class="articles-filters">
-          <button class="art-filter-btn active" data-filter="all">Tất cả bài viết</button>
-          <button class="art-filter-btn" data-filter="cong-dong">Đào tạo cộng đồng</button>
-          <button class="art-filter-btn" data-filter="giao-duc">Giáo dục 4.0</button>
-          <button class="art-filter-btn" data-filter="quan-tri">Quản trị & Doanh nghiệp</button>
-          <button class="art-filter-btn" data-filter="ung-dung">Ứng dụng AI</button>
-        </div>
-
-        <!-- Lưới bài viết (Render tự động từ articles.js) -->
-        <div class="articles-grid" id="articles-grid">
-          <!-- Các thẻ bài viết sẽ được chèn tự động ở đây -->
-        </div>
-
-        <div class="articles-load-more-wrap" style="text-align: center; margin-top: 36px;">
-          <button class="btn sm" id="articles-load-more" style="display: none; background: #ffffff; color: var(--navy); border: 1.5px solid var(--navy); border-radius: 999px; cursor: pointer; padding: 10px 24px;">Xem thêm bài viết khác ↓</button>
-        </div>
-      </div>
-    </section>
-
-    
-    <!-- Báo Chí & Đối Tác Nói Về AIUNI (Press & Media Highlights) -->
-    <section id="press" class="press-section">
-      <div class="wrap">
-        <div class="section-head reveal-on-scroll">
-          <div>
-            <span class="kicker">PRESS & MEDIA HIGHLIGHTS</span>
-            <h2>Báo chí nói về Học viện Công nghệ AIUNI</h2>
-          </div>
-          <p>Hơn 35+ bài viết chuyên sâu, phóng sự và ghi nhận chính thức từ các cơ quan thông tấn báo chí Trung ương, Cổng thông tin điện tử Đảng bộ và chính quyền các địa phương.</p>
-        </div>
-
-        <!-- Thống kê nhanh chỉ số truyền thông (Press KPI Bar) -->
-        <div class="press-kpi-bar">
-          <div class="press-kpi-card">
-            <div class="press-kpi-icon">📰</div>
+        <div class="activities-summary-grid">
+          <!-- Hoạt động 1 -->
+          <article class="activity-summary-card frosted-card">
             <div>
-              <div class="press-kpi-number">37+</div>
-              <div class="press-kpi-label">Bài viết & Phóng sự</div>
-            </div>
-          </div>
-          <div class="press-kpi-card">
-            <div class="press-kpi-icon">🏛️</div>
-            <div>
-              <div class="press-kpi-number">15+</div>
-              <div class="press-kpi-label">Cổng TTĐT Chính quyền</div>
-            </div>
-          </div>
-          <div class="press-kpi-card">
-            <div class="press-kpi-icon">🚀</div>
-            <div>
-              <div class="press-kpi-number">1.000</div>
-              <div class="press-kpi-label">Giảng viên GenAI</div>
-            </div>
-          </div>
-          <div class="press-kpi-card">
-            <div class="press-kpi-icon">⭐</div>
-            <div>
-              <div class="press-kpi-number">100%</div>
-              <div class="press-kpi-label">Nguồn tin chính thống</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Thanh tìm kiếm & Bộ lọc tương tác -->
-        <div class="press-controls">
-          <div class="press-search-wrapper">
-            <div class="press-search-box">
-              <span class="press-search-icon">🔍</span>
-              <input type="text" id="press-search-input" placeholder="Tìm kiếm bài viết, tên báo, địa phương (ví dụ: Nhân Dân, VietNamNet, Cát Hải, Kiến An, Lào Cai, Techfest...)" aria-label="Tìm kiếm bài báo">
-            </div>
-            <span class="press-count-pill" id="press-count-badge">37 bài viết</span>
-          </div>
-
-          <div class="press-filters">
-            <button class="press-filter-btn active" data-filter="all">Tất cả bài viết (37)</button>
-            <button class="press-filter-btn" data-filter="gov">🏛️ Cổng TTĐT Chính quyền & Đối tác</button>
-            <button class="press-filter-btn" data-filter="press">📰 Báo chí Trung ương & Chuyên ngành</button>
-            <button class="press-filter-btn" data-filter="binh-dan-hoc-vu">🚀 Bình dân học vụ số & 1.000 GV</button>
-            <button class="press-filter-btn" data-filter="ai-first">🌐 Chiến lược AI-First & Phổ cập toàn dân</button>
-            <button class="press-filter-btn" data-filter="nen-tang">💡 Nền tảng AI học tập & Sách thực hành</button>
-          </div>
-        </div>
-
-        <!-- Lưới thẻ bài viết báo chí (Render tự động từ js/press.js) -->
-        <div class="press-grid" id="press-grid">
-          <!-- Render tự động -->
-        </div>
-
-        <!-- Nút tải thêm -->
-        <div class="press-load-more-wrap">
-          <button class="press-load-more-btn" id="press-load-more">Xem thêm bài viết khác ↓</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Album Ảnh Slideshow Dạng Lật 3D -->
-    <section id="album" class="album-section">
-      <div class="wrap">
-        <div class="section-head reveal-on-scroll">
-          <div>
-            <span class="kicker">PHOTO GALLERY & HIGHLIGHTS</span>
-            <h2>Album ảnh hoạt động chuyên môn</h2>
-          </div>
-          <p>Khám phá các khoảnh khắc thực tế tại các chương trình đào tạo, hội thảo và chuyển giao công nghệ qua album ảnh hiệu ứng lật 3D.</p>
-        </div>
-
-        <div class="flip-album-wrapper">
-          <div class="flip-card-viewport">
-            <div class="flip-card" id="flip-card" title="Bấm vào thẻ hoặc nút để lật ảnh">
-              
-              <!-- Mặt trước (Ảnh hiển thị) -->
-              <div class="flip-face flip-face-front">
-                <div class="flip-photo-box">
-                  <img id="flip-img" src="public/images/gallery/4.11.2026.jpg" alt="Đảng ủy phường Kiến An: App Gần Dân Sát Dân & Trợ Lý AI" loading="lazy">
-                  <span id="flip-badge" class="flip-badge-top">SỰ KIỆN 01 / 17</span>
-                  <div class="flip-hint-badge">
-                    <span>🔄 Chạm / Bấm để lật xem chi tiết</span>
-                  </div>
-                </div>
-                <div class="flip-front-caption">
-                  <div>
-                    <h3 id="flip-title">Đảng ủy phường Kiến An: App Gần Dân Sát Dân & Trợ Lý AI</h3>
-                    <p id="flip-subtitle">Thường trực Đảng ủy làm việc cùng Học viện AIUNI và Công ty ADT</p>
-                  </div>
-                  <button class="btn sm ghost" id="flip-btn-action" aria-label="Lật thẻ xem chi tiết">Lật mặt sau ↻</button>
-                </div>
+              <div class="activity-card-meta">
+                <span class="activity-date-pill">THÁNG 02/2026</span>
+                <span class="activity-loc-pill">📍 Tỉnh Lào Cai</span>
               </div>
+              <h3 style="margin-top: 10px;">Khóa Đào Tạo AI Nâng Cao Hiệu Suất Cho Cán Bộ & Doanh Nhân Lào Cai</h3>
+              <p style="margin-top: 8px;">Phối hợp cùng Trung tâm KHCN & ĐMST Lào Cai, hướng dẫn hơn 80 cán bộ và doanh nghiệp ứng dụng GenAI vào tự động hóa công việc và phân tích dữ liệu kinh doanh.</p>
+            </div>
+            <a href="ho-so-chi-tiet.html#tin-tuc" class="activity-card-link">Đọc bài viết chi tiết ↗</a>
+          </article>
 
-              <!-- Mặt sau (Nội dung chi tiết & Đúc kết) -->
-              <div class="flip-face flip-face-back">
-                <div class="flip-back-header">
-                  <small id="flip-back-kicker">CHUYỂN ĐỔI SỐ CƠ SỞ</small>
-                  <h3 id="flip-back-title">Ứng Dụng Số Phục Vụ Nhân Dân & Đảng Vụ</h3>
-                </div>
-                <div class="flip-back-body">
-                  <p id="flip-back-desc">
-                    Buổi làm việc chính thức tại phòng họp Đảng ủy phường Kiến An về vận hành ứng dụng di động "Gần dân, sát dân" và triển khai trợ lý ảo AI hỗ trợ chỉ đạo điều hành.
-                  </p>
-                  <ul class="flip-bullets" id="flip-back-bullets">
-                    <li>✓ Phổ biến kỹ năng Prompting cơ bản</li>
-                    <li>✓ Thực hành tạo nội dung tuyên truyền</li>
-                    <li>✓ Hướng dẫn tra cứu văn bản quy phạm</li>
-                    <li>✓ Ứng dụng AI xử lý văn bản hành chính</li>
-                  </ul>
-                </div>
-                <div class="flip-back-footer">
-                  <span id="flip-back-time">Thời gian: 04/11/2026 · Địa điểm: Trụ sở Đảng ủy phường Kiến An, Hải Phòng</span>
-                  <button class="btn sm" style="background:#ffffff; color:var(--navy); border-color:#ffffff;" id="flip-btn-back" aria-label="Lật lại ảnh mặt trước">↺ Lật lại ảnh</button>
-                </div>
+          <!-- Hoạt động 2 -->
+          <article class="activity-summary-card frosted-card">
+            <div>
+              <div class="activity-card-meta">
+                <span class="activity-date-pill">THÁNG 01/2026</span>
+                <span class="activity-loc-pill">📍 TP. Hải Phòng</span>
               </div>
+              <h3 style="margin-top: 10px;">Tập Huấn Ứng Dụng AI Giáo Dục & Chuẩn 5512 Tại THPT Kiến An</h3>
+              <p style="margin-top: 8px;">Chuyển giao giải pháp AI xây dựng kế hoạch bài dạy chuẩn 5512, ngân hàng đề kiểm tra ma trận phân hóa và học liệu số tương tác cho toàn thể giáo viên nhà trường.</p>
+            </div>
+            <a href="ho-so-chi-tiet.html#tin-tuc" class="activity-card-link">Đọc bài viết chi tiết ↗</a>
+          </article>
 
+          <!-- Hoạt động 3 -->
+          <article class="activity-summary-card frosted-card">
+            <div>
+              <div class="activity-card-meta">
+                <span class="activity-date-pill">THÁNG 12/2025</span>
+                <span class="activity-loc-pill">📍 Tỉnh Nam Định</span>
+              </div>
+              <h3 style="margin-top: 10px;">Hội Thảo Chuyển Đổi Số & Tự Động Hóa Doanh Nghiệp Trực Ninh</h3>
+              <p style="margin-top: 8px;">Tư vấn lộ trình AI-First, thiết lập hệ thống Bot CSKH 24/7 và chuyển giao kỹ năng prompt engineering cho các chủ cơ sở kinh doanh và hợp tác xã địa phương.</p>
+            </div>
+            <a href="ho-so-chi-tiet.html#tin-tuc" class="activity-card-link">Đọc bài viết chi tiết ↗</a>
+          </article>
+        </div>
+
+        <!-- Banner Chuyển Tiếp Sang Trang "Hồ Sơ & Chi Tiết" -->
+        <div class="homepage-detail-banner frosted-card">
+          <div class="banner-left">
+            <div class="banner-icon">📑</div>
+            <div class="banner-info">
+              <h3>Khám Phá Toàn Diện Trang "Hồ Sơ & Chi Tiết"</h3>
+              <p>Xem toàn bộ tài liệu chuyên sâu: Triết lý quản trị, Hành trình 20+ năm ngân hàng, 4 Khung đào tạo chuẩn mực (CT-01 đến CT-04), 6 Bài viết tin tức, Video 1080p, Album ảnh 3D, 37+ báo chí nói về AIUNI và Hệ sinh thái đối tác.</p>
             </div>
           </div>
-
-          <!-- Album Điều Khiển -->
-          <div class="album-controls">
-            <div class="album-btn-group">
-              <button class="album-nav-btn" id="album-prev" aria-label="Ảnh trước">❮</button>
-              <button class="album-nav-btn" id="album-next" aria-label="Ảnh tiếp theo">❯</button>
-              <button class="album-autoplay-btn" id="album-autoplay" aria-label="Bật tắt tự động lật">
-                <span id="autoplay-icon">▶</span>
-                <span id="autoplay-text">Tự động lật</span>
-              </button>
-            </div>
-            <div class="album-indicator">
-              <span id="album-counter">1 / 17</span>
-            </div>
-          </div>
-
-          <!-- Thanh chọn nhanh tất cả 17 hình ảnh trong Album -->
-          <div class="album-thumbs-wrapper">
-            <div class="album-thumbs-header">
-              <span>📸 TẤT CẢ 17 HÌNH ẢNH HOẠT ĐỘNG THỰC TẾ (Bấm để chọn xem)</span>
-              <small id="album-thumb-tip">Vuốt hoặc cuộn ngang để duyệt ảnh</small>
-            </div>
-            <div class="album-thumbs-scroll" id="album-thumbs-container">
-              <!-- Render tự động 17 thumbnail bằng JS -->
-            </div>
-          </div>
+          <a href="ho-so-chi-tiet.html" class="banner-cta-btn">Mở Trang Hồ Sơ & Chi Tiết Đầy Đủ ↗</a>
         </div>
       </div>
     </section>
 
-    <!-- Video Sự Kiện & Danh Sách Phát Chạy Liên Tục -->
-    <section id="media" class="media-section">
-      <div class="wrap">
-        <div class="section-head reveal-on-scroll">
-          <div>
-            <span class="kicker">EVENT MEDIA & VIDEO</span>
-            <h2>Video sự kiện & Bài giảng thực tế</h2>
-          </div>
-          <p>Xem lại các video giới thiệu, bài giảng chuyên sâu và các hoạt động tập huấn ứng dụng AI thực tế của Học viện Công nghệ AIUNI.</p>
-        </div>
-
-        <div class="video-container-card">
-          <!-- Video Quick Switcher Tabs -->
-          <div class="video-channel-tabs" style="display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap;">
-            <button class="btn sm video-tab-btn active" id="tab-video-intro" onclick="switchVideoChannel('intro')" style="display: inline-flex; align-items: center; gap: 6px;">
-              <span>▶</span> Video Giới thiệu AIUNI
-            </button>
-            <button class="btn sm ghost video-tab-btn" id="tab-video-playlist" onclick="switchVideoChannel('playlist')" style="display: inline-flex; align-items: center; gap: 6px;">
-              <span>📺</span> Playlist Tập huấn AI liên tục
-            </button>
-          </div>
-
-          <!-- 16:9 Video Responsive Player -->
-          <div class="video-responsive-frame">
-            <iframe id="event-playlist-iframe"
-              width="560" height="315"
-              src="https://www.youtube.com/embed/W2YSUnCU5yE?si=jzDo9hyCT0G9aMIK&vq=hd1080&rel=0&enablejsapi=1"
-              title="GIỚI THIỆU HỌC VIỆN CÔNG NGHỆ AIUNI - DƯƠNG TRUNG HIẾU"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen></iframe>
-          </div>
-
-          <!-- Playlist Meta Bar & Dynamic Link Input -->
-          <div class="playlist-meta-bar">
-            <div class="playlist-meta-info" id="video-meta-info">
-              <span class="playlist-badge" id="video-badge">VIDEO TIÊU ĐIỂM · CHÍNH THỨC</span>
-              <span class="video-hd-badge" style="display: inline-flex; align-items: center; gap: 5px; background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.4); color: #059669; padding: 3px 10px; border-radius: 999px; font-size: 11px; font-weight: 800; margin-left: 8px;">
-                <span>⚡</span> CHẤT LƯỢNG: 1080p FULL HD
-              </span>
-              <h3 id="video-title">GIỚI THIỆU HỌC VIỆN CÔNG NGHỆ AIUNI</h3>
-              <p id="video-desc">Khám phá tầm nhìn, sứ mệnh phổ cập AI toàn dân, phong trào Bình dân học vụ số, đào tạo 1.000 Giảng viên GenAI và hệ sinh thái giải pháp AI ứng dụng thực chiến của Học viện Công nghệ AIUNI cùng Thầy Dương Trung Hiếu.</p>
-            </div>
-
-            <div class="playlist-input-box">
-              <input type="text" id="playlist-url-input" placeholder="Dán link video hoặc playlist YouTube vào đây..." aria-label="Đường dẫn video hoặc danh sách phát YouTube">
-              <button id="playlist-update-btn" class="btn sm">Phát Video ↗</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-        <!-- Khu Vực Logo Đối Tác & Hệ Sinh Thái Đồng Hành -->
-    <section id="partners" class="partners-section">
-      <div class="wrap">
-        <div class="section-head reveal-on-scroll" style="margin-bottom: 24px;">
-          <div>
-            <span class="kicker">STRATEGIC PARTNERS & COLLABORATION</span>
-            <h2>Đối tác & Hệ sinh thái đồng hành</h2>
-          </div>
-          <p>Khẳng định uy tín và năng lực đào tạo thực chiến qua mạng lưới liên kết chiến lược cùng các cơ quan Đảng, Chính quyền các cấp, Bộ ban ngành, Cơ quan Thông tấn Báo chí và Hiệp hội Doanh nghiệp.</p>
-        </div>
-
-        <!-- Trust Scorecard Banner (Thước đo tín nhiệm thể chế) -->
-        <div class="partners-trust-banner">
-          <div class="partners-trust-card">
-            <div class="partners-trust-val">15+</div>
-            <div class="partners-trust-tit">Cơ quan Đảng & Chính quyền</div>
-            <div class="partners-trust-sub">Đảng ủy, UBND các quận/huyện/xã/phường và Sở ngành địa phương</div>
-          </div>
-          <div class="partners-trust-card">
-            <div class="partners-trust-val">20+</div>
-            <div class="partners-trust-tit">Báo chí & Đài Truyền hình</div>
-            <div class="partners-trust-sub">Báo Nhân Dân, VietNamNet, VOV World, Giáo dục & Thời đại, VTV...</div>
-          </div>
-          <div class="partners-trust-card">
-            <div class="partners-trust-val">1.000+</div>
-            <div class="partners-trust-tit">Giảng viên GenAI Hạt nhân</div>
-            <div class="partners-trust-sub">Mạng lưới đào tạo lan tỏa phong trào Bình dân học vụ số toàn quốc</div>
-          </div>
-          <div class="partners-trust-card">
-            <div class="partners-trust-val">100%</div>
-            <div class="partners-trust-tit">Đào tạo Gắn Liền Thực chiến</div>
-            <div class="partners-trust-sub">Học viên trực tiếp tạo ra sản phẩm và trợ lý AI ngay tại buổi học</div>
-          </div>
-        </div>
-
-        <!-- Marquee Infinite Track -->
-        <div class="partners-marquee-container">
-          <div class="partners-track">
-            <div class="partner-logo-item" title="Học viện Công nghệ AIUNI">
-              <img src="public/images/partners/aiuni.svg" alt="Học viện Công nghệ AIUNI" loading="lazy">
-            </div>
-            <div class="partner-logo-item" title="Tổ Công nghệ số Cộng đồng">
-              <img src="public/images/partners/cns-cong-dong.svg" alt="Tổ Công nghệ số Cộng đồng" loading="lazy">
-            </div>
-            <div class="partner-logo-item" title="Khối Các Cơ sở Giáo dục & Đào tạo">
-              <img src="public/images/partners/giao-duc.svg" alt="Khối Giáo dục & Đào tạo" loading="lazy">
-            </div>
-            <div class="partner-logo-item" title="Hiệp hội Doanh nghiệp & SME">
-              <img src="public/images/partners/sme-doanh-nghiep.svg" alt="Cộng đồng Doanh nghiệp SME" loading="lazy">
-            </div>
-            <div class="partner-logo-item" title="Hệ sinh thái Đổi mới Sáng tạo">
-              <img src="public/images/partners/doi-moi-sang-tao.svg" alt="Innovation Hub" loading="lazy">
-            </div>
-            <!-- Nhân đôi để chạy loop mượt mà -->
-            <div class="partner-logo-item" title="Học viện Công nghệ AIUNI">
-              <img src="public/images/partners/aiuni.svg" alt="Học viện Công nghệ AIUNI" loading="lazy">
-            </div>
-            <div class="partner-logo-item" title="Tổ Công nghệ số Cộng đồng">
-              <img src="public/images/partners/cns-cong-dong.svg" alt="Tổ Công nghệ số Cộng đồng" loading="lazy">
-            </div>
-            <div class="partner-logo-item" title="Khối Các Cơ sở Giáo dục & Đào tạo">
-              <img src="public/images/partners/giao-duc.svg" alt="Khối Giáo dục & Đào tạo" loading="lazy">
-            </div>
-            <div class="partner-logo-item" title="Hiệp hội Doanh nghiệp & SME">
-              <img src="public/images/partners/sme-doanh-nghiep.svg" alt="Cộng đồng Doanh nghiệp SME" loading="lazy">
-            </div>
-            <div class="partner-logo-item" title="Hệ sinh thái Đổi mới Sáng tạo">
-              <img src="public/images/partners/doi-moi-sang-tao.svg" alt="Innovation Hub" loading="lazy">
-            </div>
-          </div>
-        </div>
-
-        <!-- 4 Trụ Cột Danh Mục Đối Tác Chiến Lược Nâng Tầm Uy Tín -->
-        <div class="partners-categories-grid">
-          <div class="partners-cat-card">
-            <div class="partners-cat-head">
-              <div class="partners-cat-icon">🏛️</div>
-              <h4>Đảng bộ & Chính quyền Địa phương</h4>
-            </div>
-            <ul class="partners-cat-list">
-              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>Đảng ủy Đặc khu Cát Hải</strong> (Hải Phòng)</div></li>
-              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>Đảng ủy phường Kiến An</strong> (Hải Phòng - App Gần dân sát dân)</div></li>
-              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>UBND phường Phú Lương</strong> (Hà Đông, Hà Nội)</div></li>
-              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>UBND xã Tam Đa</strong> (Bắc Ninh)</div></li>
-              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>UBND xã Ô Diên & Cổng CCHC Hà Nội</strong></div></li>
-              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>Sở Tài nguyên & Môi trường Hà Tĩnh</strong></div></li>
-            </ul>
-          </div>
-
-          <div class="partners-cat-card">
-            <div class="partners-cat-head">
-              <div class="partners-cat-icon">🏢</div>
-              <h4>Bộ Ngành & Đổi mới Sáng tạo</h4>
-            </div>
-            <ul class="partners-cat-list">
-              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>Cục Khởi nghiệp NATEC</strong> (Bộ KH&CN)</div></li>
-              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>Techfest Vietnam 2025</strong> (Ngày hội KN ĐMST Quốc gia)</div></li>
-              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>Trung tâm KHCN & ĐMST Lào Cai</strong> (Sở KH&CN)</div></li>
-              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>Trung tâm Nông nghiệp CNC Ninh Bình</strong></div></li>
-              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>Liên đoàn Thương mại & CN Việt Nam (VCCI)</strong></div></li>
-              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>Ban Chỉ đạo CCHC UBND TP Hà Nội</strong></div></li>
-            </ul>
-          </div>
-
-          <div class="partners-cat-card">
-            <div class="partners-cat-head">
-              <div class="partners-cat-icon">📰</div>
-              <h4>Cơ quan Báo chí Trung ương</h4>
-            </div>
-            <ul class="partners-cat-list">
-              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>Báo Nhân Dân</strong> (Cơ quan Trung ương Đảng)</div></li>
-              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>Báo VietNamNet</strong> (Bộ Thông tin & Truyền thông)</div></li>
-              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>Đài Tiếng nói Việt Nam</strong> (VOV World)</div></li>
-              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>Báo Giáo dục & Thời đại</strong> (Bộ GD&ĐT)</div></li>
-              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>Báo Công Thương</strong> (Bộ Công Thương)</div></li>
-              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>Truyền hình Nhân đạo VTV</strong> & Báo Tuổi trẻ Xã hội</div></li>
-            </ul>
-          </div>
-
-          <div class="partners-cat-card">
-            <div class="partners-cat-head">
-              <div class="partners-cat-icon">💼</div>
-              <h4>Doanh nghiệp & Hiệp hội Đối tác</h4>
-            </div>
-            <ul class="partners-cat-list">
-              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>Học viện Công nghệ AIUNI</strong> (Đơn vị chủ quản)</div></li>
-              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>Công ty CP Công nghệ ADT</strong> (Đối tác phát triển App & AI)</div></li>
-              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>Hội Doanh nhân trẻ & Nữ Doanh nhân Lào Cai</strong></div></li>
-              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>Mạng lưới 1.000 Giảng viên GenAI Quốc gia</strong></div></li>
-              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>Hệ thống Tổ Công nghệ số Cộng đồng</strong></div></li>
-              <li class="partners-cat-item"><span class="check">✓</span> <div><strong>Khối Các Trường ĐH, CĐ & Cơ sở Giáo dục</strong></div></li>
-            </ul>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
+    <!-- 5. Khối Liên Hệ -->
+    <div style="padding: 20px 0 80px;">
+      <section id="contact">
       <div class="wrap">
         <div class="cta-box">
           <div class="cta-header">
@@ -1047,23 +448,29 @@
         </div>
       </div>
     </section>
+    </div>
 
   </main>
 
   <!-- Footer -->
   <footer>
-    <div class="wrap foot">
-      <div>
-        <strong>DƯƠNG TRUNG HIẾU</strong>
-        <div style="font-size: 11.5px; color: var(--muted); margin-top: 2px;">
-          Giám đốc Đào tạo Học viện Công nghệ AIUNI · Domain: <a href="https://trunghieuai.io.vn" style="color: var(--blue); font-weight:600;">trunghieuai.io.vn</a>
+    <div class="wrap footin">
+      <div class="foot-left">
+        <div class="brand-row">
+          <div class="brand-icon">TH</div>
+          <span>DƯƠNG TRUNG HIẾU</span>
+        </div>
+        <small>Giám đốc Đào tạo · Học viện Công nghệ AIUNI</small>
+        <div style="margin-top: 10px; font-size: 13px; color: var(--muted); line-height: 1.5;">
+          Hồ sơ năng lực & hệ sinh thái chuyển đổi số toàn diện.
         </div>
       </div>
       <div class="foot-center">AI · TECHNOLOGY · INNOVATION</div>
       <div class="foot-right">
+        <a href="ho-so-chi-tiet.html" style="color: var(--blue); font-weight: 600;">Xem Hồ sơ chi tiết ↗</a>
         <a href="https://www.facebook.com/share/19d3eRzBgQ/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" style="color: var(--blue); font-weight: 600;">Facebook ↗</a>
         <span>© 2026 Dương Trung Hiếu</span>
-        <a href="#home" id="backtotop" class="back-to-top" aria-label="Lên đầu trang">↑ Đầu trang</a>
+        <a href="#hero-section" id="backtotop" class="back-to-top" aria-label="Lên đầu trang">↑ Đầu trang</a>
       </div>
     </div>
   </footer>
@@ -1120,27 +527,11 @@
     </div>
   </aside>
 
-  <!-- Portfolio Config & Cloud CMS Settings (Phương án 3) -->
-  <script src="js/config.js?v=5.3"></script>
-
-  <!-- Pre-compiled Articles Data (Phương án 1) -->
-  <script src="js/articles-data.js?v=5.3"></script>
-
-  <!-- Articles & Training Activities Module (Phương án 1 + 3) -->
-  <script src="js/articles.js?v=5.3"></script>
+  <!-- Portfolio Config & Cloud CMS Settings -->
+  <script src="js/config.js?v=5.5"></script>
 
   <!-- Main JavaScript File (ELON MUSK AI Assistant) -->
-  <script src="js/main.js?v=5.3"></script>
-
-  <!-- Article Reader Fullscreen Modal -->
-  <div id="article-modal" class="article-modal-backdrop" role="dialog" aria-modal="true" aria-label="Đọc bài viết chi tiết">
-    <div class="article-modal-window">
-      <button class="article-modal-close" id="article-modal-close" aria-label="Đóng bài viết">✕</button>
-      <div class="article-modal-content" id="article-modal-content">
-        <!-- Nội dung bài viết chi tiết được nạp động tại đây -->
-      </div>
-    </div>
-  </div>
+  <script src="js/main.js?v=5.5"></script>
 
   <!-- Zalo QR Code Fullscreen Modal Lightbox -->
   <div id="zalo-modal" class="zalo-modal-backdrop" role="dialog" aria-modal="true" aria-label="Mã QR Zalo phóng to">
@@ -1161,8 +552,6 @@
   </div>
 
 
-  <!-- Press & Media Coverage Data & Controller -->
-  <script src="js/press-data.js?v=5.4"></script>
-  <script src="js/press.js?v=5.4"></script>
+  
 </body>
 </html>

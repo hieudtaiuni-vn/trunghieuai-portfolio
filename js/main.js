@@ -1286,4 +1286,46 @@ Nắm vững toàn bộ hồ sơ của Thầy Hiếu:
     });
   }
 
+  // ==========================================================================
+  // DETAIL PAGE: STICKY SIDEBAR TABLE OF CONTENTS SCROLLSPY
+  // ==========================================================================
+  const tocLinks = document.querySelectorAll('.detail-sidebar-toc .toc-nav-link');
+  if (tocLinks.length > 0) {
+    const sections = Array.from(tocLinks).map(link => {
+      const href = link.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        return document.getElementById(href.substring(1));
+      }
+      return null;
+    }).filter(Boolean);
+
+    function updateActiveToc() {
+      const scrollPos = window.scrollY + 160;
+      let activeSectionId = null;
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const sec = sections[i];
+        if (sec.offsetTop <= scrollPos) {
+          activeSectionId = sec.id;
+          break;
+        }
+      }
+
+      if (!activeSectionId && sections.length > 0) {
+        activeSectionId = sections[0].id;
+      }
+
+      tocLinks.forEach(link => {
+        if (link.getAttribute('href') === '#' + activeSectionId) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', updateActiveToc, { passive: true });
+    updateActiveToc();
+  }
+
 });
