@@ -450,7 +450,7 @@ const newIndexHtml = `<!DOCTYPE html>
   <!-- Portfolio Config & Cloud CMS Settings -->
   <script src="js/config.js?v=5.5"></script>
 
-  <!-- Main JavaScript File (ELON MUSK AI Assistant) -->
+  <!-- Main JavaScript File (JAVIS AI Assistant) -->
   <script src="js/main.js?v=5.5"></script>
 
   ${zaloModalHtml}

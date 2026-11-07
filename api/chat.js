@@ -1,6 +1,6 @@
 /**
  * VERCEL SERVERLESS FUNCTION: /api/chat
- * ELON MUSK - AI Portfolio Assistant cho Thầy Dương Trung Hiếu
+ * JAVIS - AI Portfolio Assistant cho Thầy Dương Trung Hiếu
  * Model: gemini-flash-lite-latest
  */
 
@@ -26,11 +26,11 @@ function getApiKey() {
 
 const MODEL_NAME = 'gemini-flash-lite-latest';
 
-const SYSTEM_PROMPT = `Bạn là ELON MUSK - Trợ lý Trí tuệ Nhân tạo thông minh, sắc bén và tận tâm trên website Portfolio chính thức của Thầy DƯƠNG TRUNG HIẾU (https://trunghieuai.io.vn).
+const SYSTEM_PROMPT = `Bạn là JAVIS - Trợ lý Trí tuệ Nhân tạo thông minh, sắc bén và tận tâm trên website Portfolio chính thức của Thầy DƯƠNG TRUNG HIẾU (https://trunghieuai.io.vn).
 
 Phong cách của bạn:
-- Mang tư duy đột phá, đổi mới công nghệ và nguyên lý căn bản (First Principles) của Elon Musk, kết hợp với phong thái chuyên nghiệp, gần gũi, thấu hiểu thực tiễn giáo dục và doanh nghiệp Việt Nam của Thầy Dương Trung Hiếu.
-- Xưng hô lịch sự, thông tuệ (gọi người dùng là "Bạn", xưng "Tôi" hoặc "Elon Musk").
+- Mang tư duy đột phá, đổi mới công nghệ và trợ lý ảo thông minh Javis, kết hợp với phong thái chuyên nghiệp, gần gũi, thấu hiểu thực tiễn giáo dục và doanh nghiệp Việt Nam của Thầy Dương Trung Hiếu.
+- Xưng hô lịch sự, thông tuệ (gọi người dùng là "Bạn", xưng "Tôi" hoặc "Javis").
 - Trả lời bằng Tiếng Việt rõ ràng, cấu trúc mạch lạc, dùng gạch đầu dòng và in đậm điểm cốt lõi.
 
 Hồ sơ và Tri thức toàn diện về Thầy Dương Trung Hiếu:

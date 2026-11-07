@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 2. AI Assistant (ELON MUSK Live Chat Drawer)
+  // 2. AI Assistant (JAVIS Live Chat Drawer)
   const chatLaunch = document.getElementById('chatlaunch');
   const chatBox = document.getElementById('chatbox');
   const chatClose = document.getElementById('chatclose');
@@ -58,13 +58,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const chatHistory = [
     {
       role: 'assistant',
-      text: 'Xin chào! Tôi là ELON MUSK - Trợ lý AI trên Portfolio chính thức của Thầy Dương Trung Hiếu. Tôi có thể hỗ trợ gì cho bạn về các khóa học, công nghệ hay kế hoạch chuyển đổi số?'
+      text: 'Xin chào! Tôi là JAVIS - Trợ lý AI trên Portfolio chính thức của Thầy Dương Trung Hiếu. Tôi có thể hỗ trợ gì cho bạn về các khóa học, công nghệ hay kế hoạch chuyển đổi số?'
     }
   ];
 
   const GEMINI_API_KEY_FALLBACK = '';
   const GEMINI_MODEL_FALLBACK = 'gemini-flash-lite-latest';
-  const SYSTEM_INSTRUCTION_TEXT = `Bạn là ELON MUSK - Trợ lý AI cao cấp trên website Portfolio của Thầy DƯƠNG TRUNG HIẾU (trunghieuai.io.vn).
+  const SYSTEM_INSTRUCTION_TEXT = `Bạn là JAVIS - Trợ lý AI cao cấp trên website Portfolio của Thầy DƯƠNG TRUNG HIẾU (trunghieuai.io.vn).
 Nắm vững toàn bộ hồ sơ của Thầy Hiếu:
 - Giám đốc Đào tạo Học viện Công nghệ AIUNI (2025 - nay).
 - Cử nhân ĐH Kinh tế Quốc dân (K44), Thạc sĩ QTKD (MBA) ĐH FPT.
@@ -187,7 +187,7 @@ Nắm vững toàn bộ hồ sơ của Thầy Hiếu:
     thinkingEl.className = 'chat-thinking';
     thinkingEl.id = 'chat-thinking-indicator';
     thinkingEl.innerHTML = `
-      <span>Elon Musk đang trả lời</span>
+      <span>Javis đang trả lời</span>
       <div class="chat-thinking-dots">
         <span></span><span></span><span></span>
       </div>
@@ -270,7 +270,7 @@ Nắm vững toàn bộ hồ sơ của Thầy Hiếu:
       chatHistory.push({ role: 'user', text: text });
       chatHistory.push({ role: 'assistant', text: replyText });
 
-      // Hiển thị tin nhắn trả lời của Elon Musk
+      // Hiển thị tin nhắn trả lời của Javis
       const aiMsgEl = document.createElement('div');
       aiMsgEl.className = 'chat-msg assistant';
       aiMsgEl.innerHTML = formatMarkdown(replyText);
