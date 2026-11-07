@@ -184,7 +184,7 @@ const newIndexHtml = `<!DOCTYPE html>
           </div>
 
           <!-- Hero Dynamic Stats HUD -->
-          <div class="hero-stats-hud reveal-on-scroll" style="background: #ffffff; border: 1px solid #e2e8f0; box-shadow: 0 6px 20px rgba(0,0,0,0.06); border-radius: 14px;">
+          <div class="hero-stats-hud reveal-on-scroll" style="background: rgba(255, 255, 255, 0.70); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(255, 255, 255, 0.5); box-shadow: 0 6px 20px rgba(0,0,0,0.06); border-radius: 14px;">
             <div class="stat-hud-item">
               <div class="stat-hud-num" style="color: #0284c7;"><span class="stat-counter" data-target="20">20</span><span class="stat-unit">+</span></div>
               <div class="stat-hud-label" style="color: #475569;">Năm Kinh Nghiệm Quản Trị & Tài Chính</div>

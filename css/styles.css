@@ -3281,7 +3281,7 @@ footer {
 }
 
 .hero-portal-card {
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.70);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(226, 232, 240, 0.9);
@@ -3895,7 +3895,7 @@ footer {
 
 /* Translucent Frosted Glass Portals on Video */
 .hero-video-stage .hero-portal-card {
-  background: rgba(255, 255, 255, 0.92) !important;
+  background: rgba(255, 255, 255, 0.70) !important;
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(226, 232, 240, 0.9) !important;
@@ -3982,8 +3982,8 @@ footer {
   z-index: -1;
   pointer-events: none;
   background: 
-    radial-gradient(circle at 75% 35%, rgba(6, 17, 36, 0.42) 0%, rgba(4, 12, 26, 0.65) 60%, rgba(2, 6, 16, 0.88) 100%),
-    linear-gradient(180deg, rgba(6, 17, 36, 0.35) 0%, rgba(4, 12, 26, 0.55) 50%, rgba(2, 6, 16, 0.85) 100%);
+    radial-gradient(circle at 75% 35%, rgba(6, 17, 36, 0.25) 0%, rgba(4, 12, 26, 0.45) 60%, rgba(2, 6, 16, 0.72) 100%),
+    linear-gradient(180deg, rgba(6, 17, 36, 0.20) 0%, rgba(4, 12, 26, 0.38) 50%, rgba(2, 6, 16, 0.68) 100%);
 }
 
 /* ===================================================
@@ -3993,11 +3993,11 @@ footer {
 .frosted-card,
 .frosted-box,
 .section-frosted-wrap {
-  background: rgba(255, 255, 255, 0.90) !important;
-  backdrop-filter: blur(18px) !important;
-  -webkit-backdrop-filter: blur(18px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.95) !important;
-  box-shadow: 0 18px 45px rgba(2, 6, 16, 0.18), 0 0 0 1px rgba(255, 255, 255, 0.7) !important;
+  background: rgba(255, 255, 255, 0.70) !important;
+  backdrop-filter: blur(16px) saturate(170%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(170%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.55) !important;
+  box-shadow: 0 16px 40px rgba(2, 6, 16, 0.14), 0 0 0 1px rgba(255, 255, 255, 0.35) !important;
   border-radius: var(--radius-xl) !important;
   color: var(--navy) !important;
 }
@@ -4013,11 +4013,11 @@ footer {
 
 /* Header Navbar on Video */
 .nav {
-  background: rgba(255, 255, 255, 0.88) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.6) !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12) !important;
+  background: rgba(255, 255, 255, 0.70) !important;
+  backdrop-filter: blur(16px) saturate(170%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(170%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.40) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
 }
 
 /* ===================================================
@@ -4266,7 +4266,9 @@ footer {
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 249, 255, 0.92)) !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.75), rgba(240, 249, 255, 0.68)) !important;
+  backdrop-filter: blur(16px) saturate(170%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(170%) !important;
   border: 1.5px solid rgba(56, 189, 248, 0.4) !important;
   box-shadow: 0 20px 50px rgba(2, 132, 199, 0.15) !important;
 }
@@ -4429,11 +4431,11 @@ footer {
 .detail-section-block {
   padding: 36px 40px;
   scroll-margin-top: 100px;
-  background: rgba(255, 255, 255, 0.92) !important;
-  backdrop-filter: blur(18px) !important;
-  -webkit-backdrop-filter: blur(18px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.95) !important;
-  box-shadow: 0 16px 45px rgba(2, 6, 16, 0.16) !important;
+  background: rgba(255, 255, 255, 0.72) !important;
+  backdrop-filter: blur(18px) saturate(170%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(170%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.55) !important;
+  box-shadow: 0 16px 45px rgba(2, 6, 16, 0.12) !important;
   border-radius: var(--radius-xl) !important;
   color: var(--navy) !important;
 }
