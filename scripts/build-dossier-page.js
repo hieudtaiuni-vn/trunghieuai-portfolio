@@ -97,11 +97,7 @@ const dossierPageHtml = `<!DOCTYPE html>
   </div>
   <div class="site-fixed-video-overlay" aria-hidden="true"></div>
 
-  <!-- Nút Bật/Tắt Âm Thanh Video Nền Cố Định -->
-  <button id="hero-sound-toggle" class="hero-sound-btn" aria-label="Bật/Tắt âm thanh video nền" title="Bật/Tắt âm thanh video nền">
-    <span class="sound-icon">🔇</span>
-    <span class="sound-label">Bật âm thanh</span>
-  </button>
+  
 
   <!-- Navigation Header -->
   <header class="nav">
