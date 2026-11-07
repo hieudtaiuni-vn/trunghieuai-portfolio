@@ -3759,152 +3759,32 @@ footer {
 
 
 /* ===================================================
-   HERO SECOND BRAIN 3D CONSOLE & 10 AI AGENTS ECOSYSTEM
+   HERO FULLSCREEN 3D SECOND BRAIN & 10 AI AGENTS ECOSYSTEM
    =================================================== */
-.hero-brain-console {
-  position: relative;
-  width: 100%;
-  height: 600px;
-  background: radial-gradient(circle at 50% 25%, #0f2240 0%, #071326 70%, #040a16 100%);
-  border-radius: var(--radius-xl);
-  border: 1px solid rgba(56, 189, 248, 0.28);
-  box-shadow: 
-    0 24px 60px rgba(4, 10, 22, 0.45),
-    0 0 35px rgba(56, 189, 248, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+.hero.hero-fullscreen-stage {
+  min-height: 100vh;
+  min-height: 100svh;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  position: relative;
   overflow: hidden;
-  z-index: 5;
+  padding: 100px 0 85px;
+  background: radial-gradient(circle at 72% 45%, #0b1c36 0%, #061124 55%, #030814 100%);
 }
 
-/* Cybernetic Grid Mesh Background */
-.hero-brain-console::before {
-  content: "";
+/* Fullscreen WebGL 3D Canvas Stage */
+.brain-fullscreen-canvas-wrap {
   position: absolute;
   inset: 0;
-  background-image: 
-    linear-gradient(rgba(56, 189, 248, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
-  background-size: 32px 32px;
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* Console Header */
-.brain-console-header {
-  position: relative;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 20px;
-  background: rgba(7, 19, 38, 0.85);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(56, 189, 248, 0.18);
-  gap: 12px;
-}
-
-.brain-live-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 4px 10px;
-  background: rgba(16, 185, 129, 0.15);
-  border: 1px solid rgba(16, 185, 129, 0.4);
-  border-radius: 999px;
-  color: #34d399;
-  font-size: 10.5px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  white-space: nowrap;
-}
-
-.live-dot-pulse {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #10b981;
-  box-shadow: 0 0 10px #10b981;
-  animation: liveBeaconPulse 1.8s infinite ease-in-out;
-}
-
-@keyframes liveBeaconPulse {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.4); opacity: 0.5; }
-}
-
-.brain-console-title {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.brain-console-title strong {
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  color: #f0f6fc;
-}
-
-.brain-console-title small {
-  font-size: 10px;
-  color: #94a3b8;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* Architect Micro Badge */
-.brain-architect-badge {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 4px 10px 4px 6px;
-  border-radius: 999px;
-}
-
-.architect-thumb {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 1.5px solid #38bdf8;
-}
-
-.architect-info {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.15;
-}
-
-.arch-name {
-  font-size: 10px;
-  font-weight: 800;
-  color: #38bdf8;
-  letter-spacing: 0.04em;
-}
-
-.arch-role {
-  font-size: 8.5px;
-  color: #cbd5e1;
-}
-
-/* 3D WebGL Canvas Stage */
-.brain-3d-stage {
-  position: relative;
-  flex: 1;
   width: 100%;
-  min-height: 380px;
+  height: 100%;
+  z-index: 1;
   cursor: grab;
   user-select: none;
   overflow: hidden;
-  z-index: 2;
 }
 
-.brain-3d-stage:active {
+.brain-fullscreen-canvas-wrap:active {
   cursor: grabbing;
 }
 
@@ -3916,11 +3796,24 @@ footer {
   display: block;
 }
 
+/* Cybernetic Grid Mesh Background */
+.brain-fullscreen-canvas-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(56, 189, 248, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
+  background-size: 36px 36px;
+  pointer-events: none;
+  z-index: 2;
+}
+
 /* Central Brain Hologram HUD Label */
 .brain-center-hud {
   position: absolute;
-  top: 14px;
-  left: 18px;
+  top: 96px;
+  left: 36px;
   pointer-events: none;
   display: flex;
   flex-direction: column;
@@ -3929,41 +3822,43 @@ footer {
 }
 
 .center-hud-tag {
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 800;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   color: #38bdf8;
 }
 
 .center-hud-title {
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 900;
   letter-spacing: 0.08em;
   color: #ffffff;
-  text-shadow: 0 0 16px rgba(56, 189, 248, 0.7);
+  text-shadow: 0 0 18px rgba(56, 189, 248, 0.7);
 }
 
 .center-hud-sub {
-  font-size: 9.5px;
+  font-size: 10.5px;
   color: #94a3b8;
 }
 
 /* Hint Pill */
 .brain-hint-pill {
   position: absolute;
-  bottom: 12px;
+  bottom: 84px;
   left: 50%;
   transform: translateX(-50%);
   background: rgba(7, 19, 38, 0.75);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(56, 189, 248, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(56, 189, 248, 0.25);
   border-radius: 999px;
-  padding: 4px 14px;
-  font-size: 10px;
-  color: #94a3b8;
+  padding: 5px 16px;
+  font-size: 10.5px;
+  color: #cbd5e1;
   pointer-events: none;
   white-space: nowrap;
   z-index: 6;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
 }
 
 /* 3D Projected Agent HTML Badges Container */
@@ -4019,31 +3914,142 @@ footer {
   box-shadow: 0 0 6px #34d399;
 }
 
-/* Inspector HUD Drawer */
-.brain-inspector-hud {
+/* Top Floating Pill Bar */
+.hero-floating-topbar {
   position: absolute;
-  bottom: 60px;
-  right: 14px;
-  width: calc(100% - 28px);
-  max-width: 380px;
-  background: rgba(8, 20, 42, 0.94);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(56, 189, 248, 0.4);
-  border-radius: var(--radius-md);
-  padding: 16px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 24px rgba(56, 189, 248, 0.2);
-  z-index: 20;
-  display: none;
-  animation: inspectorSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  top: 92px;
+  right: 32px;
+  z-index: 12;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-.brain-inspector-hud.visible {
+.brain-live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px;
+  background: rgba(16, 185, 129, 0.18);
+  border: 1px solid rgba(16, 185, 129, 0.45);
+  border-radius: 999px;
+  color: #34d399;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  backdrop-filter: blur(10px);
+}
+
+.live-dot-pulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 10px #10b981;
+  animation: liveBeaconPulse 1.8s infinite ease-in-out;
+}
+
+@keyframes liveBeaconPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.5; }
+}
+
+.brain-architect-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(7, 19, 38, 0.75);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  padding: 4px 12px 4px 6px;
+  border-radius: 999px;
+}
+
+.architect-thumb {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid #38bdf8;
+}
+
+.architect-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.arch-name {
+  font-size: 10px;
+  font-weight: 800;
+  color: #38bdf8;
+  letter-spacing: 0.04em;
+}
+
+.arch-role {
+  font-size: 8.5px;
+  color: #cbd5e1;
+}
+
+/* Hero Content Wrapper & Translucent Glass Card */
+.hero-content-wrapper {
+  position: relative;
+  z-index: 10;
+  pointer-events: none;
+  width: 100%;
+}
+
+.hero-glass-card {
+  max-width: 580px;
+  pointer-events: auto;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  border-radius: var(--radius-xl);
+  padding: 34px 38px;
+  box-shadow: 
+    0 24px 60px rgba(3, 8, 20, 0.18),
+    0 0 35px rgba(56, 189, 248, 0.12);
+  transition: transform 0.3s ease;
+}
+
+.hero-glass-card h1 {
+  font-size: clamp(32px, 3.4vw, 46px);
+  line-height: 1.15;
+  margin-bottom: 12px;
+}
+
+/* AGENT INSPECTOR HUD: NẰM GỌN 1 BÊN, CÓ ĐỘ TRONG SUỐT CAO, KHÔNG CHE THÔNG TIN */
+.brain-inspector-hud.docked-side {
+  position: absolute;
+  right: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 360px;
+  max-width: calc(100vw - 48px);
+  background: rgba(7, 19, 38, 0.72);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: 
+    0 24px 60px rgba(0, 0, 0, 0.55),
+    0 0 30px rgba(56, 189, 248, 0.22);
+  z-index: 25;
+  display: none;
+  animation: inspectorSlideRight 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.brain-inspector-hud.docked-side.visible {
   display: block;
 }
 
-@keyframes inspectorSlideUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes inspectorSlideRight {
+  from { opacity: 0; transform: translateY(-50%) translateX(28px); }
+  to { opacity: 1; transform: translateY(-50%) translateX(0); }
 }
 
 .inspector-header {
@@ -4067,8 +4073,8 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(56, 189, 248, 0.15);
-  border: 1px solid rgba(56, 189, 248, 0.3);
+  background: rgba(56, 189, 248, 0.18);
+  border: 1px solid rgba(56, 189, 248, 0.35);
   border-radius: 10px;
 }
 
@@ -4081,7 +4087,7 @@ footer {
 
 .inspector-title {
   margin: 0;
-  font-size: 13.5px;
+  font-size: 14px;
   font-weight: 800;
   color: #ffffff;
   line-height: 1.25;
@@ -4091,7 +4097,7 @@ footer {
   background: none;
   border: none;
   color: #94a3b8;
-  font-size: 14px;
+  font-size: 15px;
   cursor: pointer;
   padding: 4px;
   border-radius: 4px;
@@ -4103,9 +4109,9 @@ footer {
 }
 
 .inspector-desc {
-  font-size: 11px;
+  font-size: 11.5px;
   color: #cbd5e1;
-  line-height: 1.5;
+  line-height: 1.55;
   margin: 8px 0 12px;
 }
 
@@ -4116,7 +4122,7 @@ footer {
   background: rgba(15, 33, 62, 0.6);
   padding: 8px 10px;
   border-radius: 8px;
-  border: 1px solid rgba(56, 189, 248, 0.15);
+  border: 1px solid rgba(56, 189, 248, 0.18);
   margin-bottom: 12px;
 }
 
@@ -4133,7 +4139,7 @@ footer {
 }
 
 .tel-val {
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 800;
   color: #38bdf8;
   margin-top: 2px;
@@ -4145,7 +4151,7 @@ footer {
 }
 
 .btn-micro {
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 700;
   color: #ffffff;
   background: linear-gradient(135deg, #0284c7, #2563eb);
@@ -4162,18 +4168,25 @@ footer {
   color: #ffffff;
 }
 
-/* Console Footer & Controls */
-.brain-console-footer {
-  position: relative;
-  z-index: 10;
+/* Bottom Floating Controls Bar */
+.hero-floating-controls {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 10px 16px;
-  background: rgba(7, 19, 38, 0.9);
-  backdrop-filter: blur(12px);
-  border-top: 1px solid rgba(56, 189, 248, 0.18);
-  gap: 12px;
+  gap: 14px;
+  background: rgba(7, 19, 38, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(56, 189, 248, 0.28);
+  padding: 8px 16px;
+  border-radius: 999px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+  max-width: calc(100vw - 32px);
+  overflow-x: auto;
 }
 
 .agent-quick-selector {
@@ -4227,12 +4240,12 @@ footer {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 5px 9px;
-  background: rgba(15, 33, 62, 0.8);
-  border: 1px solid rgba(56, 189, 248, 0.25);
+  padding: 5px 10px;
+  background: rgba(15, 33, 62, 0.85);
+  border: 1px solid rgba(56, 189, 248, 0.28);
   border-radius: 6px;
   color: #cbd5e1;
-  font-size: 10px;
+  font-size: 10.5px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -4246,42 +4259,81 @@ footer {
   color: #ffffff;
 }
 
+/* RESPONSIVE OPTIMIZATION CHO MÁY TÍNH & ĐIỆN THOẠI */
 @media (max-width: 991px) {
-  .hero-brain-console {
-    height: 520px;
-    margin-top: 12px;
+  .hero.hero-fullscreen-stage {
+    min-height: 100vh;
+    padding: 85px 0 110px;
+    flex-direction: column;
+    justify-content: flex-end;
   }
-  .brain-inspector-hud {
+
+  .brain-center-hud {
+    top: 76px;
+    left: 18px;
+  }
+
+  .hero-floating-topbar {
+    top: 76px;
+    right: 16px;
+  }
+
+  .brain-hint-pill {
+    bottom: 74px;
+    font-size: 9.5px;
+    padding: 4px 12px;
+  }
+
+  .hero-glass-card {
     max-width: 100%;
-    right: 10px;
-    left: 10px;
+    padding: 24px;
+    margin-bottom: 12px;
+    background: rgba(255, 255, 255, 0.92);
+  }
+
+  .brain-inspector-hud.docked-side {
+    position: fixed;
+    top: auto;
+    bottom: 80px;
+    right: 14px;
+    left: 14px;
     width: auto;
+    transform: none;
+    max-height: 48vh;
+    overflow-y: auto;
+    background: rgba(7, 19, 38, 0.85);
+    z-index: 50;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+  }
+
+  @keyframes inspectorSlideRight {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-floating-controls {
+    bottom: 12px;
+    padding: 6px 12px;
+    gap: 8px;
   }
 }
 
 @media (max-width: 600px) {
-  .hero-brain-console {
-    height: 460px;
-  }
-  .brain-console-header {
-    flex-wrap: wrap;
-    padding: 10px 12px;
-  }
   .brain-architect-badge {
     display: none;
   }
   .center-hud-title {
-    font-size: 13px;
+    font-size: 13.5px;
   }
-  .brain-hint-pill {
-    font-size: 9px;
-    padding: 3px 10px;
+  .center-hud-sub {
+    display: none;
   }
-  .brain-console-footer {
+  .hero-floating-controls {
+    border-radius: 12px;
     flex-direction: column;
     align-items: stretch;
-    gap: 8px;
-    padding: 8px 12px;
+    gap: 6px;
+    padding: 6px 10px;
   }
   .agent-quick-selector {
     justify-content: flex-start;

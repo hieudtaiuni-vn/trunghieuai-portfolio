@@ -1,6 +1,6 @@
 /**
  * TỰ ĐỘNG SINH BỞI scripts/build-articles.js
- * Thời gian: 2026-11-06T23:58:21.934Z
+ * Thời gian: 2026-11-07T00:03:48.463Z
  * Nguồn: Các file Markdown trong thư mục posts/
  */
 window.BUILTIN_ARTICLES = [

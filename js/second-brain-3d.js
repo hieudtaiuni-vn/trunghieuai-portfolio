@@ -1,14 +1,16 @@
 /**
- * Second Brain 3D Interactive Console
+ * Second Brain 3D Interactive Console (Fullscreen Immersive Engine)
  * Mô hình 3D chi tiết 1 Second Brain & Luồng kết nối dữ liệu với 10 AI Agents đang hoạt động
+ * Chiếm toàn màn hình, tối ưu cho máy tính & điện thoại
+ * Bảng Agent hiển thị gọn gàng 1 bên với độ trong suốt cao, không che thông tin
  * Kiến trúc sư: Dương Trung Hiếu - Học viện Công nghệ AIUNI
- * Engine: Three.js r128 (Enhanced High-Fidelity Crystalline & Neural Hybrid)
+ * Engine: Three.js r128
  */
 
 (function () {
   'use strict';
 
-  // 1. Dữ liệu 10 AI Agents chuyên biệt trong hệ sinh thái của Thầy Dương Trung Hiếu
+  // 1. Dữ liệu 10 AI Agents chuyên biệt trong hệ sinh thái
   const AI_AGENTS_DATA = [
     {
       id: "A01",
@@ -142,7 +144,7 @@
     }
   ];
 
-  // Helper tạo Text Sprite sắc nét trong Three.js
+  // Helper tạo Text Sprite 3D sắc nét
   function makeTextSprite(text, color = '#38bdf8', fontSize = 32) {
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
@@ -172,14 +174,12 @@
       return;
     }
 
-    let width = container.clientWidth || 500;
-    let height = container.clientHeight || 450;
+    let width = container.clientWidth || window.innerWidth;
+    let height = container.clientHeight || window.innerHeight;
 
     // A. Three.js Scene, Camera, Renderer
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(40, width / height, 0.1, 100);
-    camera.position.set(0, 0.9, 8.6);
-    camera.lookAt(0, 0, 0);
 
     const renderer = new THREE.WebGLRenderer({
       canvas: canvas,
@@ -192,7 +192,7 @@
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.15;
 
-    // Master World Group (cho phép xoay toàn cảnh 3D)
+    // Master World Group (cho phép xoay và dịch chuyển toàn cảnh 3D)
     const worldGroup = new THREE.Group();
     scene.add(worldGroup);
 
@@ -204,11 +204,11 @@
     dirLight.position.set(5, 6, 8);
     scene.add(dirLight);
 
-    const brainCoreLight = new THREE.PointLight(0x38bdf8, 3.2, 12);
+    const brainCoreLight = new THREE.PointLight(0x38bdf8, 3.2, 14);
     brainCoreLight.position.set(0, 0, 0);
     worldGroup.add(brainCoreLight);
 
-    const backFillLight = new THREE.PointLight(0x818cf8, 2.0, 14);
+    const backFillLight = new THREE.PointLight(0x818cf8, 2.0, 16);
     backFillLight.position.set(-5, 2, -4);
     worldGroup.add(backFillLight);
 
@@ -218,7 +218,7 @@
     const brainGroup = new THREE.Group();
     worldGroup.add(brainGroup);
 
-    // 1. Tạo Point Cloud Vỏ Não 2 Bán Cầu (Cerebral Cortex Point Cloud & Folds)
+    // 1. Point Cloud Vỏ Não 2 Bán Cầu (Cerebral Cortex Point Cloud & Sulci/Gyri)
     const brainPointsCount = 1450;
     const brainPositions = [];
     const brainColors = [];
@@ -231,24 +231,21 @@
       const isLeft = (i % 2 === 0);
       const hemiSign = isLeft ? 1 : -1;
 
-      // Góc cầu
       const u = Math.random();
       const v = Math.random();
       const theta = u * Math.PI * 0.94 + 0.06;
       const phi = (v * 0.88 + 0.06) * Math.PI;
 
-      // Hình bầu dục giải phẫu của não
       let rx = 0.85 * Math.sin(phi) * Math.sin(theta);
       let ry = 0.95 * Math.cos(phi);
       let rz = 1.28 * Math.sin(phi) * Math.cos(theta);
 
-      // Nếp nhăn hồi não & rãnh não (Sulci & Gyri procedural harmonic displacement)
       const bump = 0.09 * Math.sin(7 * theta) * Math.cos(6 * phi)
                  + 0.05 * Math.cos(11 * theta + 2 * phi)
                  + 0.035 * Math.sin(14 * phi);
 
-      if (ry < -0.25) ry *= 0.82; // đáy bằng phẳng
-      if (rz > 0.35) rx *= 0.92;  // thùy trán thon gọn
+      if (ry < -0.25) ry *= 0.82;
+      if (rz > 0.35) rx *= 0.92;
 
       const factor = 1 + bump;
       const x = (rx * factor + 0.12) * hemiSign;
@@ -257,10 +254,9 @@
 
       brainPositions.push(x, y, z);
 
-      // Phối màu phát quang nơ-ron
       let c;
       if (Math.random() < 0.08) {
-        c = colorWhite; // Điểm synaptic firing chớp sáng
+        c = colorWhite;
       } else if (isLeft) {
         c = colorCyan.clone().lerp(colorIndigo, Math.abs(y));
       } else {
@@ -284,7 +280,7 @@
     const brainPointsMesh = new THREE.Points(brainGeometry, brainMaterial);
     brainGroup.add(brainPointsMesh);
 
-    // 2. Mạng Lưới Sợi Synapse Kết Nối Nơ-ron (Neural Synaptic Lines)
+    // 2. Mạng Lưới Sợi Synapse Kết Nối Nơ-ron
     const synapseLinePositions = [];
     const maxSynapseDistance = 0.24;
     const posArr = brainPositions;
@@ -320,7 +316,7 @@
     const synapseLines = new THREE.LineSegments(synapseGeometry, synapseMaterial);
     brainGroup.add(synapseLines);
 
-    // 3. Nhân Tri Thức Trung Tâm Crystalline Phản Quang (Second Brain Physical Core)
+    // 3. Nhân Tri Thức Crystalline Phản Quang (Second Brain Physical Core)
     const coreShellGeo = new THREE.IcosahedronGeometry(0.72, 3);
     const coreShellMat = new THREE.MeshPhysicalMaterial({
       color: 0x78d9ed,
@@ -393,19 +389,19 @@
     const dustCount = 450;
     const dustPositions = new Float32Array(dustCount * 3);
     for (let i = 0; i < dustCount; i++) {
-      const r = 1.8 + Math.random() * 3.6;
+      const r = 2.0 + Math.random() * 4.2;
       const a = Math.random() * Math.PI * 2;
       dustPositions[i * 3] = Math.cos(a) * r;
-      dustPositions[i * 3 + 1] = (Math.random() - 0.5) * 2.8;
+      dustPositions[i * 3 + 1] = (Math.random() - 0.5) * 3.2;
       dustPositions[i * 3 + 2] = Math.sin(a) * r;
     }
     const dustGeo = new THREE.BufferGeometry();
     dustGeo.setAttribute('position', new THREE.BufferAttribute(dustPositions, 3));
     const dustMat = new THREE.PointsMaterial({
       color: 0x38bdf8,
-      size: 0.035,
+      size: 0.038,
       transparent: true,
-      opacity: 0.6,
+      opacity: 0.65,
       blending: THREE.AdditiveBlending
     });
     const dustMesh = new THREE.Points(dustGeo, dustMat);
@@ -431,7 +427,6 @@
       const ay = elevation;
       const az = Math.sin(angle) * (orbitRadius + radiusOffset);
 
-      // Group chứa 1 Agent
       const agentGroup = new THREE.Group();
       agentGroup.position.set(ax, ay, az);
       worldGroup.add(agentGroup);
@@ -470,7 +465,7 @@
       agentMeshesForRaycast.push(shellMesh);
       shellMesh.userData = { agentIndex: idx, agentData: data };
 
-      // 3. Vành đai Hologram Gimbal xoay quanh Agent
+      // 3. Vành đai Hologram Gimbal
       const haloGeo = new THREE.TorusGeometry(0.44, 0.012, 8, 48);
       const haloMat = new THREE.MeshBasicMaterial({
         color: agentColor,
@@ -513,7 +508,6 @@
       // ==========================================
       // E. LUỒNG KẾT NỐI DỮ LIỆU (DATA STREAMS)
       // ==========================================
-      // Đường cong kết nối từ Second Brain Core (0,0,0) -> Agent (ax, ay, az)
       const pStart = new THREE.Vector3(0, 0, 0);
       const pEnd = new THREE.Vector3(ax, ay, az);
       const pControl = new THREE.Vector3(
@@ -525,7 +519,6 @@
       const curve = new THREE.QuadraticBezierCurve3(pStart, pControl, pEnd);
       connectionCurves.push(curve);
 
-      // Đường dẫn truyền laser
       const curvePoints = curve.getPoints(36);
       const streamGeo = new THREE.BufferGeometry().setFromPoints(curvePoints);
       const streamMat = new THREE.LineBasicMaterial({
@@ -537,7 +530,7 @@
       const streamLine = new THREE.Line(streamGeo, streamMat);
       worldGroup.add(streamLine);
 
-      // Liên kết chéo giữa các Agent liền kề (Collaborative Mesh Link)
+      // Mạng liên kết chéo giữa các Agent lân cận
       if (idx % 2 === 0) {
         const nextIdx = (idx + 1) % agentCount;
         const nextAngle = (nextIdx / agentCount) * Math.PI * 2 - Math.PI / 2;
@@ -557,7 +550,7 @@
         worldGroup.add(new THREE.Line(crossGeo, crossMat));
       }
 
-      // Tạo các photon / gói tin dữ liệu (Data Packets) di chuyển dọc theo luồng
+      // Gói tin dữ liệu chuyển động (Data Packets)
       const packetsPerCurve = 6;
       for (let p = 0; p < packetsPerCurve; p++) {
         const isOutbound = (p % 2 === 0);
@@ -571,7 +564,7 @@
       }
     });
 
-    // Master Buffer Geometry cho tất cả Data Packets (Single Draw Call for 60fps)
+    // Master Buffer Geometry cho Data Packets
     const totalPackets = dataPackets.length;
     const packetPositions = new Float32Array(totalPackets * 3);
     const packetColors = new Float32Array(totalPackets * 3);
@@ -637,7 +630,7 @@
       });
     }
 
-    // Bảng chi tiết Inspector HUD
+    // Bảng chi tiết Inspector HUD (Nằm gọn 1 bên, trong suốt, không che thông tin)
     function showInspector(agent) {
       if (!inspector) return;
       document.getElementById('inspector-icon').textContent = agent.icon;
@@ -689,9 +682,28 @@
     let targetZoom = 8.6;
     let currentZoom = 8.6;
 
+    // Responsive layout tuning cho máy tính vs điện thoại
+    function updateResponsiveLayout() {
+      const isMobile = window.innerWidth < 992;
+      const isSmallMobile = window.innerWidth < 600;
+
+      if (isMobile) {
+        // Điện thoại: Đưa Second Brain về tâm trục trên để người xem vuốt chạm thoải mái
+        worldGroup.position.set(0, isSmallMobile ? 0.45 : 0.3, 0);
+        targetZoom = isSmallMobile ? 11.2 : 9.8;
+      } else {
+        // Máy tính: Dịch Second Brain sang bên phải trung tâm (Right 60%) để cân đối với thẻ bài bên trái
+        const shiftX = (window.innerWidth > 1400) ? 1.4 : 1.1;
+        worldGroup.position.set(shiftX, 0.1, 0);
+        targetZoom = 8.6;
+      }
+    }
+    updateResponsiveLayout();
+
     const btnToggleSpin = document.getElementById('btn-toggle-spin');
     const btnToggleSpeed = document.getElementById('btn-toggle-speed');
     const btnResetView = document.getElementById('btn-reset-view');
+    const btnToggleFullscreen = document.getElementById('btn-toggle-fullscreen');
 
     if (btnToggleSpin) {
       btnToggleSpin.addEventListener('click', () => {
@@ -711,14 +723,34 @@
       btnResetView.addEventListener('click', () => {
         targetRotationX = 0.12;
         targetRotationY = 0.45;
-        targetZoom = 8.6;
+        updateResponsiveLayout();
         isAutoSpin = true;
         if (btnToggleSpin) btnToggleSpin.classList.add('active');
         if (inspector) inspector.classList.remove('visible');
       });
     }
 
-    // Mouse drag for 3D Orbiting
+    // Toggle Toàn Màn Hình (Fullscreen Mode)
+    if (btnToggleFullscreen) {
+      btnToggleFullscreen.addEventListener('click', () => {
+        const heroSec = document.getElementById('hero-section');
+        if (!document.fullscreenElement) {
+          if (heroSec.requestFullscreen) {
+            heroSec.requestFullscreen();
+          } else if (heroSec.webkitRequestFullscreen) {
+            heroSec.webkitRequestFullscreen();
+          }
+          btnToggleFullscreen.classList.add('active');
+        } else {
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+          }
+          btnToggleFullscreen.classList.remove('active');
+        }
+      });
+    }
+
+    // Mouse drag for 3D Orbiting (trên toàn bộ stage)
     container.addEventListener('mousedown', (e) => {
       isDragging = true;
       prevMouseX = e.clientX;
@@ -772,7 +804,7 @@
           e.touches[0].clientY - e.touches[1].clientY
         );
         const delta = (dist - touchStartDist) * 0.01;
-        targetZoom = Math.max(5.5, Math.min(11.5, targetZoom - delta));
+        targetZoom = Math.max(5.5, Math.min(14.0, targetZoom - delta));
         touchStartDist = dist;
       }
     }, { passive: true });
@@ -784,7 +816,7 @@
     container.addEventListener('wheel', (e) => {
       e.preventDefault();
       targetZoom += e.deltaY * 0.004;
-      targetZoom = Math.max(5.5, Math.min(11.5, targetZoom));
+      targetZoom = Math.max(5.5, Math.min(14.0, targetZoom));
     }, { passive: false });
 
     // Raycaster detection
@@ -823,11 +855,9 @@
       const angle = (index / agentCount) * Math.PI * 2 - Math.PI / 2;
       targetRotationY = -angle;
       targetRotationX = -node.basePos.y * 0.22;
-      targetZoom = 7.2;
 
       showInspector(node.data);
 
-      // Pulse scale
       node.group.scale.set(1.3, 1.3, 1.3);
       setTimeout(() => {
         node.group.scale.set(1.0, 1.0, 1.0);
@@ -841,11 +871,12 @@
     // H. RESIZE & INTERSECTION OBSERVER
     // ==========================================
     function onResize() {
-      width = container.clientWidth || 500;
-      height = container.clientHeight || 450;
+      width = container.clientWidth || window.innerWidth;
+      height = container.clientHeight || window.innerHeight;
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
       renderer.setSize(width, height);
+      updateResponsiveLayout();
     }
 
     window.addEventListener('resize', onResize);
@@ -872,9 +903,8 @@
       const delta = clock.getDelta();
       const time = clock.getElapsedTime();
 
-      // 1. Quán tính xoay và zoom
       if (isAutoSpin && !isDragging) {
-        targetRotationY += 0.003;
+        targetRotationY += 0.0028;
       }
 
       currentRotationX += (targetRotationX - currentRotationX) * 0.07;
@@ -896,7 +926,6 @@
 
       brainCoreLight.intensity = 2.4 + Math.sin(time * 3.8) * 0.8;
 
-      // Xoay orbital rings & dust
       memoryRing1.rotation.z += 0.006;
       memoryRing2.rotation.z -= 0.005;
       memoryRing3.rotation.x += 0.005;
@@ -904,7 +933,7 @@
 
       synapseMaterial.opacity = 0.25 + Math.sin(time * 2.8) * 0.12;
 
-      // 3. Chuyển động của 10 AI Agents
+      // 3. Chuyển động 10 AI Agents
       agentNodes.forEach((node, i) => {
         const floatY = Math.sin(time * 1.6 + i) * 0.07;
         node.group.position.y = node.basePos.y + floatY;
@@ -912,7 +941,6 @@
         node.shellMesh.rotation.y = time * 0.25 + i * 0.4;
         node.haloMesh.rotation.z = time * 0.35 + i;
 
-        // Xung beacon
         node.pulseTimer += delta;
         if (node.pulseTimer > 1.8) node.pulseTimer = 0;
         const pulseProgress = node.pulseTimer / 1.8;
@@ -921,7 +949,6 @@
         node.pulseMesh.material.opacity = Math.max(0, 0.45 * (1 - pulseProgress));
         node.pulseMesh.lookAt(camera.position);
 
-        // Cập nhật vị trí HTML Pin 3D
         const pinEl = pinElements[i];
         if (pinEl) {
           const worldPos = new THREE.Vector3();
@@ -939,7 +966,7 @@
         }
       });
 
-      // 4. Cập nhật luồng photon dữ liệu di chuyển (Data Streams)
+      // 4. Luồng photon dữ liệu (Data Streams)
       const positions = packetGeometry.attributes.position.array;
       dataPackets.forEach((pkt, i) => {
         const curve = connectionCurves[pkt.curveIndex];
