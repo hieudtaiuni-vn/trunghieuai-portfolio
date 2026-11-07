@@ -151,7 +151,7 @@ const dossierPageHtml = `<!DOCTYPE html>
           <li><a href="#du-an" class="toc-nav-link"><span class="toc-nav-icon">🚀</span><span>4. Dự án & Giải pháp AI</span></a></li>
           <li><a href="#dao-tao" class="toc-nav-link"><span class="toc-nav-icon">🎓</span><span>5. 4 Khung Đào tạo Chuẩn</span></a></li>
           <li><a href="#tin-tuc" class="toc-nav-link"><span class="toc-nav-icon">📰</span><span>6. Tin tức & Chuyên môn</span></a></li>
-          <li><a href="#video" class="toc-nav-link"><span class="toc-nav-icon">🎥</span><span>7. Video & Bài giảng 1080p</span></a></li>
+          <li><a href="#video" class="toc-nav-link"><span class="toc-nav-icon">🎥</span><span>7. Video & Bài giảng</span></a></li>
           <li><a href="#album" class="toc-nav-link"><span class="toc-nav-icon">📸</span><span>8. Album Ảnh Hoạt động</span></a></li>
           <li><a href="#bao-chi" class="toc-nav-link"><span class="toc-nav-icon">📰</span><span>9. 37+ Báo chí nói về AIUNI</span></a></li>
           <li><a href="#doi-tac" class="toc-nav-link"><span class="toc-nav-icon">🤝</span><span>10. Đối tác & Đồng hành</span></a></li>
@@ -305,7 +305,7 @@ const dossierPageHtml = `<!DOCTYPE html>
           ${articlesInner}
         </section>
 
-        <!-- 7. Video Bài Giảng 1080p -->
+        <!-- 7. Video & Bài giảng -->
         <section id="video" class="detail-section-block frosted-card media-section">
           ${mediaInner}
         </section>

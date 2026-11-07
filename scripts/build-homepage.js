@@ -400,7 +400,7 @@ const newIndexHtml = `<!DOCTYPE html>
             <div class="banner-icon">📑</div>
             <div class="banner-info">
               <h3>Khám Phá Toàn Diện Trang "Hồ Sơ & Chi Tiết"</h3>
-              <p>Xem toàn bộ tài liệu chuyên sâu: Triết lý quản trị, Hành trình 20+ năm ngân hàng, 4 Khung đào tạo chuẩn mực (CT-01 đến CT-04), 6 Bài viết tin tức, Video 1080p, Album ảnh 3D, 37+ báo chí nói về AIUNI và Hệ sinh thái đối tác.</p>
+              <p>Xem toàn bộ tài liệu chuyên sâu: Triết lý quản trị, Hành trình 20+ năm ngân hàng, 4 Khung đào tạo chuẩn mực (CT-01 đến CT-04), 6 Bài viết tin tức, Video & Bài giảng, Album ảnh 3D, 37+ báo chí nói về AIUNI và Hệ sinh thái đối tác.</p>
             </div>
           </div>
           <a href="ho-so-chi-tiet.html" class="banner-cta-btn">Mở Trang Hồ Sơ & Chi Tiết Đầy Đủ ↗</a>

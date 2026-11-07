@@ -1100,20 +1100,20 @@ Nắm vững toàn bộ hồ sơ của Thầy Hiếu:
     const desc = document.getElementById('video-desc');
     if (!iframe) return;
 
-    if (type === 'intro') {
-      iframe.src = 'https://www.youtube.com/embed/W2YSUnCU5yE?si=jzDo9hyCT0G9aMIK&autoplay=1&vq=hd1080&rel=0&enablejsapi=1';
+    if (type === 'playlist') {
+      iframe.src = 'https://www.youtube.com/embed/videoseries?list=PLNYAp62xZevw&autoplay=1&rel=0&enablejsapi=1';
+      if (btnPlaylist) { btnPlaylist.classList.add('active'); btnPlaylist.classList.remove('ghost'); }
+      if (btnIntro) { btnIntro.classList.remove('active'); btnIntro.classList.add('ghost'); }
+      if (badge) badge.textContent = 'DANH SÁCH PHÁT CHÍNH THỨC (PLAYLIST)';
+      if (title) title.textContent = 'CHIẾU TRƯỚC WORKSHOP & BÀI GIẢNG AI';
+      if (desc) desc.textContent = 'Danh sách phát tổng hợp các video chiếu trước workshop, bài giảng chuyên sâu và các hoạt động đào tạo ứng dụng Trí tuệ nhân tạo thực chiến của Thầy Dương Trung Hiếu cùng Học viện Công nghệ AIUNI.';
+    } else {
+      iframe.src = 'https://www.youtube.com/embed/W2YSUnCU5yE?si=jzDo9hyCT0G9aMIK&autoplay=1&rel=0&enablejsapi=1';
       if (btnIntro) { btnIntro.classList.add('active'); btnIntro.classList.remove('ghost'); }
       if (btnPlaylist) { btnPlaylist.classList.remove('active'); btnPlaylist.classList.add('ghost'); }
       if (badge) badge.textContent = 'VIDEO TIÊU ĐIỂM · CHÍNH THỨC';
       if (title) title.textContent = 'GIỚI THIỆU HỌC VIỆN CÔNG NGHỆ AIUNI';
       if (desc) desc.textContent = 'Khám phá tầm nhìn, sứ mệnh phổ cập AI toàn dân, phong trào Bình dân học vụ số, đào tạo 1.000 Giảng viên GenAI và hệ sinh thái giải pháp AI ứng dụng thực chiến của Học viện Công nghệ AIUNI cùng Thầy Dương Trung Hiếu.';
-    } else {
-      iframe.src = 'https://www.youtube.com/embed/videoseries?list=PLr6-GrHGF5mNH00jAfi4o4R0a_8_YqX9J&autoplay=1&loop=1&rel=0&vq=hd1080&enablejsapi=1';
-      if (btnPlaylist) { btnPlaylist.classList.add('active'); btnPlaylist.classList.remove('ghost'); }
-      if (btnIntro) { btnIntro.classList.remove('active'); btnIntro.classList.add('ghost'); }
-      if (badge) badge.textContent = 'DANH SÁCH PHÁT CHẠY LIÊN TỤC (PLAYLIST)';
-      if (title) title.textContent = 'Kho Video Đào tạo, Hội thảo & Ứng dụng AI';
-      if (desc) desc.textContent = 'Tổng hợp các video ghi lại bài giảng, hội thảo chuyên đề và khoảnh khắc tập huấn ứng dụng AI thực tế. Hỗ trợ phát tuần tự liên tục theo danh sách phát.';
     }
   };
 

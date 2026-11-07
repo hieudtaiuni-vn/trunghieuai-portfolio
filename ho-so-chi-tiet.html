@@ -100,7 +100,7 @@
           <li><a href="#du-an" class="toc-nav-link"><span class="toc-nav-icon">🚀</span><span>4. Dự án & Giải pháp AI</span></a></li>
           <li><a href="#dao-tao" class="toc-nav-link"><span class="toc-nav-icon">🎓</span><span>5. 4 Khung Đào tạo Chuẩn</span></a></li>
           <li><a href="#tin-tuc" class="toc-nav-link"><span class="toc-nav-icon">📰</span><span>6. Tin tức & Chuyên môn</span></a></li>
-          <li><a href="#video" class="toc-nav-link"><span class="toc-nav-icon">🎥</span><span>7. Video & Bài giảng 1080p</span></a></li>
+          <li><a href="#video" class="toc-nav-link"><span class="toc-nav-icon">🎥</span><span>7. Video & Bài giảng</span></a></li>
           <li><a href="#album" class="toc-nav-link"><span class="toc-nav-icon">📸</span><span>8. Album Ảnh Hoạt động</span></a></li>
           <li><a href="#bao-chi" class="toc-nav-link"><span class="toc-nav-icon">📰</span><span>9. 37+ Báo chí nói về AIUNI</span></a></li>
           <li><a href="#doi-tac" class="toc-nav-link"><span class="toc-nav-icon">🤝</span><span>10. Đối tác & Đồng hành</span></a></li>
@@ -574,7 +574,7 @@
     
         </section>
 
-        <!-- 7. Video Bài Giảng 1080p -->
+        <!-- 7. Video & Bài giảng -->
         <section id="video" class="detail-section-block frosted-card media-section">
           
       <div class="wrap">
@@ -589,11 +589,11 @@
         <div class="video-container-card">
           <!-- Video Quick Switcher Tabs -->
           <div class="video-channel-tabs" style="display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap;">
-            <button class="btn sm video-tab-btn active" id="tab-video-intro" onclick="switchVideoChannel('intro')" style="display: inline-flex; align-items: center; gap: 6px;">
-              <span>▶</span> Video Giới thiệu AIUNI
+            <button class="btn sm video-tab-btn active" id="tab-video-playlist" onclick="switchVideoChannel('playlist')" style="display: inline-flex; align-items: center; gap: 6px;">
+              <span>📺</span> Danh sách phát Workshop & Bài giảng
             </button>
-            <button class="btn sm ghost video-tab-btn" id="tab-video-playlist" onclick="switchVideoChannel('playlist')" style="display: inline-flex; align-items: center; gap: 6px;">
-              <span>📺</span> Playlist Tập huấn AI liên tục
+            <button class="btn sm ghost video-tab-btn" id="tab-video-intro" onclick="switchVideoChannel('intro')" style="display: inline-flex; align-items: center; gap: 6px;">
+              <span>▶</span> Video Giới thiệu AIUNI
             </button>
           </div>
 
@@ -601,8 +601,8 @@
           <div class="video-responsive-frame">
             <iframe id="event-playlist-iframe"
               width="560" height="315"
-              src="https://www.youtube.com/embed/W2YSUnCU5yE?si=jzDo9hyCT0G9aMIK&vq=hd1080&rel=0&enablejsapi=1"
-              title="GIỚI THIỆU HỌC VIỆN CÔNG NGHỆ AIUNI - DƯƠNG TRUNG HIẾU"
+              src="https://www.youtube.com/embed/videoseries?list=PLNYAp62xZevw&rel=0&enablejsapi=1"
+              title="DANH SÁCH PHÁT VIDEO WORKSHOP & BÀI GIẢNG AI - DƯƠNG TRUNG HIẾU"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerpolicy="strict-origin-when-cross-origin"
@@ -612,16 +612,13 @@
           <!-- Playlist Meta Bar & Dynamic Link Input -->
           <div class="playlist-meta-bar">
             <div class="playlist-meta-info" id="video-meta-info">
-              <span class="playlist-badge" id="video-badge">VIDEO TIÊU ĐIỂM · CHÍNH THỨC</span>
-              <span class="video-hd-badge" style="display: inline-flex; align-items: center; gap: 5px; background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.4); color: #059669; padding: 3px 10px; border-radius: 999px; font-size: 11px; font-weight: 800; margin-left: 8px;">
-                <span>⚡</span> CHẤT LƯỢNG: 1080p FULL HD
-              </span>
-              <h3 id="video-title">GIỚI THIỆU HỌC VIỆN CÔNG NGHỆ AIUNI</h3>
-              <p id="video-desc">Khám phá tầm nhìn, sứ mệnh phổ cập AI toàn dân, phong trào Bình dân học vụ số, đào tạo 1.000 Giảng viên GenAI và hệ sinh thái giải pháp AI ứng dụng thực chiến của Học viện Công nghệ AIUNI cùng Thầy Dương Trung Hiếu.</p>
+              <span class="playlist-badge" id="video-badge">DANH SÁCH PHÁT CHÍNH THỨC (PLAYLIST)</span>
+              <h3 id="video-title">CHIẾU TRƯỚC WORKSHOP & BÀI GIẢNG AI</h3>
+              <p id="video-desc">Danh sách phát tổng hợp các video chiếu trước workshop, bài giảng chuyên sâu và các hoạt động đào tạo ứng dụng Trí tuệ nhân tạo thực chiến của Thầy Dương Trung Hiếu cùng Học viện Công nghệ AIUNI.</p>
             </div>
 
             <div class="playlist-input-box">
-              <input type="text" id="playlist-url-input" placeholder="Dán link video hoặc playlist YouTube vào đây..." aria-label="Đường dẫn video hoặc danh sách phát YouTube">
+              <input type="text" id="playlist-url-input" value="https://www.youtube.com/playlist?list=PLNYAp62xZevw" placeholder="Dán link video hoặc playlist YouTube vào đây..." aria-label="Đường dẫn video hoặc danh sách phát YouTube">
               <button id="playlist-update-btn" class="btn sm">Phát Video ↗</button>
             </div>
           </div>
