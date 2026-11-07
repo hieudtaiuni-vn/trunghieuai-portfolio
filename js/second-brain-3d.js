@@ -684,19 +684,12 @@
 
     // Responsive layout tuning cho máy tính vs điện thoại
     function updateResponsiveLayout() {
-      const isMobile = window.innerWidth < 992;
       const isSmallMobile = window.innerWidth < 600;
+      const isMobile = window.innerWidth < 992;
 
-      if (isMobile) {
-        // Điện thoại: Đưa Second Brain về tâm trục trên để người xem vuốt chạm thoải mái
-        worldGroup.position.set(0, isSmallMobile ? 0.45 : 0.3, 0);
-        targetZoom = isSmallMobile ? 11.2 : 9.8;
-      } else {
-        // Máy tính: Dịch Second Brain sang bên phải trung tâm (Right 60%) để cân đối với thẻ bài bên trái
-        const shiftX = (window.innerWidth > 1400) ? 1.4 : 1.1;
-        worldGroup.position.set(shiftX, 0.1, 0);
-        targetZoom = 8.6;
-      }
+      // Căn giữa hoàn toàn Second Brain trong không gian toàn màn hình
+      worldGroup.position.set(0, 0, 0);
+      targetZoom = isSmallMobile ? 11.2 : (isMobile ? 9.8 : 8.4);
     }
     updateResponsiveLayout();
 
@@ -865,7 +858,7 @@
     }
 
     window.select3DAgent = selectAgent;
-    showInspector(AI_AGENTS_DATA[0]);
+    // showInspector(AI_AGENTS_DATA[0]); - Clean full-screen on load
 
     // ==========================================
     // H. RESIZE & INTERSECTION OBSERVER
