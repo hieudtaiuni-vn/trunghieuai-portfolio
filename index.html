@@ -121,93 +121,94 @@
 
   <main id="home">
 
-    <!-- Hero Section: Fullscreen 3D Second Brain Stage & 10 AI Agents Ecosystem -->
-    <section class="hero hero-fullscreen-stage" id="hero-section">
-      <!-- Fullscreen WebGL 3D Canvas Stage -->
-      <div class="brain-fullscreen-canvas-wrap" id="brain-3d-stage">
-        <canvas id="second-brain-canvas" class="second-brain-canvas"></canvas>
-        
-        <!-- 3D Projected Agent HTML Badges Container -->
-        <div id="brain-agent-pins" class="brain-agent-pins" aria-hidden="true"></div>
-
-        <!-- Central Hologram Title Overlay -->
-        <div class="brain-center-hud" id="brain-center-hud">
-          <span class="center-hud-tag">AIUNI NEURAL CORE</span>
-          <span class="center-hud-title">SECOND BRAIN ARCHITECTURE</span>
-          <span class="center-hud-sub">GraphRAG · Vector Memory · 10 Active Specialist Agents</span>
-        </div>
-
-        <!-- Hint Pill -->
-        <div class="brain-hint-pill">
-          <span class="hint-icon">🖱️</span> Kéo xoay 3D · Cuộn phóng to · Nhấp vào Agent xem luồng dữ liệu
-        </div>
+    <!-- Hero Section: Video Nền & Thông Điệp Chiến Lược -->
+    <section class="hero hero-video-stage" id="hero-section">
+      <!-- Video Nền Website (video nen.mp4) -->
+      <div class="hero-video-bg-wrap" aria-hidden="true">
+        <video id="hero-bg-video" class="hero-video-bg" autoplay loop muted playsinline poster="public/images/video-nen-poster.jpg">
+          <source src="public/videos/video-nen.mp4" type="video/mp4">
+        </video>
+        <div class="hero-video-overlay"></div>
       </div>
 
-      <!-- Top Floating Status Bar -->
-      <div class="hero-floating-topbar">
-        <div class="brain-live-badge">
-          <span class="live-dot-pulse"></span>
-          <span class="live-text">10/10 AI AGENTS ONLINE</span>
-        </div>
-        <div class="brain-architect-badge" title="Kiến trúc sư hệ thống: Dương Trung Hiếu">
-          <img src="public/images/anh-the-hieu.jpg?v=5.1" alt="Dương Trung Hiếu" class="architect-thumb" onerror="this.style.display='none'">
-          <div class="architect-info">
-            <span class="arch-name">DƯƠNG TRUNG HIẾU</span>
-            <span class="arch-role">Architect & Director</span>
+      <!-- Nút Bật/Tắt Âm Thanh Video Nền -->
+      <button id="hero-sound-toggle" class="hero-sound-btn" aria-label="Bật/Tắt âm thanh video nền" title="Bật/Tắt âm thanh video nền">
+        <span class="sound-icon">🔇</span>
+        <span class="sound-label">Bật âm thanh</span>
+      </button>
+
+      <div class="wrap hero-grid">
+        <div class="hero-copy-col">
+          <div class="eyebrow">AI STRATEGY · EDUCATION · DIGITAL TRANSFORMATION</div>
+          <h1 class="hero-title">Kiến tạo giá trị mới bằng AI và công nghệ.</h1>
+          <p class="lead hero-lead">Nghiên cứu, đào tạo và ứng dụng trí tuệ nhân tạo vào công việc, tổ chức và hoạt động thực tiễn.</p>
+          
+          <div class="hero-actions">
+            <a class="btn hero-btn-primary" href="#projects">Khám phá dự án ↗</a>
+            <a class="btn ghost hero-btn-ghost" href="#about">Tìm hiểu về tôi</a>
           </div>
-        </div>
-      </div>
 
-      <!-- Agent Inspector HUD: Docked Neatly on the Right Side (Translucent, Non-Obstructive) -->
-      <div class="brain-inspector-hud docked-side" id="brain-inspector-hud">
-        <div class="inspector-header">
-          <div class="inspector-agent-meta">
-            <span class="inspector-icon" id="inspector-icon">🎯</span>
-            <div>
-              <div class="inspector-code" id="inspector-code">AGENT A01 • ONLINE</div>
-              <h4 class="inspector-title" id="inspector-title">AI Strategy & Leadership</h4>
+          <div class="tags hero-tags">
+            <span class="tag">Generative AI</span>
+            <span class="tag">AI Education</span>
+            <span class="tag">AI Solutions</span>
+            <span class="tag">Digital Transformation</span>
+            <span class="tag">Business Management</span>
+          </div>
+
+          <!-- 3 Lối vào nhanh theo đối tượng chuyên biệt -->
+          <div class="hero-portals">
+            <a href="#training" class="hero-portal-card" title="Dành cho Trường học & Giáo viên">
+              <span class="portal-icon">🎓</span>
+              <div class="portal-info">
+                <strong>Trường học & Nhà giáo</strong>
+                <small>Soạn giáo án Chuẩn 5512, ngân hàng đề thi & học liệu số</small>
+              </div>
+            </a>
+            <a href="#projects" class="hero-portal-card" title="Dành cho Cơ quan & Cán bộ cơ sở">
+              <span class="portal-icon">🏛️</span>
+              <div class="portal-info">
+                <strong>Cơ quan & Chính quyền</strong>
+                <small>Trợ lý AI Đảng vụ, thủ tục hành chính công & Tổ CNS cộng đồng</small>
+              </div>
+            </a>
+            <a href="#expertise" class="hero-portal-card" title="Dành cho Doanh nghiệp & Quản trị SME">
+              <span class="portal-icon">🏢</span>
+              <div class="portal-info">
+                <strong>Doanh nghiệp SME</strong>
+                <small>Tự động hóa vận hành, CSKH 24/7 & tối ưu chi phí quản trị</small>
+              </div>
+            </a>
+          </div>
+
+          <!-- Hero Dynamic Stats HUD -->
+          <div class="hero-stats-hud reveal-on-scroll">
+            <div class="stat-hud-item">
+              <div class="stat-hud-num"><span class="stat-counter" data-target="20">20</span><span class="stat-unit">+</span></div>
+              <div class="stat-hud-label">Năm Kinh Nghiệm Quản Trị & Tài Chính</div>
+            </div>
+            <div class="stat-hud-item">
+              <div class="stat-hud-num"><span class="stat-counter" data-target="4">4</span></div>
+              <div class="stat-hud-label">Trụ Cột Năng Lực AI & Chuyển Đổi Số</div>
+            </div>
+            <div class="stat-hud-item">
+              <div class="stat-hud-num"><span class="stat-counter" data-target="100">100</span><span class="stat-unit">%</span></div>
+              <div class="stat-hud-label">Đào Tạo Thực Chiến Gắn Sản Phẩm</div>
             </div>
           </div>
-          <button class="inspector-close" id="inspector-close" aria-label="Đóng bảng chi tiết">✕</button>
         </div>
-        <p class="inspector-desc" id="inspector-desc">Hoạch định kiến trúc AI tổng thể, lộ trình ứng dụng GenAI và chuyển đổi số cho cơ quan, trường học và doanh nghiệp.</p>
-        <div class="inspector-telemetry">
-          <div class="telemetry-item">
-            <span class="tel-label">BĂNG THÔNG</span>
-            <span class="tel-val" id="inspector-stream">3.8 GB/s</span>
-          </div>
-          <div class="telemetry-item">
-            <span class="tel-label">ĐỘ TRỄ</span>
-            <span class="tel-val" id="inspector-latency">6 ms</span>
-          </div>
-          <div class="telemetry-item">
-            <span class="tel-label">GIAO THỨC</span>
-            <span class="tel-val" id="inspector-protocol">C-Level Graph / LangGraph</span>
-          </div>
-        </div>
-        <div class="inspector-actions">
-          <a href="#expertise" class="btn-micro" id="inspector-link">Khám phá Năng Lực Chiến Lược ↗</a>
-        </div>
-      </div>
 
-      <!-- Bottom Floating Controls & Quick Selector -->
-      <div class="hero-floating-controls">
-        <div class="agent-quick-selector" id="agent-quick-selector">
-          <!-- Render 10 Agent pills -->
-        </div>
-        <div class="brain-console-actions">
-          <button class="brain-ctrl-btn active" id="btn-toggle-spin" title="Bật/Tắt tự động xoay 3D">
-            <span class="btn-icon">🔄</span> Xoay 3D
-          </button>
-          <button class="brain-ctrl-btn" id="btn-toggle-speed" title="Tăng tốc độ luồng dữ liệu">
-            <span class="btn-icon">⚡</span> Luồng nhanh
-          </button>
-          <button class="brain-ctrl-btn" id="btn-reset-view" title="Căn giữa góc nhìn mặc định">
-            <span class="btn-icon">🎯</span> Căn giữa
-          </button>
-          <button class="brain-ctrl-btn" id="btn-toggle-fullscreen" title="Phóng to toàn màn hình 3D">
-            <span class="btn-icon">⛶</span> Toàn màn hình
-          </button>
+        <!-- Portrait Box - Chân dung Dương Trung Hiếu với 3D Tilt & Holographic Sweep -->
+        <div class="portrait-card" id="portrait-card" aria-label="Chân dung Dương Trung Hiếu">
+          <img id="portrait-real-img" class="portrait-img" src="public/images/anh-the-hieu.jpg?v=5.1" alt="Chân dung Dương Trung Hiếu - Giám đốc Đào tạo Học viện Công nghệ AIUNI" style="display:none;" loading="eager">
+          
+          <div id="portrait-vector-placeholder" class="portrait-inner">
+            <div class="monogram">DTH</div>
+            <strong>DƯƠNG TRUNG HIẾU</strong>
+            <span>Giám đốc Đào tạo · Học viện Công nghệ AIUNI</span>
+          </div>
+
+          <div class="portrait-shimmer" aria-hidden="true"></div>
         </div>
       </div>
     </section>
@@ -1163,8 +1164,5 @@
   <!-- Press & Media Coverage Data & Controller -->
   <script src="js/press-data.js?v=5.4"></script>
   <script src="js/press.js?v=5.4"></script>
-  <!-- Three.js 3D Library for Second Brain & 10 AI Agents -->
-  <script src="js/three.min.js"></script>
-  <script src="js/second-brain-3d.js?v=6.0"></script>
 </body>
 </html>

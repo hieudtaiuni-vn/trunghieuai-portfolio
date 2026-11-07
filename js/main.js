@@ -826,6 +826,28 @@ Nắm vững toàn bộ hồ sơ của Thầy Hiếu:
     });
   }
 
+  
+  // Hero Video Background Sound Controller
+  const heroSoundToggle = document.getElementById('hero-sound-toggle');
+  const heroBgVideo = document.getElementById('hero-bg-video');
+  if (heroSoundToggle && heroBgVideo) {
+    heroSoundToggle.addEventListener('click', () => {
+      heroBgVideo.muted = !heroBgVideo.muted;
+      const soundIcon = heroSoundToggle.querySelector('.sound-icon');
+      const soundLabel = heroSoundToggle.querySelector('.sound-label');
+      if (heroBgVideo.muted) {
+        if (soundIcon) soundIcon.textContent = '🔇';
+        if (soundLabel) soundLabel.textContent = 'Bật âm thanh';
+        heroSoundToggle.classList.remove('active');
+      } else {
+        if (soundIcon) soundIcon.textContent = '🔊';
+        if (soundLabel) soundLabel.textContent = 'Tắt âm thanh';
+        heroSoundToggle.classList.add('active');
+        heroBgVideo.play().catch(e => console.log('Video play error:', e));
+      }
+    });
+  }
+
   // 7. Video Playlist URL Dynamic Updater
   
   // Switch between Intro Video and Continuous Training Playlist
