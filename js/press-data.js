@@ -1,10 +1,33 @@
 /**
- * DỮ LIỆU BÁO CHÍ & ĐỐI TÁC NÓI VỀ HỌC VIỆN CÔNG NGHỆ AIUNI
+ * DỮ LIỆU THÔNG TIN BÁO CHÍ - TRUYỀN HÌNH
  * Tổng hợp 37 bài viết, phóng sự và ghi nhận từ Cơ quan Báo chí Trung ương,
  * Cổng thông tin điện tử Đảng ủy - UBND các địa phương và Đối tác.
  */
 
 window.PRESS_DATA = [
+  // --- PHÓNG SỰ TRUYỀN HÌNH & BÁO CHÍ MỚI NHẤT ---
+  {
+    id: "press-bacninhtv-congdanso-2025",
+    type: "press",
+    sourceName: "Đài Phát thanh & Truyền hình Bắc Ninh (BTV)",
+    title: "Khai mạc Chung kết cuộc thi Công dân số Bắc Ninh 2025",
+    category: "Truyền hình & Sự kiện số",
+    categorySlug: "chinh-quyen",
+    url: "https://bacninhtv.vn/video/khai-mac-chung-ket-cuoc-thi-cong-dan-so-bac-ninh-2025",
+    badge: "📺 Truyền hình BTV",
+    summary: "Đài PT&TH Bắc Ninh (BTV) đưa tin về lễ khai mạc vòng Chung kết cuộc thi Công dân số Bắc Ninh 2025 do Học viện Công nghệ AIUNI và tỉnh Bắc Ninh phối hợp tổ chức, tôn vinh các sáng kiến AI ứng dụng thực tiễn."
+  },
+  {
+    id: "press-reel-congdanso-2025",
+    type: "press",
+    sourceName: "Truyền hình & Mạng xã hội",
+    title: "Phóng sự Video Reels: Chung kết Cuộc thi Công dân số & Đào tạo AI",
+    category: "Phóng sự & Video ngắn",
+    categorySlug: "khoi-nghiep",
+    url: "https://www.facebook.com/reel/1649739643119772",
+    badge: "🎬 Video Phóng sự",
+    summary: "Khoảnh khắc phóng sự ngắn ghi lại không khí sôi nổi, các giải pháp công nghệ AI sáng tạo và phần tranh tài xuất sắc của các thí sinh tại vòng Chung kết Cuộc thi Công dân số."
+  },
   // --- NHÓM 1: ĐỐI TÁC & CỔNG THÔNG TIN CHÍNH QUYỀN ĐỊA PHƯƠNG ---
   {
     id: "press-cathai-haiphong",

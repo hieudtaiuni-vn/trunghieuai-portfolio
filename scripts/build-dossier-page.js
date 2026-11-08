@@ -71,7 +71,7 @@ const dossierPageHtml = `<!DOCTYPE html>
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://trunghieuai.io.vn/ho-so-chi-tiet.html">
   <meta property="og:title" content="Hồ Sơ & Chi Tiết Toàn Diện | Dương Trung Hiếu - Giám Đốc Đào Tạo AIUNI">
-  <meta property="og:description" content="Hồ sơ năng lực chuyên sâu, triết lý quản trị, 4 khung đào tạo chuẩn, hệ sinh thái dự án AI và 37+ báo chí nói về AIUNI.">
+  <meta property="og:description" content="Hồ sơ năng lực chuyên sâu, triết lý quản trị, 4 khung đào tạo chuẩn, hệ sinh thái dự án AI và Thông tin Báo chí - Truyền hình.">
   <meta property="og:image" content="https://trunghieuai.io.vn/public/images/og-cover.png">
   <meta property="og:locale" content="vi_VN">
   <meta property="og:site_name" content="Dương Trung Hiếu Portfolio">
@@ -153,7 +153,7 @@ const dossierPageHtml = `<!DOCTYPE html>
           <li><a href="#tin-tuc" class="toc-nav-link"><span class="toc-nav-icon">📰</span><span>6. Tin tức & Chuyên môn</span></a></li>
           <li><a href="#video" class="toc-nav-link"><span class="toc-nav-icon">🎥</span><span>7. Video & Bài giảng</span></a></li>
           <li><a href="#album" class="toc-nav-link"><span class="toc-nav-icon">📸</span><span>8. Album Ảnh Hoạt động</span></a></li>
-          <li><a href="#bao-chi" class="toc-nav-link"><span class="toc-nav-icon">📰</span><span>9. 37+ Báo chí nói về AIUNI</span></a></li>
+          <li><a href="#bao-chi" class="toc-nav-link"><span class="toc-nav-icon">📰</span><span>9. Thông tin Báo chí - Truyền hình</span></a></li>
           <li><a href="#doi-tac" class="toc-nav-link"><span class="toc-nav-icon">🤝</span><span>10. Đối tác & Đồng hành</span></a></li>
           <li><a href="#lien-he" class="toc-nav-link"><span class="toc-nav-icon">📬</span><span>11. Thông tin Liên hệ</span></a></li>
         </ul>
