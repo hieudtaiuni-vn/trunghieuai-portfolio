@@ -4240,3 +4240,128 @@ footer {
     margin: 0 auto !important;
   }
 }
+
+
+/* ==========================================================================
+   VIDEO & PLAYLIST RESPONSIVE FRAME (16:9 CHUẨN ĐỒNG BỘ CẢ DESKTOP & MOBILE)
+   Khắc phục triệt để lỗi khung video bị rộng hơn các thẻ khác trên điện thoại
+   ========================================================================== */
+.video-container-card {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.video-channel-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.video-responsive-frame {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* Tỷ lệ 16:9 chuẩn */
+  height: 0;
+  overflow: hidden;
+  border-radius: 16px; /* Bo góc tròn nhẹ */
+  background: #000000;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  margin-bottom: 18px;
+  box-sizing: border-box;
+}
+
+.video-responsive-frame iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  border: 0;
+  border-radius: 16px;
+}
+
+.playlist-meta-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.playlist-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #0284c7;
+  background: rgba(2, 132, 199, 0.1);
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-bottom: 6px;
+}
+
+.playlist-meta-info h3 {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--navy);
+  margin: 0 0 8px 0;
+  line-height: 1.35;
+}
+
+.playlist-meta-info p {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: #475569;
+  margin: 0;
+}
+
+.playlist-input-box {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.playlist-input-box input {
+  flex: 1 1 240px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1.5px solid #cbd5e1;
+  font-size: 13px;
+  font-family: inherit;
+  color: #334155;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+.playlist-input-box input:focus {
+  outline: none;
+  border-color: #0284c7;
+}
+
+@media (max-width: 768px) {
+  .video-channel-tabs {
+    gap: 8px;
+  }
+  
+  .video-channel-tabs button {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .playlist-input-box {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+  
+  .playlist-input-box input {
+    width: 100%;
+  }
+  
+  .playlist-input-box button {
+    width: 100%;
+    justify-content: center;
+  }
+}
