@@ -20,10 +20,7 @@ const chatboxHtml = oldIndexHtml.substring(
   oldIndexHtml.indexOf('</aside>') + '</aside>'.length
 );
 
-const zaloModalHtml = oldIndexHtml.substring(
-  oldIndexHtml.indexOf('<!-- Zalo QR Code Fullscreen Modal Lightbox -->'),
-  oldIndexHtml.indexOf('<!-- Press & Media Coverage Data & Controller -->')
-);
+const zaloModalHtml = "";
 
 const newIndexHtml = `<!DOCTYPE html>
 <html lang="vi">
@@ -70,7 +67,7 @@ const newIndexHtml = `<!DOCTYPE html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;850;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=5.7">
+  <link rel="stylesheet" href="css/styles.css?v=5.8">
 
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
@@ -445,8 +442,6 @@ const newIndexHtml = `<!DOCTYPE html>
 
   <!-- Main JavaScript File (JAVIS AI Assistant) -->
   <script src="js/main.js?v=5.5"></script>
-
-  ${zaloModalHtml}
 </body>
 </html>
 `;

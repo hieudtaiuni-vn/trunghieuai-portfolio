@@ -44,10 +44,7 @@ const chatboxHtml = indexHtml.substring(
 
 // Extract modals
 const articleModalHtml = extractInner(indexHtml, '<!-- Article Reader Fullscreen Modal -->', '<!-- Zalo QR Code Fullscreen Modal Lightbox -->');
-const zaloModalHtml = indexHtml.substring(
-  indexHtml.indexOf('<!-- Zalo QR Code Fullscreen Modal Lightbox -->'),
-  indexHtml.indexOf('<!-- Press & Media Coverage Data & Controller -->')
-);
+const zaloModalHtml = "";
 
 const dossierPageHtml = `<!DOCTYPE html>
 <html lang="vi">
@@ -80,7 +77,7 @@ const dossierPageHtml = `<!DOCTYPE html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;850;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=5.7">
+  <link rel="stylesheet" href="css/styles.css?v=5.8">
 </head>
 <body class="detail-page-body">
   <!-- Scroll Progress Bar -->
@@ -384,8 +381,6 @@ const dossierPageHtml = `<!DOCTYPE html>
       </div>
     </div>
   </div>
-
-  ${zaloModalHtml}
 </body>
 </html>
 `;
