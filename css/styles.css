@@ -3221,11 +3221,15 @@ footer {
   min-height: 100vh;
   min-height: 100svh;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  width: 100%;
   position: relative;
   overflow: hidden;
   padding: 110px 0 85px;
   background: transparent !important;
+  box-sizing: border-box;
 }
 
 /* Fullscreen Background Video Container */
@@ -4035,14 +4039,30 @@ footer {
 }
 
 /* ==========================================================================
-   HERO & PORTRAIT CENTERING & 1:1 RATIO STANDARDIZATION (DESKTOP & MOBILE)
-   Đưa ảnh và các thẻ Hero vào chính giữa, kích thước cân đối theo chuẩn các thẻ bên dưới
+   HERO & PORTRAIT PERFECT FULL-WIDTH BALANCING (DESKTOP & MOBILE)
+   Đưa ảnh và các thẻ Hero vào chính giữa, kích thước bề ngang cân đối 100% theo tiêu chuẩn các thẻ bên dưới
    ========================================================================== */
+.hero.hero-video-stage > .wrap {
+  width: min(var(--container-max), calc(100% - 48px));
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.12fr 0.88fr;
+  gap: 36px;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
 .hero-copy-col {
   padding: 34px 34px;
   border-radius: 20px;
   width: 100%;
   box-sizing: border-box;
+  margin: 0 auto;
 }
 
 .hero-copy-col .hero-title {
@@ -4093,15 +4113,27 @@ footer {
   border: 1px solid #e2e8f0;
 }
 
+/* Tablet & Mobile responsive (<= 992px) */
 @media (max-width: 992px) {
-  .hero-grid {
-    grid-template-columns: 1fr !important;
-    gap: 28px !important;
-    width: 100% !important;
-    margin: 0 auto !important;
-    justify-items: center !important; /* Đưa tất cả vào chính giữa */
+  .hero.hero-video-stage {
+    min-height: auto;
+    padding: 85px 0 50px;
   }
 
+  .hero.hero-video-stage > .wrap {
+    width: calc(100% - 32px) !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+  }
+
+  /* Khung chữ Hero: Rộng 100% wrap, cân đối như thẻ 4 trụ cột */
   .hero-copy-col {
     width: 100% !important;
     max-width: 100% !important;
@@ -4111,13 +4143,23 @@ footer {
     box-sizing: border-box !important;
   }
 
+  /* Ảnh chân dung: Bề ngang rộng 100% wrap, tỉ lệ 1:1, bo góc tròn nhẹ 20px đồng bộ chuẩn thẻ dưới */
   .portrait-card {
     width: 100% !important;
-    max-width: 380px !important;
+    max-width: 100% !important;
     aspect-ratio: 1 / 1 !important;
     min-height: unset !important;
-    border-radius: 16px !important; /* Mép ảnh bo góc tròn nhẹ */
-    margin: 0 auto !important; /* Đưa vào chính giữa */
+    border-radius: 20px !important; /* Bo góc tròn nhẹ đồng bộ chuẩn các thẻ bên dưới */
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+  }
+
+  .portrait-img {
+    border-radius: 20px !important;
+  }
+
+  .portrait-card::before {
+    border-radius: 20px !important;
   }
 
   .hero-portals {
@@ -4154,7 +4196,13 @@ footer {
   }
 }
 
+/* Màn hình điện thoại nhỏ (<= 640px) */
 @media (max-width: 640px) {
+  .hero.hero-video-stage > .wrap {
+    width: calc(100% - 32px) !important;
+    margin: 0 auto !important;
+  }
+
   .hero-copy-col {
     padding: 20px 16px !important;
   }
@@ -4183,10 +4231,12 @@ footer {
     padding: 12px 18px !important;
   }
 
+  /* Khung ảnh vuông 1:1 chuẩn bề ngang 100% khớp đều với các thẻ bên dưới */
   .portrait-card {
-    max-width: 320px !important;
+    width: 100% !important;
+    max-width: 100% !important;
     aspect-ratio: 1 / 1 !important;
-    border-radius: 16px !important; /* Mép ảnh bo góc tròn nhẹ */
+    border-radius: 20px !important;
     margin: 0 auto !important;
   }
 }
