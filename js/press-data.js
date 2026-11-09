@@ -1,10 +1,21 @@
 /**
  * DỮ LIỆU THÔNG TIN BÁO CHÍ - TRUYỀN HÌNH
- * Tổng hợp 37 bài viết, phóng sự và ghi nhận từ Cơ quan Báo chí Trung ương,
+ * Tổng hợp 40 bài viết, phóng sự và ghi nhận từ Cơ quan Báo chí Trung ương,
  * Cổng thông tin điện tử Đảng ủy - UBND các địa phương và Đối tác.
  */
 
 window.PRESS_DATA = [
+  {
+    id: "press-vjst-laichau-chuyendoiso",
+    type: "press",
+    sourceName: "Tạp chí Khoa học & Công nghệ Việt Nam (Bộ KH&CN)",
+    title: "Lai Châu: Nâng cao nhận thức, kỹ năng ứng dụng trí tuệ nhân tạo trong chuyển đổi số",
+    category: "Chuyển đổi số & Đổi mới sáng tạo",
+    categorySlug: "ai-first",
+    url: "https://vjst.vn/lai-chau-nang-cao-nhan-thuc-ky-nang-ung-dung-tri-tue-nhan-tao-trong-chuyen-doi-so-102548.html",
+    badge: "🔬 Tạp chí Bộ KH&CN",
+    summary: "Tạp chí Khoa học & Công nghệ Việt Nam (Bộ KH&CN) đưa tin về Hội nghị ứng dụng AI trong chuyển đổi số do Trung tâm Đổi mới sáng tạo & Chuyển đổi số (Sở KH&CN Lai Châu) phối hợp cùng Học viện Công nghệ AIUNI tổ chức, trang bị kỹ năng thực tiễn và nâng cao năng suất thực thi công vụ."
+  },
   // --- PHÓNG SỰ TRUYỀN HÌNH & BÁO CHÍ MỚI NHẤT ---
   {
     id: "press-bacninhtv-congdanso-2025",

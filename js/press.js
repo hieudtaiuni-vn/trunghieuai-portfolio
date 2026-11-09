@@ -1,6 +1,6 @@
 /**
  * PORTFOLIO DƯƠNG TRUNG HIẾU - PRESS & MEDIA HIGHLIGHTS MODULE
- * Quản lý hiển thị, tìm kiếm và lọc danh mục 37+ bài viết báo chí & đối tác nói về AIUNI.
+ * Quản lý hiển thị, tìm kiếm và lọc danh mục 40+ bài viết báo chí & đối tác nói về AIUNI.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
